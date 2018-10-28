@@ -1,0 +1,189 @@
+# Relational data
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+devtools::install_github("bergant/datamodelr")
+library(tidyverse)
+library(dplyr)
+library(nycflights13)
+library(babynames)
+library(nasaweather)
+library(fueleconomy)
+library(datamodelr)
+```
+
+## Exercises
+
+Imagine you wanted to draw (approximately) the route each plane flies from its origin to its destination. What variables would you need? What tables would you need to combine?
+
+-   `flights` table: `origin` and `dest` variables
+```{r}
+head(flights %>% select(origin, dest))
+```
+-   `airports` table: faa (matches the origin and destination), longitude and latitude variables
+
+```{r}
+head(airports %>% select(lon, lat, faa))
+```
+
+-   join `flights` with `airports`. The first join adds the location of the origin airport (`origin`) and the second join adds the location of destination airport (`dest`).
+
+I forgot to draw the relationship between weather and airports. What is the relationship and how should it appear in the diagram?
+
+The variable `origin` in `weather` is the same as `faa` in `airports`.
+
+```{r}
+head(weather %>% select(origin))
+head(airports %>% select(faa) %>% filter(faa == "EWR"))
+```
+
+`weather` only contains information for the origin (NYC) airports. If it contained weather records for all airports in the USA, what additional relation would it define with flights?
+
+`origin` would need to change to `location`
+`year`, `month`, `day`, `hour`, `origin` in `weather` should match to `year`, `month`, `day`, `arr_time`, `dest` in `flight` 
+
+```{r}
+head(weather)
+head(flights)
+```
+
+We know that some days of the year are “special”, and fewer people than usual fly on them. How might you represent that data as a data frame? What would be the primary keys of that table? How would it connect to the existing tables?
+
+The table `special_days` would contain a list of day where fewer people travel than usual.
+Primary key: year, month, day should match `year`, `month`, and `day` in `flight`
+
+
+```{r}
+special_days <- tribble(
+  ~year, ~month, ~day, ~holiday,
+  2019, 01, 01, "New Years Day",
+  2018, 12, 25, "Christmas Day"
+)
+```
+
+## Exercises 13.3.1 
+
+Add a surrogate key to flights.
+
+```{r}
+flights
+
+flights %>%
+  arrange(year, month, day, sched_dep_time, carrier, flight) %>%
+  mutate(flight_id = row_number()) %>%
+  glimpse()
+
+flights %>% 
+  count(year, month, day, sched_dep_time, carrier, flight) %>% 
+  filter(n > 1)
+```
+
+Identify the keys in the following datasets
+
+Lahman::Batting
+
+```{r}
+head(Lahman::Batting)
+Lahman::Batting %>% 
+  count(playerID, yearID, stint) %>% 
+  filter(n > 1)
+```
+
+babynames::babynames
+
+```{r}
+head(babynames::babynames)
+babynames::babynames %>% 
+  count(year, sex, name) %>% 
+  filter(nn > 1)
+```
+
+nasaweather::atmos
+
+```{r}
+head(nasaweather::atmos)
+nasaweather::atmos %>%
+      count(lat, long, year, month) %>%
+      filter(n > 1)
+```
+
+fueleconomy::vehicles
+
+```{r}
+head(fueleconomy::vehicles)
+fueleconomy::vehicles %>%
+      count(id) %>%
+      filter(n > 1)
+```
+
+ggplot2::diamonds
+
+```{r}
+head(ggplot2::diamonds)
+ggplot2::diamonds %>%
+  distinct() %>%
+  nrow()
+nrow(ggplot2::diamonds)
+```
+
+(You might need to install some packages and read some documentation.)
+
+Draw a diagram illustrating the connections between the Batting, Master, and Salaries tables in the Lahman package. Draw another diagram that shows the relationship between Master, Managers, AwardsManagers.
+
+-   `Master`
+
+    -   Primary keys: `playerID`
+
+-   `Batting`
+
+    -   Primary keys: `yearID`, `yearID`, `stint`
+
+    -   Foreign Keys:
+
+        -   `playerID` = `Master$playerID` (many-to-1)
+
+-   `Salaries`
+
+    -   Primary keys: `yearID`, `teamID`, `playerID`
+
+    -   Foreign Keys
+
+        -   `playerID` = `Master$playerID` (many-to-1)
+
+```{r}
+dm1 <- dm_from_data_frames(list(Batting = Lahman::Batting,
+                                Master = Lahman::Master,
+                                Salaries = Lahman::Salaries)) %>%
+  dm_set_key("Batting", c("playerID", "yearID", "stint")) %>%
+  dm_set_key("Master", "playerID") %>%
+  dm_set_key("Salaries", c("yearID", "teamID", "playerID")) %>%
+  dm_add_references(
+    Batting$playerID == Master$playerID,
+    Salaries$playerID == Master$playerID
+  )
+
+dm_create_graph(dm1, rankdir = "LR", columnArrows = TRUE)
+```
+
+How would you characterise the relationship between the Batting, Pitching, and Fielding tables?
+
+## Exercises 13.4.6 
+
+Compute the average delay by destination, then join on the airports data frame so you can show the spatial distribution of delays. Here’s an easy way to draw a map of the United States:
+
+airports %>%
+  semi_join(flights, c("faa" = "dest")) %>%
+  ggplot(aes(lon, lat)) +
+    borders("state") +
+    geom_point() +
+    coord_quickmap()
+(Don’t worry if you don’t understand what semi_join() does — you’ll learn about it next.)
+
+You might want to use the size or colour of the points to display the average delay for each airport.
+
+Add the location of the origin and destination (i.e. the lat and lon) to flights.
+
+Is there a relationship between the age of a plane and its delays?
+
+What weather conditions make it more likely to see a delay?
+
+What happened on June 13 2013? Display the spatial pattern of delays, and then use Google to cross-reference with the weather.

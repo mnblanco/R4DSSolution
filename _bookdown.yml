@@ -1,0 +1,11 @@
+new_session: yes
+
+rmd_files: [
+  "index.Rmd",
+  "01-tibble.Rmd",
+  "02-dataimport.Rmd",
+  "03-tidydata.Rmd",
+  "04-relationaldata.Rmd",
+]
+
+before_chapter_script: "_common.R"

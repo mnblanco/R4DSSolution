@@ -3,7 +3,7 @@
 
 
 
-## Exercises
+## Exercises 13.2.1
 
 Imagine you wanted to draw (approximately) the route each plane flies from its origin to its destination. What variables would you need? What tables would you need to combine?
 
@@ -329,20 +329,403 @@ How would you characterise the relationship between the Batting, Pitching, and F
 
 Compute the average delay by destination, then join on the airports data frame so you can show the spatial distribution of delays. Here’s an easy way to draw a map of the United States:
 
-airports %>%
-  semi_join(flights, c("faa" = "dest")) %>%
-  ggplot(aes(lon, lat)) +
+
+```r
+flights_dest_delay <-flights %>% group_by(dest) %>% summarise(avg_arr_delay=mean(arr_delay, na.rm = TRUE)) %>%
+  inner_join(airports, by = c(dest = "faa")) %>% select(dest, lon, lat, avg_arr_delay)
+
+flights_dest_delay %>%
+  ggplot(aes(lon, lat, colour = avg_arr_delay)) +
     borders("state") +
     geom_point() +
     coord_quickmap()
+#> 
+#> Attaching package: 'maps'
+#> The following object is masked from 'package:purrr':
+#> 
+#>     map
+```
+
+<img src="04-relationaldata_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
 (Don’t worry if you don’t understand what semi_join() does — you’ll learn about it next.)
 
 You might want to use the size or colour of the points to display the average delay for each airport.
 
 Add the location of the origin and destination (i.e. the lat and lon) to flights.
 
+
+```r
+airport_locations <- airports %>%
+  select(faa, lat, lon)
+
+flights %>%
+    select(year:day, hour, origin, dest) %>%
+  left_join(
+    airport_locations,
+    by = c("origin" = "faa")
+  ) %>%
+  left_join(
+    airport_locations,
+    by = c("dest" = "faa")
+  )
+#> # A tibble: 336,776 x 10
+#>    year month   day  hour origin dest  lat.x lon.x lat.y lon.y
+#>   <int> <int> <int> <dbl> <chr>  <chr> <dbl> <dbl> <dbl> <dbl>
+#> 1  2013     1     1     5 EWR    IAH    40.7 -74.2  30.0 -95.3
+#> 2  2013     1     1     5 LGA    IAH    40.8 -73.9  30.0 -95.3
+#> 3  2013     1     1     5 JFK    MIA    40.6 -73.8  25.8 -80.3
+#> 4  2013     1     1     5 JFK    BQN    40.6 -73.8  NA    NA  
+#> 5  2013     1     1     6 LGA    ATL    40.8 -73.9  33.6 -84.4
+#> 6  2013     1     1     5 EWR    ORD    40.7 -74.2  42.0 -87.9
+#> # ... with 3.368e+05 more rows
+```
+
 Is there a relationship between the age of a plane and its delays?
+
+
+```r
+plane_ages<- flights %>% 
+  inner_join(planes, by = c("tailnum")) %>%
+  mutate(age = year.x - year.y) %>%
+  group_by(age) %>%
+  summarise(avg_dep_delay = mean(dep_delay, na.rm = TRUE), avg_arr_delay = mean(arr_delay,  na.rm = TRUE)) %>%
+  na.omit()
+
+plane_ages
+#> # A tibble: 46 x 3
+#>     age avg_dep_delay avg_arr_delay
+#>   <int>         <dbl>         <dbl>
+#> 1     0         10.6           4.01
+#> 2     1          9.64          2.85
+#> 3     2         11.8           5.70
+#> 4     3         12.5           5.18
+#> 5     4         11.0           4.92
+#> 6     5         13.2           5.57
+#> # ... with 40 more rows
+plane_ages %>%
+  ggplot(aes(x = age, y = avg_dep_delay)) +
+  geom_point() +
+  geom_line()
+
+plane_ages %>%
+  ggplot(aes(x = age, y = avg_arr_delay)) +
+  geom_point() +
+  geom_line()
+```
+
+<img src="04-relationaldata_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" /><img src="04-relationaldata_files/figure-html/unnamed-chunk-17-2.png" width="70%" style="display: block; margin: auto;" />
 
 What weather conditions make it more likely to see a delay?
 
+
+```r
+flight_weather <-
+  flights %>%
+  inner_join(weather, by = c("origin" = "origin",
+                            "year" = "year",
+                            "month" = "month",
+                            "day" = "day",
+                            "hour" = "hour"))
+
+flight_weather %>%
+  group_by(temp) %>%
+  summarise(delay = mean(dep_delay, na.rm = TRUE)) %>%
+  na.omit() %>%
+  ggplot(aes(x = temp, y = delay)) +
+    geom_line() + 
+  geom_point()
+
+flight_weather %>%
+  group_by(dewp) %>%
+  summarise(delay = mean(dep_delay, na.rm = TRUE)) %>%
+  na.omit() %>%
+  ggplot(aes(x = dewp, y = delay)) +
+    geom_line() + 
+  geom_point()
+
+flight_weather %>%
+  group_by(humid) %>%
+  summarise(delay = mean(dep_delay, na.rm = TRUE)) %>%
+  na.omit() %>%
+  ggplot(aes(x = humid, y = delay)) +
+    geom_line() + 
+  geom_point()
+
+flight_weather %>%
+  group_by(wind_speed) %>%
+  summarise(delay = mean(dep_delay, na.rm = TRUE)) %>%
+  na.omit() %>%
+  ggplot(aes(x = wind_speed, y = delay)) +
+    geom_line() + 
+  geom_point()
+
+flight_weather %>%
+  group_by(wind_gust) %>%
+  summarise(delay = mean(dep_delay, na.rm = TRUE)) %>%
+  na.omit() %>%
+  ggplot(aes(x = wind_gust, y = delay)) +
+    geom_line() + 
+  geom_point()
+
+flight_weather %>%
+  group_by(precip) %>%
+  summarise(delay = mean(dep_delay, na.rm = TRUE)) %>%
+  na.omit() %>%
+  ggplot(aes(x = precip, y = delay)) +
+    geom_line() + 
+  geom_point()
+
+flight_weather %>%
+  group_by(pressure) %>%
+  summarise(delay = mean(dep_delay, na.rm = TRUE)) %>%
+  na.omit() %>%
+  ggplot(aes(x = pressure, y = delay)) +
+    geom_line() + 
+  geom_point()
+
+flight_weather %>%
+  group_by(visib) %>%
+  summarise(delay = mean(dep_delay, na.rm = TRUE)) %>%
+  na.omit() %>%
+  ggplot(aes(x = visib, y = delay)) +
+    geom_line() + 
+  geom_point()
+```
+
+<img src="04-relationaldata_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" /><img src="04-relationaldata_files/figure-html/unnamed-chunk-18-2.png" width="70%" style="display: block; margin: auto;" /><img src="04-relationaldata_files/figure-html/unnamed-chunk-18-3.png" width="70%" style="display: block; margin: auto;" /><img src="04-relationaldata_files/figure-html/unnamed-chunk-18-4.png" width="70%" style="display: block; margin: auto;" /><img src="04-relationaldata_files/figure-html/unnamed-chunk-18-5.png" width="70%" style="display: block; margin: auto;" /><img src="04-relationaldata_files/figure-html/unnamed-chunk-18-6.png" width="70%" style="display: block; margin: auto;" /><img src="04-relationaldata_files/figure-html/unnamed-chunk-18-7.png" width="70%" style="display: block; margin: auto;" /><img src="04-relationaldata_files/figure-html/unnamed-chunk-18-8.png" width="70%" style="display: block; margin: auto;" />
+
 What happened on June 13 2013? Display the spatial pattern of delays, and then use Google to cross-reference with the weather.
+
+In June 13 2013 there was a large series of storms in the southeastern US (see [June 12-13, 2013 derecho series](https://en.wikipedia.org/wiki/June_12%E2%80%9313,_2013_derecho_series))
+
+
+```r
+library(viridis)
+#> Loading required package: viridisLite
+flights %>%
+  filter(year == 2013, month == 6, day == 13) %>%
+  group_by(dest) %>%
+  summarise(delay = mean(arr_delay, na.rm = TRUE)) %>%
+  na.omit() %>%
+  inner_join(airports, by = c("dest" = "faa")) %>%
+  ggplot(aes(y = lat, x = lon, size = delay, colour = delay)) +
+  borders("state") +
+  geom_point() +
+  coord_quickmap() +
+  scale_colour_viridis()
+```
+
+<img src="04-relationaldata_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
+
+## Exercises 13.5.1 
+
+What does it mean for a flight to have a missing tailnum? What do the tail numbers that don’t have a matching record in planes have in common? (Hint: one variable explains ~90% of the problems.)
+
+
+```r
+head(flights)
+#> # A tibble: 6 x 19
+#>    year month   day dep_time sched_dep_time dep_delay arr_time
+#>   <int> <int> <int>    <int>          <int>     <dbl>    <int>
+#> 1  2013     1     1      517            515         2      830
+#> 2  2013     1     1      533            529         4      850
+#> 3  2013     1     1      542            540         2      923
+#> 4  2013     1     1      544            545        -1     1004
+#> 5  2013     1     1      554            600        -6      812
+#> 6  2013     1     1      554            558        -4      740
+#> # ... with 12 more variables: sched_arr_time <int>, arr_delay <dbl>,
+#> #   carrier <chr>, flight <int>, tailnum <chr>, origin <chr>, dest <chr>,
+#> #   air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>,
+#> #   time_hour <dttm>
+# Flights with tailnum that are not in the planes table
+flights %>%
+  anti_join(planes, by = "tailnum") %>%
+  count(carrier, sort = TRUE)
+#> # A tibble: 10 x 2
+#>   carrier     n
+#>   <chr>   <int>
+#> 1 MQ      25397
+#> 2 AA      22558
+#> 3 UA       1693
+#> 4 9E       1044
+#> 5 B6        830
+#> 6 US        699
+#> # ... with 4 more rows
+
+# tailnum in flight but not in planes
+planes %>% filter(tailnum == "N3ALAA")
+#> # A tibble: 0 x 9
+#> # ... with 9 variables: tailnum <chr>, year <int>, type <chr>,
+#> #   manufacturer <chr>, model <chr>, engines <int>, seats <int>,
+#> #   speed <int>, engine <chr>
+```
+
+Filter flights to only show flights with planes that have flown at least 100 flights.
+
+
+
+```r
+planes_gt_100 <- flights %>%
+  count(tailnum) %>%
+  filter(n > 99)
+
+flights %>%
+  semi_join(planes_gt_100, by = "tailnum")
+#> # A tibble: 230,902 x 19
+#>    year month   day dep_time sched_dep_time dep_delay arr_time
+#>   <int> <int> <int>    <int>          <int>     <dbl>    <int>
+#> 1  2013     1     1      517            515         2      830
+#> 2  2013     1     1      533            529         4      850
+#> 3  2013     1     1      544            545        -1     1004
+#> 4  2013     1     1      554            558        -4      740
+#> 5  2013     1     1      555            600        -5      913
+#> 6  2013     1     1      557            600        -3      709
+#> # ... with 2.309e+05 more rows, and 12 more variables:
+#> #   sched_arr_time <int>, arr_delay <dbl>, carrier <chr>, flight <int>,
+#> #   tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
+#> #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+```
+
+Combine fueleconomy::vehicles and fueleconomy::common to find only the records for the most common models.
+
+
+```r
+glimpse(fueleconomy::vehicles)
+#> Observations: 33,442
+#> Variables: 12
+#> $ id    <int> 27550, 28426, 27549, 28425, 1032, 1033, 3347, 13309, 133...
+#> $ make  <chr> "AM General", "AM General", "AM General", "AM General", ...
+#> $ model <chr> "DJ Po Vehicle 2WD", "DJ Po Vehicle 2WD", "FJ8c Post Off...
+#> $ year  <int> 1984, 1984, 1984, 1984, 1985, 1985, 1987, 1997, 1997, 19...
+#> $ class <chr> "Special Purpose Vehicle 2WD", "Special Purpose Vehicle ...
+#> $ trans <chr> "Automatic 3-spd", "Automatic 3-spd", "Automatic 3-spd",...
+#> $ drive <chr> "2-Wheel Drive", "2-Wheel Drive", "2-Wheel Drive", "2-Wh...
+#> $ cyl   <int> 4, 4, 6, 6, 4, 6, 6, 4, 4, 6, 4, 4, 6, 4, 4, 6, 5, 5, 6,...
+#> $ displ <dbl> 2.5, 2.5, 4.2, 4.2, 2.5, 4.2, 3.8, 2.2, 2.2, 3.0, 2.3, 2...
+#> $ fuel  <chr> "Regular", "Regular", "Regular", "Regular", "Regular", "...
+#> $ hwy   <int> 17, 17, 13, 13, 17, 13, 21, 26, 28, 26, 27, 29, 26, 27, ...
+#> $ cty   <int> 18, 18, 13, 13, 16, 13, 14, 20, 22, 18, 19, 21, 17, 20, ...
+glimpse(fueleconomy::common)
+#> Observations: 347
+#> Variables: 4
+#> $ make  <chr> "Acura", "Acura", "Acura", "Acura", "Acura", "Audi", "Au...
+#> $ model <chr> "Integra", "Legend", "MDX 4WD", "NSX", "TSX", "A4", "A4 ...
+#> $ n     <int> 42, 28, 12, 28, 27, 49, 49, 66, 20, 12, 46, 20, 30, 29, ...
+#> $ years <int> 16, 10, 12, 14, 11, 19, 15, 19, 19, 12, 20, 15, 16, 16, ...
+```
+
+
+```r
+fueleconomy::vehicles %>%
+  semi_join(fueleconomy::common, by = c("make", "model"))
+#> # A tibble: 14,531 x 12
+#>      id make  model   year class trans drive   cyl displ fuel    hwy   cty
+#>   <int> <chr> <chr>  <int> <chr> <chr> <chr> <int> <dbl> <chr> <int> <int>
+#> 1  1833 Acura Integ…  1986 Subc… Auto… Fron…     4   1.6 Regu…    28    22
+#> 2  1834 Acura Integ…  1986 Subc… Manu… Fron…     4   1.6 Regu…    28    23
+#> 3  3037 Acura Integ…  1987 Subc… Auto… Fron…     4   1.6 Regu…    28    22
+#> 4  3038 Acura Integ…  1987 Subc… Manu… Fron…     4   1.6 Regu…    28    23
+#> 5  4183 Acura Integ…  1988 Subc… Auto… Fron…     4   1.6 Regu…    27    22
+#> 6  4184 Acura Integ…  1988 Subc… Manu… Fron…     4   1.6 Regu…    28    23
+#> # ... with 1.452e+04 more rows
+```
+
+
+Find the 48 hours (over the course of the whole year) that have the worst delays. Cross-reference it with the weather data. Can you see any patterns?
+
+
+```r
+flights %>%
+  group_by(year, month, day) %>%
+  summarise(total_24 = sum(dep_delay, na.rm = TRUE)+ sum(arr_delay, na.rm = TRUE)) %>%
+  mutate(total_48 = total_24 + lag(total_24)) %>%
+  arrange(desc(total_48))
+#> # A tibble: 365 x 5
+#> # Groups:   year, month [12]
+#>    year month   day total_24 total_48
+#>   <int> <int> <int>    <dbl>    <dbl>
+#> 1  2013     7    23    80641   175419
+#> 2  2013     3     8   135264   167530
+#> 3  2013     6    25    80434   166649
+#> 4  2013     8     9    72866   165287
+#> 5  2013     6    28    81389   157910
+#> 6  2013     7    10    97120   157396
+#> # ... with 359 more rows
+```
+What does anti_join(flights, airports, by = c("dest" = "faa")) tell you? What does anti_join(airports, flights, by = c("faa" = "dest")) tell you?
+
+
+Return all rows from flights where destination (`dest`)  is not matched in airports.  This only keeps columns from flights.
+
+```r
+# Flights with dest that are not in the airports table
+anti_join(flights, airports, by = c("dest" = "faa"))
+#> # A tibble: 7,602 x 19
+#>    year month   day dep_time sched_dep_time dep_delay arr_time
+#>   <int> <int> <int>    <int>          <int>     <dbl>    <int>
+#> 1  2013     1     1      544            545        -1     1004
+#> 2  2013     1     1      615            615         0     1039
+#> 3  2013     1     1      628            630        -2     1137
+#> 4  2013     1     1      701            700         1     1123
+#> 5  2013     1     1      711            715        -4     1151
+#> 6  2013     1     1      820            820         0     1254
+#> # ... with 7,596 more rows, and 12 more variables: sched_arr_time <int>,
+#> #   arr_delay <dbl>, carrier <chr>, flight <int>, tailnum <chr>,
+#> #   origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>,
+#> #   minute <dbl>, time_hour <dttm>
+
+
+# dest (`faa`) in flight but not in airports
+airports %>% filter(faa == "BQN")
+#> # A tibble: 0 x 8
+#> # ... with 8 variables: faa <chr>, name <chr>, lat <dbl>, lon <dbl>,
+#> #   alt <int>, tz <dbl>, dst <chr>, tzone <chr>
+```
+
+
+```r
+# Airports that are not in the flights table for dest
+anti_join(airports, flights, by = c("faa" = "dest"))
+#> # A tibble: 1,357 x 8
+#>   faa   name                      lat   lon   alt    tz dst   tzone       
+#>   <chr> <chr>                   <dbl> <dbl> <int> <dbl> <chr> <chr>       
+#> 1 04G   Lansdowne Airport        41.1 -80.6  1044    -5 A     America/New…
+#> 2 06A   Moton Field Municipal …  32.5 -85.7   264    -6 A     America/Chi…
+#> 3 06C   Schaumburg Regional      42.0 -88.1   801    -6 A     America/Chi…
+#> 4 06N   Randall Airport          41.4 -74.4   523    -5 A     America/New…
+#> 5 09J   Jekyll Island Airport    31.1 -81.4    11    -5 A     America/New…
+#> 6 0A9   Elizabethton Municipal…  36.4 -82.2  1593    -5 A     America/New…
+#> # ... with 1,351 more rows
+
+# airport not in dest (`faa`) in flight 
+flights %>% filter(dest == "04G")
+#> # A tibble: 0 x 19
+#> # ... with 19 variables: year <int>, month <int>, day <int>,
+#> #   dep_time <int>, sched_dep_time <int>, dep_delay <dbl>, arr_time <int>,
+#> #   sched_arr_time <int>, arr_delay <dbl>, carrier <chr>, flight <int>,
+#> #   tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
+#> #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+```
+
+You might expect that there’s an implicit relationship between plane and airline, because each plane is flown by a single airline. Confirm or reject this hypothesis using the tools you’ve learned above.
+
+
+```r
+flights %>% group_by(tailnum, carrier)
+#> # A tibble: 336,776 x 19
+#> # Groups:   tailnum, carrier [4,067]
+#>    year month   day dep_time sched_dep_time dep_delay arr_time
+#>   <int> <int> <int>    <int>          <int>     <dbl>    <int>
+#> 1  2013     1     1      517            515         2      830
+#> 2  2013     1     1      533            529         4      850
+#> 3  2013     1     1      542            540         2      923
+#> 4  2013     1     1      544            545        -1     1004
+#> 5  2013     1     1      554            600        -6      812
+#> 6  2013     1     1      554            558        -4      740
+#> # ... with 3.368e+05 more rows, and 12 more variables:
+#> #   sched_arr_time <int>, arr_delay <dbl>, carrier <chr>, flight <int>,
+#> #   tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
+#> #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+```
+
+

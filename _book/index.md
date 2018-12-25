@@ -2,7 +2,7 @@
 --- 
 title: "R for Data Science Solutions"
 author: "Marjorie Blanco"
-date: "2018-11-25"
+date: "2018-12-24"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book

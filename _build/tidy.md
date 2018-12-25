@@ -3,6 +3,10 @@
 
 ## Introduction
 
+No exercises
+
+### Prerequisites
+
 
 ```r
 library(tidyverse)
@@ -13,12 +17,13 @@ library(tidyverse)
 ### Exercise <span class="exercise-number">12.2.1.1</span> {.unnumbered .exercise}
 
 <div class="question">
-Using prose, describe how the variables and observations are organized in each of the sample tables.
+Using `prose`, describe how the variables and observations are organized in each of the sample tables.
 </div>
 
 <div class="answer">
 
-In `table1` each row is a (country, year) with variables `cases` and `population`.
+Each row in `table1` is a (country, year) combination with variables `cases` and `population`.
+
 
 ```r
 table1
@@ -33,7 +38,8 @@ table1
 #> 6 China        2000 213766 1280428583
 ```
 
-In `table2`, each row is country, year , variable ("cases", "population") combination, and there is a `count` variable with the numeric value of the combination.
+Each row in `table2` is country, year, type ("cases", "population") combination, and there is a `count` variable with the numeric value of the combination.
+
 
 ```r
 table2
@@ -49,7 +55,8 @@ table2
 #> # ... with 6 more rows
 ```
 
-In `table3`, each row is a (country, year) combination with the column `rate` having the rate of cases to population as a character string in the format `"cases/rate"`.
+Each row in `table3` is a (country, year) combination with the column `rate` having the rate of cases to population as a character string in the format `"cases/rate"`.
+
 
 ```r
 table3
@@ -66,6 +73,7 @@ table3
 
 Table 4 is split into two tables, one table for each variable: `table4a` is the table for cases, while `table4b` is the table for population. Within each table, each row is a country, each column is a year, and the cells are the value of the variable for the table.
 
+
 ```r
 table4a
 #> # A tibble: 3 x 3
@@ -75,6 +83,7 @@ table4a
 #> 2 Brazil       37737  80488
 #> 3 China       212258 213766
 ```
+
 
 ```r
 table4b
@@ -118,7 +127,9 @@ t2_population <- filter(table2, type == "population") %>%
   rename(population = count) %>%
   arrange(country, year)
 ```
+
 Calculate the cases per capita in a separate data frame.
+
 
 ```r
 t2_cases_per_cap <- t2_cases %>%
@@ -126,15 +137,18 @@ t2_cases_per_cap <- t2_cases %>%
          cases_per_cap = (cases / population) * 10000) %>%
   select(country, year, cases_per_cap)
 ```
+
 Since the question asks us to store it back in the appropriate location, we will add new rows with
 `type = "cases_per_cap"` to `table2` and then
 sort by country, year, and variable type as in the original table.
+
 
 ```r
 t2_cases_per_cap <- t2_cases_per_cap %>%
   mutate(type = "cases_per_cap") %>%
   rename(count = cases_per_cap)
 ```
+
 
 ```r
 bind_rows(table2, t2_cases_per_cap) %>%
@@ -150,10 +164,12 @@ bind_rows(table2, t2_cases_per_cap) %>%
 #> 6 Afghanistan  2000 population    20595360    
 #> # ... with 12 more rows
 ```
+
 Note that after adding the `cases_per_cap` rows,
 the type of `count` is coerced to `numeric` (double) because `cases_per_cap` is not an integer.
 
 For `table4a` and `table4b`, we will create a separate table for cases per capita (`table4c`), with country rows and year columns.
+
 
 ```r
 table4c <-
@@ -189,7 +205,8 @@ Recreate the plot showing change in cases over time using `table2` instead of `t
 
 <div class="answer">
 
-Before creating the plot with change in cases over time, we need to filter the data frame to only include rows representing cases of TB.
+Filter the data frame to only include rows representing `cases` of TB.
+
 
 ```r
 table2 %>%
@@ -207,14 +224,7 @@ table2 %>%
 
 ## Spreading and Gathering
 
-This code is reproduced from the chapter because it is needed by the exercises:
 
-```r
-tidy4a <- table4a %>%
-  gather(`1999`, `2000`, key = "year", value = "cases")
-tidy4b <- table4b %>%
-  gather(`1999`, `2000`, key = "year", value = "cases")
-```
 
 ### Exercise <span class="exercise-number">12.3.3.1</span> {.unnumbered .exercise}
 
@@ -258,6 +268,7 @@ Variable names are always converted to a character vector by `gather()`.
 
 The functions `spread()` and `gather()` can be closer to symmetrical if we use the `convert` argument. It will try to convert character vectors to the appropriate type using `type.convert()`.
 
+
 ```r
 stocks %>%
   spread(key = "year", value = "return") %>%
@@ -270,6 +281,7 @@ stocks %>%
 #> 3     1  2016   0.92
 #> 4     2  2016   0.17
 ```
+
 However, since `convert = TRUE` is guessing the appropriate type it still may not work.
 
 </div>
@@ -291,7 +303,7 @@ table4a %>%
 
 The code fails because the column names `1999` and `2000` are not standard and thus needs to be quoted.
 The tidyverse functions will interpret `1999` and `2000` without quotes as looking for the 1999th and 2000th column of the data frame.
-This will work:
+
 
 ```r
 table4a %>%
@@ -343,9 +355,7 @@ spread(people, key, value)
 
 <div class="answer">
 
-Spreading the data frame fails because there are two rows with "age" for "Phillip Woods".
-If we added another column with an indicator for the number observation it is,
-the code will work.
+Spreading the data frame fails because there are two rows with `age` for `Phillip Woods`. Add a column with an observation indicator.
 
 
 ```r
@@ -381,6 +391,12 @@ preg <- tribble(
   "yes",     NA,    10,
   "no",      20,    12
 )
+preg
+#> # A tibble: 2 x 3
+#>   pregnant  male female
+#>   <chr>    <dbl>  <dbl>
+#> 1 yes         NA     10
+#> 2 no          20     12
 ```
 
 </div>
@@ -389,9 +405,9 @@ preg <- tribble(
 
 To tidy `preg`, we need to use `gather()`. The variables in this data are
 
--   `sex` ("female", "male")
--   `pregnant` ("yes", "no")
--   `count`, which is a non-negative integer representing the number of observations.
+-   `sex`; "female", "male"
+-   `pregnant`: "yes", "no"
+-   `count`: non-negative integer representing the number of observations
 
 The observations in this data are unique combinations of sex and pregnancy status.
 
@@ -418,6 +434,7 @@ However, in the tidy version we can drop that row since it is an impossible
 combination.
 We can do that by adding the argument `na.rm = TRUE` to `gather()`.
 
+
 ```r
 preg_tidy2 <- preg %>%
   gather(male, female, key = "sex", value = "count", na.rm = TRUE)
@@ -433,6 +450,7 @@ preg_tidy2
 Though not necessary, there is one more way in which we can improve this data.
 If a variable takes two values, like `pregnant` and `sex` do, it is often preferable to store them as logical vectors.
 The following vector uses logical vectors ro represent pregnancy and sex.
+
 
 ```r
 preg_tidy3 <- preg_tidy2 %>%
@@ -454,6 +472,7 @@ If the variable were named `sex` with values `TRUE` and `FALSE`, without reading
 Apart from some minor memory savings, representing these variables as logical
 vectors results in more clear and concise code.
 Compare the `filter()` calls to select non-pregnant females from `preg_tidy2` and `preg_tidy`.
+
 
 ```r
 filter(preg_tidy2, sex == "female", pregnant == "no")

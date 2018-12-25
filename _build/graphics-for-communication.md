@@ -3,6 +3,10 @@
 
 ## Introduction
 
+No exercises
+
+### Prerequisites
+
 
 ```r
 library("tidyverse")
@@ -37,7 +41,7 @@ Create one plot on the fuel economy data with customized `title`,
 
 ```r
 ggplot(data = mpg,
-       mapping = aes(x = reorder(class, hwy, median), y = hwy)) +
+       mapping = aes(x = reorder(class, hwy, median), y = hwy, colour = drv)) +
   geom_boxplot() +
   coord_flip() +
   labs(
@@ -61,7 +65,6 @@ Use your modeling tools to fit and display
 </div>
 
 <div class="answer">
-a better model.
 
 
 ```r
@@ -124,6 +127,7 @@ I can use similar code as the example in the text.
 However, I need to use `vjust` and `hjust` in order for the text to appear in the plot, and these need to be different for each corner.
 But, `geom_text()` takes `hjust` and `vjust` as aesthetics, I can add them to the data and mappings, and use a single `geom_text()` call instead of four different `geom_text()` calls with four different data arguments, and four different values of `hjust` and `vjust` arguments.
 
+
 ```r
 label <- tribble(
   ~displ, ~hwy, ~label, ~vjust, ~hjust,
@@ -152,6 +156,7 @@ Read the documentation for `annotate()`. How can you use it to add a text label 
 
 With annotate you use what would be aesthetic mappings directly as arguments:
 
+
 ```r
 ggplot(mpg, aes(displ, hwy)) +
   geom_point() +
@@ -176,6 +181,7 @@ How can you put a different label in each facet?
 
 If the facet variable is not specified, the text is drawn in all facets.
 
+
 ```r
 label <- tibble(
   displ = Inf,
@@ -193,6 +199,7 @@ ggplot(mpg, aes(displ, hwy)) +
 <img src="graphics-for-communication_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
 
 To draw the label in only one facet, add a column to the label data frame with the value of the faceting variable(s) in which to draw it.
+
 
 ```r
 label <- tibble(
@@ -212,6 +219,7 @@ ggplot(mpg, aes(displ, hwy)) +
 <img src="graphics-for-communication_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
 To draw labels in different plots, simply have the facetting variable(s):
+
 
 ```r
 label <- tibble(
@@ -396,6 +404,7 @@ ggplot(diamonds, aes(carat, price)) +
 <img src="graphics-for-communication_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
 
 The problem with the legend is that the `alpha` value make the colors hard to see. So I'll override the alpha value to make the points solid in the legend.
+
 
 ```r
 ggplot(diamonds, aes(carat, price)) +

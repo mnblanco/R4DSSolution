@@ -5,7 +5,9 @@ editor_options:
 ---
 # Workflow: basics
 
-## Prerequisites {-}
+No exercises
+
+## Prerequisites
 
 ```{r message=FALSE}
 library("tidyverse")
@@ -82,7 +84,7 @@ ggplot(dota = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-The error message is `argument "data" is missing, with no default`. This is a typo, `dota` instead of `data`.
+The error message is argument `data` is missing, with no default. This is a typo, `dota` instead of `data`.
 
 ```{r error=TRUE}
 ggplot(data = mpg) +

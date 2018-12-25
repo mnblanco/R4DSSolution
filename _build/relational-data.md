@@ -3,13 +3,20 @@
 
 ## Introduction
 
+No exercises
+
+### Prerequisites
+
+Will use data from **nycflights13**
+
 
 ```r
 library("tidyverse")
 library("nycflights13")
 ```
 
-The package datamodelr is used to draw database schema:
+Ppackage `datamodelr` used to draw database schema:
+
 
 ```r
 library("datamodelr")

@@ -10,7 +10,7 @@ description: >
 site: bookdown::bookdown_site
 github-repo: "mnblanco/R4DSSolution"
 url: 'http\://mnblanco.github.io/R4DSSolution'
-twitter-handle: jrnld
+twitter-handle: mnblanco
 documentclass: book
 bibliography: ["r4ds.bib"]
 link-citations: true

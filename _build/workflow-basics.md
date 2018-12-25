@@ -6,7 +6,9 @@ editor_options:
 ---
 # Workflow: basics
 
-## Prerequisites {-}
+No exercises
+
+## Prerequisites
 
 
 ```r
@@ -32,6 +34,7 @@ No exercises
 <div class="question">
 Why does this code not work?
 
+
 ```r
 my_variable <- 10
 my_varıable
@@ -41,7 +44,7 @@ my_varıable
 
 <div class="answer">
 
-The variable being printed is `my_varıable`, not `my_variable`:
+The variable name is `my_variable`, not `my_varıable`:
 the seventh character is "ı" ("[LATIN SMALL LETTER DOTLESS I](https://en.wikipedia.org/wiki/Dotted_and_dotless_I)"), not "i".
 
 While it wouldn't have helped much in this case, the importance of
@@ -88,9 +91,9 @@ ggplot(dota = mpg) +
 ```
 
 <img src="workflow-basics_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" />
-The error message is `argument "data" is missing, with no default`.
 
-It looks like a typo, `dota` instead of `data`.
+The error message is argument `data` is missing, with no default. This is a typo, `dota` instead of `data`.
+
 
 ```r
 ggplot(data = mpg) +
@@ -105,15 +108,13 @@ fliter(mpg, cyl = 8)
 #> Error in fliter(mpg, cyl = 8): could not find function "fliter"
 ```
 
-R could not find the function `fliter()` because we made a typo: `fliter` instead of `filter`.
+R could not find the function `fliter()` because typo: `fliter` instead of `filter`.
 
 
 ```r
 filter(mpg, cyl = 8)
 #> Error: `cyl` (`cyl = 8`) must not be named, do you need `==`?
 ```
-
-We aren't done yet. But the error message gives a suggestion. Let's follow it.
 
 
 ```r
@@ -136,8 +137,8 @@ filter(diamond, carat > 3)
 #> Error in filter(diamond, carat > 3): object 'diamond' not found
 ```
 
-R says it can't find the object `diamond`.
-This is a typo; the data frame is named `diamonds`.
+R can't find the object `diamond` because typo; the data frame is named `diamonds`.
+
 
 ```r
 filter(diamonds, carat > 3)
@@ -153,9 +154,6 @@ filter(diamonds, carat > 3)
 #> # ... with 26 more rows
 ```
 
-How did I know? I started typing in `diamond` and RStudio completed it to `diamonds`.
-Since `diamonds` includes the variable `carat` and the code works, that appears to have been the problem.
-
 </div>
 
 ### Exercise <span class="exercise-number">4.4.3</span> {.unnumbered .exercise}
@@ -166,6 +164,6 @@ Press *Alt + Shift + K*. What happens? How can you get to the same place using t
 
 <div class="answer">
 
-This gives a menu with keyboard shortcuts. This can be found in the menu under `Tools -> Keyboard Shortcuts Help`.
+Brings up a menu with keyboard shortcuts. Found in the menu under `Tools -> Keyboard Shortcuts Help`.
 
 </div>

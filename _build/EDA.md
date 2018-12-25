@@ -14,7 +14,9 @@ library("tidyverse")
 library("viridis")
 library("forcats")
 ```
-This will also use data from **nycflights13**,
+
+Will use data from **nycflights13**
+
 
 ```r
 library("nycflights13")
@@ -23,6 +25,91 @@ library("nycflights13")
 ## Questions
 
 ## Variation
+
+# Variation
+
+
+```r
+ggplot(data = diamonds) +
+  geom_bar(mapping = aes(x = cut))
+
+diamonds %>% 
+  count(cut)
+#> # A tibble: 5 x 2
+#>   cut           n
+#>   <ord>     <int>
+#> 1 Fair       1610
+#> 2 Good       4906
+#> 3 Very Good 12082
+#> 4 Premium   13791
+#> 5 Ideal     21551
+
+ggplot(data = diamonds) +
+  geom_histogram(mapping = aes(x = carat), binwidth = 0.5)
+
+diamonds %>% 
+  count(cut_width(carat, 0.5))
+#> # A tibble: 11 x 2
+#>   `cut_width(carat, 0.5)`     n
+#>   <fct>                   <int>
+#> 1 [-0.25,0.25]              785
+#> 2 (0.25,0.75]             29498
+#> 3 (0.75,1.25]             15977
+#> 4 (1.25,1.75]              5313
+#> 5 (1.75,2.25]              2002
+#> 6 (2.25,2.75]               322
+#> # ... with 5 more rows
+
+smaller <- diamonds %>% 
+  filter(carat < 3)
+  
+ggplot(data = smaller, mapping = aes(x = carat)) +
+  geom_histogram(binwidth = 0.1)
+
+ggplot(data = smaller, mapping = aes(x = carat, colour = cut)) +
+  geom_freqpoly(binwidth = 0.1)
+```
+
+<img src="EDA_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" /><img src="EDA_files/figure-html/unnamed-chunk-4-2.png" width="70%" style="display: block; margin: auto;" /><img src="EDA_files/figure-html/unnamed-chunk-4-3.png" width="70%" style="display: block; margin: auto;" /><img src="EDA_files/figure-html/unnamed-chunk-4-4.png" width="70%" style="display: block; margin: auto;" />
+
+
+```r
+ggplot(data = smaller, mapping = aes(x = carat)) +
+  geom_histogram(binwidth = 0.01)
+
+ggplot(data = faithful, mapping = aes(x = eruptions)) + 
+  geom_histogram(binwidth = 0.25)
+```
+
+<img src="EDA_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" /><img src="EDA_files/figure-html/unnamed-chunk-5-2.png" width="70%" style="display: block; margin: auto;" />
+
+
+```r
+ggplot(diamonds) + 
+  geom_histogram(mapping = aes(x = y), binwidth = 0.5)
+
+ggplot(diamonds) + 
+  geom_histogram(mapping = aes(x = y), binwidth = 0.5) +
+  coord_cartesian(ylim = c(0, 50))
+
+unusual <- diamonds %>% 
+  filter(y < 3 | y > 20) %>% 
+  select(price, x, y, z) %>%
+  arrange(y)
+unusual
+#> # A tibble: 9 x 4
+#>   price     x     y     z
+#>   <int> <dbl> <dbl> <dbl>
+#> 1  5139     0     0     0
+#> 2  6381     0     0     0
+#> 3 12800     0     0     0
+#> 4 15686     0     0     0
+#> 5 18034     0     0     0
+#> 6  2130     0     0     0
+#> # ... with 3 more rows
+```
+
+<img src="EDA_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" /><img src="EDA_files/figure-html/unnamed-chunk-6-2.png" width="70%" style="display: block; margin: auto;" />
 
 ### Exercise <span class="exercise-number">7.3.4.1</span> {.unnumbered .exercise}
 
@@ -33,6 +120,7 @@ Explore the distribution of each of the x, y, and z variables in diamonds. What 
 <div class="answer">
 
 In order to make it easier to plot them, I'll reshape the dataset so that I can use the variables as facets.
+
 
 ```r
 diamonds %>%
@@ -45,7 +133,7 @@ diamonds %>%
   facet_grid(variable ~ .)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
 
 There several noticeable features of the distributions
 
@@ -77,7 +165,7 @@ ggplot(filter(diamonds, price < 2500), aes(x = price)) +
   geom_histogram(binwidth = 10, center = 0)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -85,9 +173,10 @@ ggplot(filter(diamonds), aes(x = price)) +
   geom_histogram(binwidth = 100, center = 0)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-6-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
 Distribution of last digit
+
 
 ```r
 diamonds %>%
@@ -97,7 +186,7 @@ diamonds %>%
   geom_bar()
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -108,7 +197,7 @@ diamonds %>%
   geom_bar()
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -120,7 +209,7 @@ diamonds %>%
   geom_bar()
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -133,6 +222,7 @@ How many diamonds are 0.99 carat? How many are 1 carat? What do you think is the
 <div class="answer">
 
 There are more than 70 times as many 1 carat diamonds as 0.99 carat diamond.
+
 
 ```r
 diamonds %>%
@@ -203,7 +293,7 @@ ggplot(diamonds) +
 #> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
 
 However, the `xlim()` and `ylim()` functions influence actions before the calculation
 of the stats related to the histogram. Thus, any values outside the x- and y-limits
@@ -221,11 +311,39 @@ ggplot(diamonds) +
 #> Warning: Removed 6 rows containing missing values (geom_bar).
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
 ## Missing Values
+
+
+```r
+diamonds2 <- diamonds %>% 
+  filter(between(y, 3, 20))
+
+diamonds2 <- diamonds %>% 
+  mutate(y = ifelse(y < 3 | y > 20, NA, y))
+
+ggplot(data = diamonds2, mapping = aes(x = x, y = y)) + 
+  geom_point()
+#> Warning: Removed 9 rows containing missing values (geom_point).
+
+ggplot(data = diamonds2, mapping = aes(x = x, y = y)) + 
+  geom_point(na.rm = TRUE)
+
+nycflights13::flights %>% 
+  mutate(
+    cancelled = is.na(dep_time),
+    sched_hour = sched_dep_time %/% 100,
+    sched_min = sched_dep_time %% 100,
+    sched_dep_time = sched_hour + sched_min / 60
+  ) %>% 
+  ggplot(mapping = aes(sched_dep_time)) + 
+    geom_freqpoly(mapping = aes(colour = cancelled), binwidth = 1/4)
+```
+
+<img src="EDA_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" /><img src="EDA_files/figure-html/unnamed-chunk-17-2.png" width="70%" style="display: block; margin: auto;" /><img src="EDA_files/figure-html/unnamed-chunk-17-3.png" width="70%" style="display: block; margin: auto;" />
 
 ### Exercise <span class="exercise-number">7.4.1.1</span> {.unnumbered .exercise}
 
@@ -248,7 +366,7 @@ ggplot(diamonds2, aes(x = y)) +
 #> Warning: Removed 9 rows containing non-finite values (stat_bin).
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-14-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
 
 In the `geom_bar()` function, `NA` is treated as another category. The `x` aesthetic in `geom_bar()` requires a discrete (categorical) variable, and missing values act like another category.
 
@@ -259,7 +377,7 @@ diamonds %>%
   geom_bar(mapping = aes(x = cut))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
 
 In a histogram, the `x` aesthetic variable needs to be numeric, and `stat_bin()` groups the observations by ranges into bins.
 Since the numeric value of the `NA` observations is unknown, they cannot be placed in a particular bin, and are dropped.
@@ -313,7 +431,7 @@ nycflights13::flights %>%
     geom_boxplot(mapping = aes(y = sched_dep_time, x = canceled))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -351,7 +469,7 @@ ggplot(data = diamonds, mapping = aes(x = carat, y = price)) +
   geom_boxplot(mapping = aes(group = cut_width(carat, 0.1)))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" />
 Note that the choice of the binning width is important, as if it were too large it would obscure any relationship, and if it were too small, the values in the bins could be too variable to reveal underlying trends.
 
 The variables `color` and `clarity` are ordered categorical variables.
@@ -389,7 +507,7 @@ ggplot(diamonds, aes(x = cut, y = carat)) +
   geom_boxplot()
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
 
 There is a lot of variability in the distribution of carat sizes within each cut category.
 There is a slight negative relationship between carat and cut.
@@ -417,23 +535,18 @@ ggplot(data = mpg) +
   coord_flip()
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
 
 In this case the output looks the same, but `x` and `y` aesthetics are flipped.
 
 ```r
 library("ggstance")
-#> 
-#> Attaching package: 'ggstance'
-#> The following objects are masked from 'package:ggplot2':
-#> 
-#>     geom_errorbarh, GeomErrorbarh
 
 ggplot(data = mpg) +
   geom_boxploth(mapping = aes(y = reorder(class, hwy, FUN = median), x = hwy))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -464,7 +577,7 @@ ggplot(diamonds, aes(x = cut, y = price)) +
   geom_lv()
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" />
 
 The letter-value plot is described in @HofmannWickhamKafadar2017.
 
@@ -497,7 +610,7 @@ ggplot(data = diamonds, mapping = aes(x = price, y = ..density..)) +
   geom_freqpoly(mapping = aes(color = cut), binwidth = 500)
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-27-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -507,7 +620,7 @@ ggplot(data = diamonds, mapping = aes(x = price)) +
 #> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-28-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -516,7 +629,7 @@ ggplot(data = diamonds, mapping = aes(x = cut, y = price)) +
   coord_flip()
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-29-1.png" width="70%" style="display: block; margin: auto;" />
 
 The violin plot was first described in @HintzeNelson1998.
 
@@ -547,7 +660,7 @@ ggplot(data = mpg) +
                                  y = hwy))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -557,7 +670,7 @@ ggplot(data = mpg) +
                    method = "tukey")
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-27-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-31-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -567,7 +680,7 @@ ggplot(data = mpg) +
                    method = "tukeyDense")
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-28-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -577,7 +690,7 @@ ggplot(data = mpg) +
                    method = "frowney")
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-29-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -587,7 +700,7 @@ ggplot(data = mpg) +
                    method = "smiley")
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-34-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -596,7 +709,7 @@ ggplot(data = mpg) +
                                  y = hwy))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-31-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -625,7 +738,7 @@ diamonds %>%
   scale_fill_viridis(limits = c(0, 1)) #from the viridis colour palette library
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" />
 
 Similarly, to scale by the distribution of `color` within `cut`,
 
@@ -639,7 +752,7 @@ diamonds %>%
   scale_fill_viridis(limits = c(0, 1))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" />
 
 I add `limit = c(0, 1)` to put the color scale between (0, 1).
 These are the logical boundaries of proportions.
@@ -669,7 +782,7 @@ flights %>%
   labs(x = "Month", y = "Destination", fill = "Departure Delay")
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-34-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-38-1.png" width="70%" style="display: block; margin: auto;" />
 
 There are several things that could be done to improve it,
 
@@ -697,7 +810,7 @@ flights %>%
   labs(x = "Month", y = "Destination", fill = "Departure Delay")
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -721,7 +834,7 @@ diamonds %>%
     geom_tile(mapping = aes(fill = n))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" />
 
 Another justification, for switching the order is that the larger numbers are at the top when `x = color` and `y = cut`, and that lowers the cognitive burden of interpreting the plot.
 
@@ -758,7 +871,7 @@ ggplot(data = diamonds,
   ylab("Carat")
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -768,7 +881,7 @@ ggplot(data = diamonds,
   ylab("Carat")
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-38-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-42-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -789,7 +902,7 @@ ggplot(diamonds, aes(x = cut_number(price, 10), y = carat)) +
   xlab("Price")
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-43-1.png" width="70%" style="display: block; margin: auto;" />
 Plotted with a box plot with 10 equal-width bins of \$2,000. The argument `boundary = 0` ensures that first bin is \$0--\$2,000.
 
 ```r
@@ -799,7 +912,7 @@ ggplot(diamonds, aes(x = cut_width(price, 2000, boundary = 0), y = carat)) +
   xlab("Price")
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-44-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -842,7 +955,7 @@ ggplot(diamonds, aes(x = carat, y = price)) +
   scale_fill_viridis()
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-45-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -850,7 +963,7 @@ ggplot(diamonds, aes(x = cut_number(carat, 5), y = price, colour = cut)) +
   geom_boxplot()
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-42-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-46-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -858,7 +971,7 @@ ggplot(diamonds, aes(colour = cut_number(carat, 5), y = price, x = cut)) +
   geom_boxplot()
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-43-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-47-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -878,7 +991,7 @@ ggplot(data = diamonds) +
   coord_cartesian(xlim = c(4, 11), ylim = c(4, 11))
 ```
 
-<img src="EDA_files/figure-html/unnamed-chunk-44-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="EDA_files/figure-html/unnamed-chunk-48-1.png" width="70%" style="display: block; margin: auto;" />
 
 Why is a scatterplot a better display than a binned plot for this case?
 

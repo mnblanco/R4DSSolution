@@ -8,13 +8,139 @@ editor_options:
 
 ## Introduction
 
+No exercises
+
+### Prerequisites
+
+Will use data from **nycflights13**
+
 
 ```r
 library("nycflights13")
 library("tidyverse")
 ```
 
+## dplyr basics
+
+- Pick observations by their values (filter())
+- Reorder the rows (arrange())
+- Pick variables by their names (select())
+- Create new variables with functions of existing variables (mutate())
+- Collapse many values down to a single summary (summarise())
+
 ## Filter rows with `filter()`
+
+
+```r
+# select all flights on January 1st
+filter(flights, month == 1, day == 1)
+#> # A tibble: 842 x 19
+#>    year month   day dep_time sched_dep_time dep_delay arr_time
+#>   <int> <int> <int>    <int>          <int>     <dbl>    <int>
+#> 1  2013     1     1      517            515         2      830
+#> 2  2013     1     1      533            529         4      850
+#> 3  2013     1     1      542            540         2      923
+#> 4  2013     1     1      544            545        -1     1004
+#> 5  2013     1     1      554            600        -6      812
+#> 6  2013     1     1      554            558        -4      740
+#> # ... with 836 more rows, and 12 more variables: sched_arr_time <int>,
+#> #   arr_delay <dbl>, carrier <chr>, flight <int>, tailnum <chr>,
+#> #   origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>,
+#> #   minute <dbl>, time_hour <dttm>
+jan1 <- filter(flights, month == 1, day == 1)
+
+# select all flights on December 25th
+(dec25 <- filter(flights, month == 12, day == 25))
+#> # A tibble: 719 x 19
+#>    year month   day dep_time sched_dep_time dep_delay arr_time
+#>   <int> <int> <int>    <int>          <int>     <dbl>    <int>
+#> 1  2013    12    25      456            500        -4      649
+#> 2  2013    12    25      524            515         9      805
+#> 3  2013    12    25      542            540         2      832
+#> 4  2013    12    25      546            550        -4     1022
+#> 5  2013    12    25      556            600        -4      730
+#> 6  2013    12    25      557            600        -3      743
+#> # ... with 713 more rows, and 12 more variables: sched_arr_time <int>,
+#> #   arr_delay <dbl>, carrier <chr>, flight <int>, tailnum <chr>,
+#> #   origin <chr>, dest <chr>, air_time <dbl>, distance <dbl>, hour <dbl>,
+#> #   minute <dbl>, time_hour <dttm>
+
+filter(flights, month = 1) # error must be == and not =
+#> Error: `month` (`month = 1`) must not be named, do you need `==`?
+```
+
+### Comparisons
+
+
+```r
+#  standard suite: >, >=, <, <=, != (not equal), and == (equal)
+sqrt(2) ^ 2 == 2
+#> [1] FALSE
+
+1 / 49 * 49 == 1
+#> [1] FALSE
+
+near(sqrt(2) ^ 2,  2)
+#> [1] TRUE
+
+near(1 / 49 * 49, 1)
+#> [1] TRUE
+```
+
+### Logical operators
+
+
+```r
+# all flights that departed in November or December
+filter(flights, month == 11 | month == 12)
+#> # A tibble: 55,403 x 19
+#>    year month   day dep_time sched_dep_time dep_delay arr_time
+#>   <int> <int> <int>    <int>          <int>     <dbl>    <int>
+#> 1  2013    11     1        5           2359         6      352
+#> 2  2013    11     1       35           2250       105      123
+#> 3  2013    11     1      455            500        -5      641
+#> 4  2013    11     1      539            545        -6      856
+#> 5  2013    11     1      542            545        -3      831
+#> 6  2013    11     1      549            600       -11      912
+#> # ... with 5.54e+04 more rows, and 12 more variables:
+#> #   sched_arr_time <int>, arr_delay <dbl>, carrier <chr>, flight <int>,
+#> #   tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
+#> #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+
+nov_dec <- filter(flights, month %in% c(11, 12))
+
+# flights that weren’t delayed (on arrival or departure) by more than two hours
+filter(flights, !(arr_delay > 120 | dep_delay > 120))
+#> # A tibble: 316,050 x 19
+#>    year month   day dep_time sched_dep_time dep_delay arr_time
+#>   <int> <int> <int>    <int>          <int>     <dbl>    <int>
+#> 1  2013     1     1      517            515         2      830
+#> 2  2013     1     1      533            529         4      850
+#> 3  2013     1     1      542            540         2      923
+#> 4  2013     1     1      544            545        -1     1004
+#> 5  2013     1     1      554            600        -6      812
+#> 6  2013     1     1      554            558        -4      740
+#> # ... with 3.16e+05 more rows, and 12 more variables:
+#> #   sched_arr_time <int>, arr_delay <dbl>, carrier <chr>, flight <int>,
+#> #   tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
+#> #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+filter(flights, arr_delay <= 120, dep_delay <= 120)
+#> # A tibble: 316,050 x 19
+#>    year month   day dep_time sched_dep_time dep_delay arr_time
+#>   <int> <int> <int>    <int>          <int>     <dbl>    <int>
+#> 1  2013     1     1      517            515         2      830
+#> 2  2013     1     1      533            529         4      850
+#> 3  2013     1     1      542            540         2      923
+#> 4  2013     1     1      544            545        -1     1004
+#> 5  2013     1     1      554            600        -6      812
+#> 6  2013     1     1      554            558        -4      740
+#> # ... with 3.16e+05 more rows, and 12 more variables:
+#> #   sched_arr_time <int>, arr_delay <dbl>, carrier <chr>, flight <int>,
+#> #   tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
+#> #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
+```
+
+### Missing values
 
 ### Exercise <span class="exercise-number">5.2.4.1</span> {.unnumbered .exercise}
 
@@ -483,6 +609,7 @@ Sort flights to find the most delayed flights. Find the flights that left earlie
 
 Find the most delayed flights by sorting the table by departure delay, `dep_delay`, in descending order.
 
+
 ```r
 arrange(flights, desc(dep_delay))
 #> # A tibble: 336,776 x 19
@@ -499,6 +626,7 @@ arrange(flights, desc(dep_delay))
 #> #   tailnum <chr>, origin <chr>, dest <chr>, air_time <dbl>,
 #> #   distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 ```
+
 The most delayed flight was HA 51, JFK to HNL, which was scheduled to leave on January 09, 2013 09:00.
 Note that the departure time is given as 641, which seems to be less than the scheduled departure time.
 But the departure was delayed 1,301 minutes, which is 21 hours, 41 minutes.
@@ -1157,7 +1285,7 @@ ggplot(flights_airtime, aes(x = air_time_diff)) +
 #> Warning: Removed 9430 rows containing non-finite values (stat_bin).
 ```
 
-<img src="transform_files/figure-html/unnamed-chunk-60-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="transform_files/figure-html/unnamed-chunk-63-1.png" width="70%" style="display: block; margin: auto;" />
 The distribution is bimodal, which with one mode comprising discrepancies up to several hours, suggesting the time-zone problem, and a second node around 24 hours, suggesting the overnight flights.
 However, in both cases, the discrepancies are not all at values divisible by 60.
 
@@ -1172,7 +1300,7 @@ ggplot(filter(flights_airtime, dest == "LAX"), aes(x = air_time_diff)) +
 #> Warning: Removed 148 rows containing non-finite values (stat_bin).
 ```
 
-<img src="transform_files/figure-html/unnamed-chunk-61-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="transform_files/figure-html/unnamed-chunk-64-1.png" width="70%" style="display: block; margin: auto;" />
 
 So what else might be going on? There seem to be too many "problems" for this to 
 be a data issue, so I'm probably missing something. So I'll reread the documentation
@@ -1244,7 +1372,7 @@ ggplot(filter(flights_deptime, dep_delay_diff > 0),
   geom_point()
 ```
 
-<img src="transform_files/figure-html/unnamed-chunk-64-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="transform_files/figure-html/unnamed-chunk-67-1.png" width="70%" style="display: block; margin: auto;" />
 Thus the only cases in which the departure delay is not equal to the difference
 in scheduled departure and actual departure times is due to a quirk in how these
 columns were stored.
@@ -1572,7 +1700,7 @@ ggplot(canceled_delayed, aes(x = avg_dep_delay, prop_canceled)) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="transform_files/figure-html/unnamed-chunk-78-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="transform_files/figure-html/unnamed-chunk-81-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -1793,7 +1921,7 @@ lagged_delays %>%
   labs(y = "Departure Delay", x = "Previous Departure Delay")
 ```
 
-<img src="transform_files/figure-html/unnamed-chunk-86-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="transform_files/figure-html/unnamed-chunk-89-1.png" width="70%" style="display: block; margin: auto;" />
 
 We can summarize this relationship by the average difference in delays:
 

@@ -3,6 +3,10 @@
 
 ## Introduction
 
+No exercises
+
+### Prerequisites
+
 
 ```r
 library(tidyverse)
@@ -19,7 +23,7 @@ In code that doesn’t **stringr**, you’ll often see `paste()` and `paste0()`.
 
 <div class="answer">
 
-The function `paste()` separates strings by spaces by default, while `paste0()` does not separate strings with spaces by default.
+The `paste()` function separates strings by spaces by default. The `paste0()` function does not separate strings with spaces by default.
 
 
 ```r
@@ -29,7 +33,7 @@ paste0("foo", "bar")
 #> [1] "foobar"
 ```
 
-Since `str_c()` does not separate strings with spaces by default it is closer in behavior to `paste0()`.
+`str_c()` does not separate strings with spaces by default it is equivalent to `paste0()`.
 
 
 ```r
@@ -37,10 +41,11 @@ str_c("foo", "bar")
 #> [1] "foobar"
 ```
 
-However, `str_c()` and the paste function handle NA differently.
-The function `str_c()` propagates `NA`, if any argument is a missing value, it returns a missing value.
+`str_c()` and the paste function handle NA differently.
+The `str_c()` function propagates `NA`, if any argument is a missing value, it returns a missing value.
 This is in line with how the numeric R functions, e.g. `sum()`, `mean()`, handle missing values.
 However, the paste functions, convert `NA` to the string `"NA"` and then treat it as any other character vector.
+
 
 ```r
 str_c("foo", NA)
@@ -61,7 +66,7 @@ In your own words, describe the difference between the `sep` and `collapse` argu
 
 <div class="answer">
 
-The `sep` argument is the string inserted between arguments to `str_c()`, while `collapse` is the string used to separate any elements of the character vector into a character vector of length one.
+The `sep` argument is the string inserted between arguments to `str_c()`.  The `collapse` argument is the string used to separate any elements of the character vector into a character vector of length one.
 
 </div>
 
@@ -76,6 +81,7 @@ Use `str_length()` and `str_sub()` to extract the middle character from a string
 The following function extracts the middle character. If the string has an even number of characters the choice is arbitrary.
 We choose to select $\lceil n / 2 \rceil$, because that case works even if the string is only of length one.
 A more general method would allow the user to select either the floor or ceiling for the middle character of an even string.
+
 
 ```r
 x <- c("a", "abc", "abcd", "abcde", "abcdef")
@@ -95,7 +101,7 @@ What does `str_wrap()` do? When might you want to use it?
 
 <div class="answer">
 
-The function `str_wrap()` wraps text so that it fits within a certain width.
+The `str_wrap()` function wraps text so that it fits within a certain width.
 This is useful for wrapping long strings of text to be typeset.
 
 </div>
@@ -108,10 +114,11 @@ What does `str_trim()` do? What’s the opposite of `str_trim()`?
 
 <div class="answer">
 
-The function `str_trim()` trims the whitespace from a string.
+The `str_trim()` function trims the whitespace from a string.
+
 
 ```r
-str_trim(" abc ")
+str_trim(" abc ") #left and right
 #> [1] "abc"
 str_trim(" abc ", side = "left")
 #> [1] "abc "
@@ -140,8 +147,6 @@ Write a function that turns (e.g.) a vector `c("a", "b", "c")` into the string `
 </div>
 
 <div class="answer">
-
-See the Chapter [Functions] for more details on writing R functions.
 
 This function needs to handle four cases.
 

@@ -3,4 +3,6 @@
 .RData
 .Ruserdata
 _bookdown_files
+_build
+_libs
 .DS_Store

@@ -8,18 +8,23 @@ editor_options:
 
 ## Introduction
 
+Recommend reading [“The Layered Grammar of Graphics”](http://vita.had.co.nz/papers/layered-grammar.pdf).
+
+No exercises.
+
+### Prerequisites
+
 
 ```r
 library("tidyverse")
 ```
 
-No exercises.
-
 ## First Steps
+
+`mpg` contains observations collected by the US Environment Protection Agency on 38 models of car
 
 
 ```r
-# mpg contains observations collected by the US Environment Protection Agency on 38 models of car.
 mpg
 #> # A tibble: 234 x 11
 #>   manufacturer model displ  year   cyl trans  drv     cty   hwy fl    class
@@ -31,15 +36,19 @@ mpg
 #> 5 audi         a4      2.8  1999     6 auto(… f        16    26 p     comp…
 #> 6 audi         a4      2.8  1999     6 manua… f        18    26 p     comp…
 #> # ... with 228 more rows
+```
 
-# shows a negative relationship between engine size (displ) and fuel efficiency (hwy)
+Shows a negative relationship between engine size (displ) and fuel efficiency (hwy)
+
+
+```r
 ggplot(data = mpg) + 
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-3-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" />
 
-### Exercise <span class="exercise-number">3.2.4.1</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.2.4.1</span> {.unnumbered .exercise}
 
 <div class="question">
 Run `ggplot(data = mpg)` what do you see?
@@ -52,13 +61,13 @@ Run `ggplot(data = mpg)` what do you see?
 ggplot(data = mpg)
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" />
 
-An empty plot. The background of the plot is created by `ggplot()`, but nothing else is displayed.
+An empty plot. The background of the plot is created by `ggplot()`.
 
 </div>
 
-### Exercise <span class="exercise-number">3.2.4.2</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.2.4.2</span> {.unnumbered .exercise}
 
 <div class="question">
 How many rows are in `mtcars`? How many columns?
@@ -76,7 +85,7 @@ ncol(mtcars)
 #> [1] 11
 ```
 
-The number of rows and columns is displayed by `glimpse()`:
+`glimpse()` displays the number of rows and columns:
 
 
 ```r
@@ -98,7 +107,7 @@ glimpse(mtcars)
 
 </div>
 
-### Exercise <span class="exercise-number">3.2.4.3</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.2.4.3</span> {.unnumbered .exercise}
 
 <div class="question">
 What does the `drv` variable describe? Read the help for `?mpg` to find out.
@@ -106,19 +115,10 @@ What does the `drv` variable describe? Read the help for `?mpg` to find out.
 
 <div class="answer">
 
-The `drv` categorizes cars by which wheels the engine provides torque to, or drives: the front two wheels (f), the rear two wheels (r), or all four wheels (4wd).[^layout]
-
-| Value      | Description                                                                                   |
-|------------|-----------------------------------------------------------------------------------------------|
-| `"f"`      | [front-wheel drive] |
-| `"r"`      | [rear-wheel drive] |
-| `"4"`      | [four-wheel drive] |
-
-<!-- [^layout]: See the Wikipedia article on [Automobile layout](https://en.wikipedia.org/wiki/Automobile_layout). -->
-
+The `drv` categorizes cars by which wheels the engine provides torque to, or drives: the front two wheels (f), the rear two wheels (r), or all four wheels (4wd).
 </div>
 
-### Exercise <span class="exercise-number">3.2.4.4</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.2.4.4</span> {.unnumbered .exercise}
 
 <div class="question">
 Make a scatter plot of `hwy` vs `cyl`.
@@ -132,11 +132,11 @@ ggplot(mpg, aes(x = hwy, y = cyl)) +
   geom_point()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-7-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
-### Exercise <span class="exercise-number">3.2.4.5</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.2.4.5</span> {.unnumbered .exercise}
 
 <div class="question">
 What happens if you make a scatter plot of `class` vs `drv`. Why is the plot not useful?
@@ -149,7 +149,7 @@ ggplot(mpg, aes(x = class, y = drv)) +
   geom_point()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-8-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-9-1.png" width="70%" style="display: block; margin: auto;" />
 
 A scatter plot is not a useful way to plot these variables, since both `drv` and `class` are factor variables taking a limited number of values.
 
@@ -203,7 +203,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-10-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-10-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-10-3.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-10-4.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-10-5.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-11-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-11-3.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-11-4.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-11-5.png" width="70%" style="display: block; margin: auto;" />
 
 ### Exercise <span class="exercise-number">3.3.1.1</span> {.unnumbered .exercise}
 
@@ -216,7 +216,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, colour = "blue"))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-11-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
 </div>
 
 <div class="answer">
@@ -230,7 +230,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), color = "blue")
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-12-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
 </div>
 
 ### Exercise <span class="exercise-number">3.3.1.2</span> {.unnumbered .exercise}
@@ -306,7 +306,7 @@ ggplot(mpg, aes(x = displ, y = hwy, colour = cty)) +
   geom_point()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-16-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
 
 Instead of using discrete colors, the continuous variable uses a scale that varies from a light to dark blue color.
 
@@ -316,7 +316,7 @@ ggplot(mpg, aes(x = displ, y = hwy, size = cty)) +
   geom_point()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-17-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
 
 When mapped to size, the sizes of the points vary continuously with respect to the size (although the legend shows a few representative values)
 
@@ -327,7 +327,7 @@ ggplot(mpg, aes(x = displ, y = hwy, shape = cty)) +
 #> Error: A continuous variable can not be mapped to shape
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-18-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
 
 When a continuous value is mapped to shape, it gives an error.
 Though we could split a continuous variable into discrete categories and use a shape aesthetic, this would conceptually not make sense.
@@ -350,7 +350,7 @@ ggplot(mpg, aes(x = displ, y = hwy, colour = hwy, size = displ)) +
   geom_point()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-19-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" />
 
 In the above plot, `hwy` is mapped to both location on the y-axis and color, and `displ` is mapped to both location on the x-axis and size.
 The code works and produces a plot, even if it is a bad one.
@@ -381,7 +381,7 @@ ggplot(mtcars, aes(wt, mpg)) +
 
 </div>
 
-### Exercise <span class="exercise-number">3.3.1.6</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.3.1.6</span> {.unnumbered .exercise}
 
 <div class="question">
 What happens if you map an aesthetic to something other than a variable name, like `aes(colour = displ < 5)`?
@@ -413,7 +413,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-20-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" />
 
 No exercises
 
@@ -433,7 +433,7 @@ ggplot(data = mpg) +
   facet_grid(drv ~ cyl)
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-21-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-21-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-22-2.png" width="70%" style="display: block; margin: auto;" />
 
 ### Exercise <span class="exercise-number">3.5.1.1</span> {.unnumbered .exercise}
 
@@ -473,7 +473,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = drv, y = cyl))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-22-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
 
 There is no combination of 5 cyl and 4 drv (5-4), 4-R, and 5-R.  The locations in the above plot without points are the same cells in `facet_grid(drv ~ cyl)` that have no points.
 
@@ -527,7 +527,7 @@ ggplot(data = mpg) +
   facet_wrap(~ class, nrow = 2)
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-23-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
 
 What are the advantages to using faceting instead of the colour aesthetic?
 What are the disadvantages?
@@ -546,7 +546,7 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy, color = class))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-24-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" />
 
 Advantages of encoding `class` with facets instead of color include the
 ability to encode more distinct categories.
@@ -635,7 +635,7 @@ ggplot(data = mpg) +
   facet_grid(rows = vars(class))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-25-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-25-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-25-3.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-25-4.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-25-5.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-25-6.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-25-7.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-25-8.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-25-9.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-26-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-26-3.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-26-4.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-26-5.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-26-6.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-26-7.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-26-8.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-26-9.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -666,7 +666,7 @@ ggplot(data = mpg) +
   facet_grid(cols = vars(cyl))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-26-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-26-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-27-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-27-2.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -689,7 +689,7 @@ ggplot(data = mpg) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-27-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-27-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-27-3.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-28-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-28-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-28-3.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -709,7 +709,7 @@ ggplot(data = mpg) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-28-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-28-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-28-3.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-29-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-29-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-29-3.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -719,22 +719,12 @@ ggplot(data = mpg) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-29-1.png" width="70%" style="display: block; margin: auto;" />
-
-
-```r
-ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
-  geom_point() + 
-  geom_smooth()
-#> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-```
-
 <img src="visualize_files/figure-html/unnamed-chunk-30-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
-  geom_point(mapping = aes(color = class)) + 
+  geom_point() + 
   geom_smooth()
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
@@ -745,11 +735,21 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 ```r
 ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
   geom_point(mapping = aes(color = class)) + 
-  geom_smooth(data = filter(mpg, class == "subcompact"), se = FALSE)
+  geom_smooth()
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
 <img src="visualize_files/figure-html/unnamed-chunk-32-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+```r
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + 
+  geom_point(mapping = aes(color = class)) + 
+  geom_smooth(data = filter(mpg, class == "subcompact"), se = FALSE)
+#> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+```
+
+<img src="visualize_files/figure-html/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;" />
 
 ### Exercise <span class="exercise-number">3.6.1.1</span> {.unnumbered .exercise}
 
@@ -784,7 +784,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy, colour = drv)) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-33-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-34-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -810,7 +810,7 @@ ggplot(data = mpg) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-34-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" />
 
 In this code, there is no legend in this code:
 
@@ -824,7 +824,7 @@ ggplot(data = mpg) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-35-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" />
 
 In the example earlier in the chapter,
 
@@ -846,7 +846,7 @@ ggplot(data = mpg) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-36-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-36-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-36-3.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-37-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-37-3.png" width="70%" style="display: block; margin: auto;" />
 
 the legend is suppressed because there are three plots, and adding a legend that only appears in the last one would make the presentation asymmetric.
 Additionally, the purpose of this plot is to illustrate the difference between not grouping, using a `group` aesthetic, and using a `color` aesthetic (with implicit grouping).
@@ -872,7 +872,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy, colour = drv)) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-37-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-38-1.png" width="70%" style="display: block; margin: auto;" />
 
 By default `se = TRUE`:
 
@@ -884,7 +884,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy, colour = drv)) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-38-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -906,7 +906,7 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-39-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -916,7 +916,7 @@ ggplot() +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-40-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -936,7 +936,7 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-41-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-42-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -946,22 +946,12 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-42-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-43-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
 ggplot(mpg, aes(x = displ, y = hwy, colour = drv)) +
   geom_point() +
-  geom_smooth(se = FALSE)
-#> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-```
-
-<img src="visualize_files/figure-html/unnamed-chunk-43-1.png" width="70%" style="display: block; margin: auto;" />
-
-
-```r
-ggplot(mpg, aes(x = displ, y = hwy)) +
-  geom_point(aes(colour = drv)) +
   geom_smooth(se = FALSE)
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
@@ -972,7 +962,7 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
 ```r
 ggplot(mpg, aes(x = displ, y = hwy)) +
   geom_point(aes(colour = drv)) +
-  geom_smooth(aes(linetype = drv), se = FALSE)
+  geom_smooth(se = FALSE)
 #> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
@@ -981,11 +971,21 @@ ggplot(mpg, aes(x = displ, y = hwy)) +
 
 ```r
 ggplot(mpg, aes(x = displ, y = hwy)) +
+  geom_point(aes(colour = drv)) +
+  geom_smooth(aes(linetype = drv), se = FALSE)
+#> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+```
+
+<img src="visualize_files/figure-html/unnamed-chunk-46-1.png" width="70%" style="display: block; margin: auto;" />
+
+
+```r
+ggplot(mpg, aes(x = displ, y = hwy)) +
   geom_point(size = 4, color = "white") +
   geom_point(aes(colour = drv))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-46-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-47-1.png" width="70%" style="display: block; margin: auto;" />
 </div>
 
 ## Statistical Transformations
@@ -1026,7 +1026,7 @@ ggplot(data = diamonds) +
   )
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-47-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-47-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-47-3.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-47-4.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-47-5.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-48-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-48-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-48-3.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-48-4.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-48-5.png" width="70%" style="display: block; margin: auto;" />
 
 ### Exercise <span class="exercise-number">3.7.1</span> {.unnumbered .exercise}
 
@@ -1050,7 +1050,7 @@ ggplot(data = diamonds) +
 #> No summary function supplied, defaulting to `mean_se()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-48-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-49-1.png" width="70%" style="display: block; margin: auto;" />
 
 The default message says that `stat_summary()` uses the `mean` and `sd` to calculate the point, and range of the line. So lets use the previous values of `fun.ymin`, `fun.ymax`, and `fun.y`:
 
@@ -1066,11 +1066,11 @@ ggplot(data = diamonds) +
   )
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-49-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-50-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
-### Exercise <span class="exercise-number">3.7.2</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.7.2</span> {.unnumbered .exercise}
 
 <div class="question">
 What does `geom_col()` do? How is it different to `geom_bar()`?
@@ -1099,11 +1099,11 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-51-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-52-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
-### Exercise <span class="exercise-number">3.7.3</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.7.3</span> {.unnumbered .exercise}
 
 <div class="question">
 Most geoms and stats come in pairs that are almost always used in concert.
@@ -1119,7 +1119,7 @@ See the [ggplot2 documentation](https://ggplot2.tidyverse.org/reference/).
 
 </div>
 
-### Exercise <span class="exercise-number">3.7.4</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.7.4</span> {.unnumbered .exercise}
 
 <div class="question">
 What variables does `stat_smooth()` compute? What parameters control its behavior?
@@ -1147,7 +1147,7 @@ There's parameters such as `method` which determines which method is used to cal
 
 </div>
 
-### Exercise <span class="exercise-number">3.7.5</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.7.5</span> {.unnumbered .exercise}
 
 <div class="question">
 In our proportion bar chart, we need to set `group = 1` Why?
@@ -1165,7 +1165,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, y = ..prop..))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-53-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-54-1.png" width="70%" style="display: block; margin: auto;" />
 
 The problem with these two plots is that the proportions are calculated within the groups.
 
@@ -1178,7 +1178,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, fill = color, y = ..prop..))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-54-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-54-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-55-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-55-2.png" width="70%" style="display: block; margin: auto;" />
 
 This is more likely what was intended:
 
@@ -1191,7 +1191,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, fill = color, y = ..prop.., group = color))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-55-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-55-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-56-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-56-2.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -1205,7 +1205,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, fill = cut))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-56-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-56-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-57-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-57-2.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1213,7 +1213,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, fill = clarity))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-57-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-58-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1223,7 +1223,7 @@ ggplot(data = diamonds, mapping = aes(x = cut, colour = clarity)) +
   geom_bar(fill = NA, position = "identity")
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-58-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-58-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-59-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-59-2.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1231,7 +1231,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-59-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-60-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1239,7 +1239,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, fill = clarity), position = "dodge")
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-60-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-61-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1247,9 +1247,9 @@ ggplot(data = mpg) +
   geom_point(mapping = aes(x = displ, y = hwy), position = "jitter")
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-61-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-62-1.png" width="70%" style="display: block; margin: auto;" />
 
-### Exercise <span class="exercise-number">3.8.1.1</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.8.1.1</span> {.unnumbered .exercise}
 
 <div class="question">
 What is the problem with this plot? How could you improve it?
@@ -1265,7 +1265,7 @@ ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
   geom_point()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-62-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-63-1.png" width="70%" style="display: block; margin: auto;" />
 
 Fix by using a jitter position adjustment.
 
@@ -1275,11 +1275,11 @@ ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
   geom_point(position = "jitter")
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-63-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-64-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
-### Exercise <span class="exercise-number">3.8.1.2</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.8.1.2</span> {.unnumbered .exercise}
 
 <div class="question">
 What parameters to `geom_jitter()` control the amount of jittering?
@@ -1301,7 +1301,7 @@ ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
   geom_point(position = position_jitter(width = 0))
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-64-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-65-1.png" width="70%" style="display: block; margin: auto;" />
 
 However, we can adjust them. Here are few examples to understand how adjusting
 these parameters affects the look of the plot.
@@ -1314,7 +1314,7 @@ ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
   geom_jitter(width = 0)
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-65-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-66-1.png" width="70%" style="display: block; margin: auto;" />
 
 With `width = 20`, there is too much horizontal jitter.
 
@@ -1324,7 +1324,7 @@ ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
   geom_jitter(width = 20)
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-66-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-67-1.png" width="70%" style="display: block; margin: auto;" />
 
 With `height = 0`, there is no vertical  horizontal jitter:
 
@@ -1334,7 +1334,7 @@ ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
   geom_jitter(height = 0)
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-67-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-68-1.png" width="70%" style="display: block; margin: auto;" />
 
 With `height = 15`, there is too much vertical jitter.
 
@@ -1345,7 +1345,7 @@ ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
 #> Warning: Ignoring unknown parameters: height
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-68-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-69-1.png" width="70%" style="display: block; margin: auto;" />
 
 Note that the `height` and `width` arguments are in the units of the data.
 Thus `height = 1` corresponds to different relative amounts of jittering depending on the scale of the `y` variable.
@@ -1356,7 +1356,7 @@ equal to 1, and `height = 0.8` and `width = 0.8`.
 
 </div>
 
-### Exercise <span class="exercise-number">3.8.1.3</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.8.1.3</span> {.unnumbered .exercise}
 
 <div class="question">
 Compare and contrast `geom_jitter()` with `geom_count()`.
@@ -1372,7 +1372,7 @@ ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
   geom_jitter()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-69-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-70-1.png" width="70%" style="display: block; margin: auto;" />
 
 `geom_count()` resizes the points relative to the number of observations at each location. Points with more observations will be larger than those with fewer observations.
 
@@ -1382,7 +1382,7 @@ ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
   geom_count()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-70-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-71-1.png" width="70%" style="display: block; margin: auto;" />
 
 This method does not change the `x` and `y` coordinates of the points.
 However, if the points are close together and counts are large, the size of some
@@ -1395,7 +1395,7 @@ ggplot(data = mpg, mapping = aes(x = cty, y = hwy, color = class)) +
   geom_jitter()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-71-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-72-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1403,7 +1403,7 @@ ggplot(data = mpg, mapping = aes(x = cty, y = hwy, color = class)) +
   geom_count()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-72-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-73-1.png" width="70%" style="display: block; margin: auto;" />
 
 Unfortunately, there is no universal solution to overplotting. The costs and
 benefits of different approaches will depend on the structure of the data and the goal
@@ -1411,7 +1411,7 @@ of the data scientist.
 
 </div>
 
-### Exercise <span class="exercise-number">3.8.1.4</span>. {.unnumbered .exercise}
+### Exercise <span class="exercise-number">3.8.1.4</span> {.unnumbered .exercise}
 
 <div class="question">
 What’s the default position adjustment for `geom_boxplot()`? Create a visualization of the mpg dataset that demonstrates it.
@@ -1429,7 +1429,7 @@ ggplot(data = mpg, aes(x = drv, y = hwy, colour = class)) +
   geom_boxplot()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-73-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-74-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1437,7 +1437,7 @@ ggplot(data = mpg, aes(x = drv, y = hwy, colour = class)) +
   geom_boxplot(position = "identity")
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-74-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-75-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -1454,17 +1454,12 @@ ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
   coord_flip()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-75-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-75-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-76-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-76-2.png" width="70%" style="display: block; margin: auto;" />
  
 
 ```r
 # coord_quickmap() sets the aspect ratio correctly for maps
 nz <- map_data("nz")
-#> 
-#> Attaching package: 'maps'
-#> The following object is masked from 'package:purrr':
-#> 
-#>     map
 
 ggplot(nz, aes(long, lat, group = group)) +
   geom_polygon(fill = "white", colour = "black")
@@ -1474,7 +1469,7 @@ ggplot(nz, aes(long, lat, group = group)) +
   coord_quickmap()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-76-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-76-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-77-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-77-2.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1491,7 +1486,7 @@ bar + coord_flip()
 bar + coord_polar()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-77-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-77-2.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-78-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-78-2.png" width="70%" style="display: block; margin: auto;" />
 
 ### Exercise <span class="exercise-number">3.9.1.1</span> {.unnumbered .exercise}
 
@@ -1509,7 +1504,7 @@ ggplot(mpg, aes(x = factor(1), fill = drv)) +
   geom_bar()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-78-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-79-1.png" width="70%" style="display: block; margin: auto;" />
 
 See the documentation for [coord_polar](https://ggplot2.tidyverse.org/reference/coord_polar.html) for an example of making a pie chart. In particular, `theta = "y"`, meaning that the angle of the chart is the `y` variable which has to be specified.
 
@@ -1520,7 +1515,7 @@ ggplot(mpg, aes(x = factor(1), fill = drv)) +
   coord_polar(theta = "y")
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-79-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-80-1.png" width="70%" style="display: block; margin: auto;" />
 
 If `theta = "y"` is not specified, then you get a bull’s-eye chart
 
@@ -1531,7 +1526,7 @@ ggplot(mpg, aes(x = factor(1), fill = drv)) +
   coord_polar()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-80-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-81-1.png" width="70%" style="display: block; margin: auto;" />
 
 Stacked bar chart with a multiple category
 
@@ -1541,7 +1536,7 @@ ggplot(data = diamonds) +
   geom_bar(mapping = aes(x = cut, fill = clarity), position = "fill")
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-81-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-82-1.png" width="70%" style="display: block; margin: auto;" />
 
 Stacked bar chart with a multiple category with polar coordinates results in multi-doughnut chart
 
@@ -1552,7 +1547,7 @@ ggplot(data = diamonds) +
   coord_polar(theta = "y")
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-82-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-83-1.png" width="70%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -1574,7 +1569,7 @@ bar
 bar + coord_polar()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-83-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-83-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-83-3.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-84-1.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-84-2.png" width="70%" style="display: block; margin: auto;" /><img src="visualize_files/figure-html/unnamed-chunk-84-3.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -1596,7 +1591,7 @@ ggplot(data = mpg, mapping = aes(x = class, y = hwy)) +
   labs(y = "Highway MPG", x = "", title = "Highway MPG by car class")
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-84-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-85-1.png" width="70%" style="display: block; margin: auto;" />
 
 </div>
 
@@ -1639,7 +1634,7 @@ p <- ggplot(data = mpg, mapping = aes(x = cty, y = hwy)) +
 p + coord_fixed()
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-85-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-86-1.png" width="70%" style="display: block; margin: auto;" />
 
 If we didn't include `geom_coord()`, then the line would no longer have an angle of 45 degrees.
 
@@ -1648,7 +1643,7 @@ If we didn't include `geom_coord()`, then the line would no longer have an angle
 p
 ```
 
-<img src="visualize_files/figure-html/unnamed-chunk-86-1.png" width="70%" style="display: block; margin: auto;" />
+<img src="visualize_files/figure-html/unnamed-chunk-87-1.png" width="70%" style="display: block; margin: auto;" />
 
 On average, humans are best able to perceive differences in angles relative to 45 degrees.
 See @Cleveland1993, @Cleveland1994,@Cleveland1993a, @ClevelandMcGillMcGill1988,  @HeerAgrawala2006 for discussion on how the aspect ratio of a plot affects perception of the values it encodes, evidence that 45 degrees is generally optimal, and methods to calculate the an aspect ratio to achieve it.

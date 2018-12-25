@@ -8,6 +8,10 @@ editor_options:
 
 ## Introduction
 
+No exercises
+
+### Prerequisites
+
 
 ```r
 library("tidyverse")
@@ -23,7 +27,8 @@ What function would you use to read a file where fields were separated with “|
 
 <div class="answer">
 
-Use the `read_delim()` function with the argument `delim="|"`.
+Use the `read_delim()` function with the argument `delim="|"`.  Function [`read_delim`](https://readr.tidyverse.org/reference/read_delim.html) reads a delimited file.
+
 
 ```r
 read_delim(file, delim = "|")
@@ -39,7 +44,11 @@ Apart from `file`, `skip`, and `comment`, what other arguments do `read_csv()` a
 
 <div class="answer">
 
-They have the following arguments in common:
+Function [`read_csv`](https://readr.tidyverse.org/reference/read_delim.html) reads a comma separated file.
+Function [`read_tsv`](https://readr.tidyverse.org/reference/read_delim.html) reads atab separated file.
+
+`read_csv` and `read_tsv` have the following arguments in common:
+
 
 ```r
 union(names(formals(read_csv)), names(formals(read_tsv)))
@@ -50,13 +59,13 @@ union(names(formals(read_csv)), names(formals(read_tsv)))
 #> [13] "progress"        "skip_empty_rows"
 ```
 
--   `col_names` and `col_types` are used to specify the column names and how to parse the columns
--   `locale` is important for determining things like the encoding and whether "." or "," is used as a decimal mark.
--   `na` and `quoted_na` control which strings are treated as missing values when parsing vectors
--   `trim_ws` trims whitespace before and after cells before parsing
--   `n_max` sets how many rows to read
--   `guess_max` sets how many rows to use when guessing the column type
--   `progress` determines whether a progress bar is shown.
+-   `col_names` and `col_types`: used to specify the column names and how to parse the columns
+-   `locale` is important for determining things like the encoding and whether "." or "," is used as a decimal mark
+-   `na` and `quoted_na`: control which strings are treated as missing values when parsing vectors
+-   `trim_ws`: trims whitespace before and after cells before parsing
+-   `n_max`: how many rows to read
+-   `guess_max`: how many rows to use when guessing the column type
+-   `progress`: determines whether a progress bar is shown
 
 </div>
 
@@ -67,6 +76,8 @@ What are the most important arguments to `read_fwf()`?
 </div>
 
 <div class="answer">
+
+Function [`read_fwf`](https://readr.tidyverse.org/reference/read_fwf.html) reads a fixed width file into a tibble.
 
 The most important argument to `read_fwf()` which reads "fixed-width formats", is `col_positions` which tells the function where data columns begin and end.
 
@@ -88,7 +99,8 @@ What arguments do you need to specify to read the following text into a data fra
 
 <div class="answer">
 
-For `read_delim()`, we will will need to specify a delimiter, in this case `","`, and a quote argument.
+For `read_delim()`, a delimiter  (`","`) and a quote argument will need to be specify.
+
 
 ```r
 x <- "x,y\n1,'a,b'"
@@ -99,7 +111,8 @@ read_delim(x, ",", quote = "'")
 #> 1     1 a,b
 ```
 
-However, this question is out of date. `read_csv()` now supports a quote argument, so the following code works.
+`read_csv()` supports a quote argument:
+
 
 ```r
 read_csv(x, quote = "'")
@@ -134,7 +147,7 @@ read_csv("a,b\n1,2,3\n4,5,6")
 #> 2     4     5
 ```
 
-Only two columns are specified in the header "a" and "b", but the rows have three columns, so the last column is dropped.
+Two columns are specified in the header "a" and "b", but the rows have three columns, therefore the last column is dropped.
 
 
 ```r
@@ -151,8 +164,8 @@ read_csv("a,b,c\n1,2\n1,2,3,4")
 ```
 
 The numbers of columns in the data do not match the number of columns in the header (three).
-In row one, there are only two values, so column `c` is set to missing.
-In row two, there is an extra value, and that value is dropped.
+In row one, there are only two values, so column `c` is set to missing (`NA`).
+In row two, there is an extra value (`4`), so that value is dropped.
 
 
 ```r
@@ -166,7 +179,7 @@ read_csv("a,b\n\"1")
 #>   <dbl> <chr>
 #> 1     1 <NA>
 ```
-It's not clear what the intent was here.
+
 The opening quote `"1` is dropped because it is not closed, and `a` is treated as an integer.
 
 
@@ -178,8 +191,8 @@ read_csv("a,b\n1,2\na,b")
 #> 1 1     2    
 #> 2 a     b
 ```
+
 Both "a" and "b" are treated as character vectors since they contain non-numeric strings.
-This may have been intentional, or the author may have intended the values of the columns to be "1,2" and "a,b".
 
 
 ```r
@@ -190,7 +203,8 @@ read_csv("a;b\n1;3")
 #> 1 1;3
 ```
 
-The values are separated by ";" rather than ",". Use `read_csv2()` instead:
+The values are separated by ";". Use `read_csv2()`:
+
 
 ```r
 read_csv2("a;b\n1;3")
@@ -220,6 +234,8 @@ The locale object has arguments to set the following:
 -   numbers: `decimal_mark`, `grouping_mark`
 -   encoding: `encoding`
 
+Function [`locale`](https://readr.tidyverse.org/reference/locale.html) ries to capture all the defaults that can vary between countries.
+
 </div>
 
 ### Exercise <span class="exercise-number">11.3.5.2</span> {.unnumbered .exercise}
@@ -232,62 +248,6 @@ What happens to the default value of `decimal_mark` when you set the `grouping_m
 
 <div class="answer">
 
-If the decimal and grouping marks are set to the same character, `locale` throws an error:
-
-```r
-locale(decimal_mark = ".", grouping_mark = ".")
-#> Error: `decimal_mark` and `grouping_mark` must be different
-```
-If the `decimal_mark` is set to the comma "`,"`, then the grouping mark is set to the period `"."`:
-
-```r
-locale(decimal_mark = ",")
-#> <locale>
-#> Numbers:  123.456,78
-#> Formats:  %AD / %AT
-#> Timezone: UTC
-#> Encoding: UTF-8
-#> <date_names>
-#> Days:   Sunday (Sun), Monday (Mon), Tuesday (Tue), Wednesday (Wed),
-#>         Thursday (Thu), Friday (Fri), Saturday (Sat)
-#> Months: January (Jan), February (Feb), March (Mar), April (Apr), May
-#>         (May), June (Jun), July (Jul), August (Aug), September
-#>         (Sep), October (Oct), November (Nov), December (Dec)
-#> AM/PM:  AM/PM
-```
-
-If the grouping mark is set to a period, then the decimal mark is set to a comma
-
-```r
-locale(grouping_mark = ",")
-#> <locale>
-#> Numbers:  123,456.78
-#> Formats:  %AD / %AT
-#> Timezone: UTC
-#> Encoding: UTF-8
-#> <date_names>
-#> Days:   Sunday (Sun), Monday (Mon), Tuesday (Tue), Wednesday (Wed),
-#>         Thursday (Thu), Friday (Fri), Saturday (Sat)
-#> Months: January (Jan), February (Feb), March (Mar), April (Apr), May
-#>         (May), June (Jun), July (Jul), August (Aug), September
-#>         (Sep), October (Oct), November (Nov), December (Dec)
-#> AM/PM:  AM/PM
-```
-
-</div>
-
-### Exercise <span class="exercise-number">11.3.5.3</span> {.unnumbered .exercise}
-
-<div class="question">
-I didn’t discuss the `date_format` and `time_format` options to `locale()`.
-What do they do?
-Construct an example that shows when they might be useful.
-</div>
-
-<div class="answer">
-
-They provide default date and time formats.
-The [readr vignette](https://cran.r-project.org/web/packages/readr/vignettes/locales.html) discusses using these to parse dates: since dates can include languages specific weekday and month names, and different conventions for specifying AM/PM
 
 ```r
 locale()
@@ -305,15 +265,54 @@ locale()
 #> AM/PM:  AM/PM
 ```
 
-Examples from the **readr** vignette of parsing French dates
+`decimal_mark` and `grouping_mark` are set to the same character, `locale` throws an error:
+
 
 ```r
-parse_date("1 janvier 2015", "%d %B %Y", locale = locale("fr"))
-#> [1] "2015-01-01"
-parse_date("14 oct. 1979", "%d %b %Y", locale = locale("fr"))
-#> [1] "1979-10-14"
+locale(decimal_mark = ".", grouping_mark = ".")
+#> Error: `decimal_mark` and `grouping_mark` must be different
 ```
-Apparently the time format is not used for anything, but the date format is used for guessing column types.
+
+`decimal_mark` is set to the comma "`,"` the grouping mark is set to the period `"."`:
+
+
+```r
+parse_double("4321,23", locale = locale(decimal_mark = ","))
+#> [1] 4321
+```
+
+`grouping_mark` is set to a period `"."`, then the decimal mark is set to a comma
+
+
+```r
+parse_double("4321,23", locale = locale(grouping_mark = "."))
+#> [1] 4321
+```
+
+</div>
+
+### Exercise <span class="exercise-number">11.3.5.3</span> {.unnumbered .exercise}
+
+<div class="question">
+I didn’t discuss the `date_format` and `time_format` options to `locale()`.
+What do they do?
+Construct an example that shows when they might be useful.
+</div>
+
+<div class="answer">
+
+`date_format` and `time_format` provides default date and time formats.
+The [readr vignette](https://cran.r-project.org/web/packages/readr/vignettes/locales.html) discusses using these to parse dates: since dates can include languages specific weekday and month names, and different conventions for specifying AM/PM
+
+Examples from the **readr** vignette
+
+
+```r
+str(parse_guess("01/02/2013", locale = locale(date_format = "%d/%m/%Y")))
+#>  Date[1:1], format: "2013-02-01"
+parse_datetime("2001-10-10 20:10", locale = locale(date_format = "%Y-%m/%d %HH:%MM"))
+#> [1] "2001-10-10 20:10:00 UTC"
+```
 
 </div>
 
@@ -366,7 +365,17 @@ What’s the difference between `read_csv()` and `read_csv2()`?
 
 <div class="answer">
 
-The delimiter. The function `read_csv()` uses a comma, while `read_csv2()` uses a semi-colon (`;`). Using a semi-colon is useful when commas are used as the decimal point (as in Europe).
+The delimiter is the difference between `read_csv()` and `read_csv2()`. The function `read_csv()` uses a comma, while `read_csv2()` uses a semi-colon (`;`). Using a semi-colon is useful when commas are used as the decimal point (as in Europe for currency).
+
+
+```r
+read_csv2("Cost;Sale\n1,22;3,21")
+#> Using ',' as decimal and '.' as grouping mark. Use read_delim() for more control.
+#> # A tibble: 1 x 2
+#>    Cost  Sale
+#>   <dbl> <dbl>
+#> 1  1.22  3.21
+```
 
 </div>
 
@@ -380,7 +389,7 @@ Do some googling to find out.
 
 <div class="answer">
 
-UTF-8 is standard now, and ASCII has been around forever.
+UTF-8 is standard but ASCII has been around for sometime.
 
 For the European languages, there are separate encodings for Romance languages and Eastern European languages using Latin script, Cyrillic, Greek, Hebrew, Turkish: usually with separate ISO and Windows encoding standards.
 There is also Mac OS Roman.
@@ -439,7 +448,8 @@ t1 <- "1705"
 t2 <- "11:15:10.12 PM"
 ```
 
-The correct formats are:
+The correct formats for dates and times:
+
 
 ```r
 parse_date(d1, "%B %d, %Y")
@@ -454,10 +464,7 @@ parse_date(d5, "%m/%d/%y")
 #> [1] "2014-12-30"
 parse_time(t1, "%H%M")
 #> 17:05:00
-```
-The time `t2` uses real seconds,
-
-```r
+#uses real seconds
 parse_time(t2, "%H:%M:%OS %p")
 #> 23:15:10.12
 ```
@@ -474,4 +481,4 @@ No exercises
 
 ## Other Types of Data
 
-No code
+No exercises

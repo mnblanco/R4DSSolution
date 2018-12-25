@@ -3,6 +3,10 @@
 
 ## Introduction
 
+No exercises
+
+### Prerequisites
+
 
 ```r
 library("tidyverse")
@@ -22,7 +26,6 @@ What would happen if `x` contained a single missing value, and `na.rm` was `FALS
 
 <div class="answer">
 
-The code for `rescale01()` is reproduced below.
 
 ```r
 rescale01 <- function(x) {
@@ -34,6 +37,7 @@ rescale01 <- function(x) {
 If `x` contains a single missing value, and both `na.rm = FALSE`, then this function
 will still return a non-missing value.
 
+
 ```r
 rescale01_alt <- function(x, na.rm = FALSE) {
   rng <- range(x, na.rm = na.rm, finite = TRUE)
@@ -44,12 +48,14 @@ rescale01_alt(c(NA, 1:5), na.rm = FALSE)
 rescale01_alt(c(NA, 1:5), na.rm = TRUE)
 #> [1]   NA 0.00 0.25 0.50 0.75 1.00
 ```
+
 This is because the option `finite = TRUE` to `range()` will drop all non-finite
 elements, and `NA` is a non-finite element.
 
 However, if both `finite = FALSE` and `na.rm = FALSE`, then this function will
 return a vector of `NA` values.
 Recall, artithmetic operations involving `NA` values will return `NA`.
+
 
 ```r
 rescale01_alt2 <- function(x, na.rm = FALSE, finite = FALSE) {
@@ -110,11 +116,14 @@ sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE)
 
 This code calculates the proportion of `NA` values in a vector.
 
+
 ```r
 mean(is.na(x))
 ```
+
 I will write it as a function named `prop_na()` that takes a single argument `x`,
 and returns a single numeric value between 0 and 1.
+
 
 ```r
 prop_na <- function(x) {
@@ -126,9 +135,11 @@ prop_na(c(0, 1, 2, NA, 4, NA))
 
 This code standardizes a vector so that it sums to 1.
 
+
 ```r
 x / sum(x, na.rm = TRUE)
 ```
+
 I'll write a function named `sum_to_one()`, which is a function of a single argument, `x`, the vector to standardize, and an optional argument `na.rm`.
 The optional argument, `na.rm`, makes the function more expressive, since it can
 handle `NA` values in two ways (returning `NA` or dropping them).
@@ -136,6 +147,7 @@ Additionally, this makes `sum_to_one()` consistent with `sum()`, `mean()`, and m
 other R functions which have a `na.rm` argument.
 While the example code had `na.rm = TRUE`, I set `na.rm = FALSE` by default
 in order to make the function behave the same as the built-in functions like `sum()` and `mean()` in its handling of missing values.
+
 
 ```r
 sum_to_one <- function(x, na.rm = FALSE) {
@@ -158,11 +170,14 @@ sum_to_one(c(1:5, NA), na.rm = TRUE)
 
 This code calculates the [coefficient of variation](https://en.wikipedia.org/wiki/Coefficient_of_variation) (assuming that `x` can only take non-negative values), which is the standard deviation divided by the mean.
 
+
 ```r
 sd(x, na.rm = TRUE) / mean(x, na.rm = TRUE)
 ```
+
 I'll write a function named `coef_variation()`, which takes a single argument `x`,
 and an optional `na.rm` argument.
+
 
 ```r
 coef_variation <- function(x, na.rm = FALSE) {
@@ -191,10 +206,12 @@ Follow <http://nicercode.github.io/intro/writing-functions.html> to write your o
 **Note** The math in <https://nicercode.github.io/intro/writing-functions.html> seems not to be rendering, but I'll write functions for the variance and skewness.
 
 The sample variance is defined as
+
 $$
 Var(x) = \frac{1}{n - 1} \sum_{i=1}^n (x_i - \bar{x}) ^2
 $$
 where the sample mean is $\bar{x} = (\sum x_i) / n$.
+
 
 ```r
 variance <- function(x, na.rm = TRUE) {
@@ -211,15 +228,18 @@ variance(1:10)
 
 There are multiple definitions of [skewness](https://en.wikipedia.org/wiki/Skewness),
 but one of the most commonly used is the following:[@DoaneSeward2011]
+
 $$
 \mathsf{skewness}(x) = \frac{n}{(n - 1)(n - 2)} \sum_{i = 1}^{n} {\left( \frac{x_i - \bar{x}}{s} \right)}^{3} .
 $$
 where $\bar{x}$ is the sample mean and
+
 $$
 s = \sqrt{\frac{1}{n - 1} \sum_{i = 1}^{n} (x_i - \bar{x})^2}
 $$
 is the sample standard deviation.
 The corresponding function is:
+
 
 ```r
 skewness <- function(x, na.rm = FALSE) {

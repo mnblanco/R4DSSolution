@@ -3,7 +3,7 @@
 knit: "bookdown::render_book"
 title: "R for Data Science Solutions"
 date: >-
-  December 24, 2018
+  December 25, 2018
 author: ["Marjorie Blanco"]
 description: >
   This contains the solutions to the exercises in the book,
@@ -11,7 +11,7 @@ description: >
 site: bookdown::bookdown_site
 github-repo: "mnblanco/R4DSSolution"
 url: 'http\://mnblanco.github.io/R4DSSolution'
-twitter-handle: jrnld
+twitter-handle: mnblanco
 documentclass: book
 bibliography: ["r4ds.bib"]
 link-citations: true

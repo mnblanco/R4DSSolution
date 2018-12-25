@@ -3,6 +3,10 @@
 
 ## Introduction
 
+No exercises
+
+### Prerequisites
+
 
 ```r
 library("tidyverse")
@@ -26,7 +30,7 @@ No exercises
 
 ## Exercises
 
-### Exercise <span class="exercise-number">10.6.1</span> {.unnumbered .exercise}
+### Exercise <span class="exercise-number">10.5.1</span> {.unnumbered .exercise}
 
 <div class="question">
 How can you tell if an object is a tibble? (Hint: try printing `mtcars`, which is a regular data frame).
@@ -34,7 +38,8 @@ How can you tell if an object is a tibble? (Hint: try printing `mtcars`, which i
 
 <div class="answer">
 
-When we print `mtcars`, it prints all the columns.
+`mtcars` prints **all** the columns and it is a `data.frame`.
+
 
 ```r
 mtcars
@@ -73,9 +78,8 @@ mtcars
 #> Volvo 142E          21.4   4 121.0 109 4.11 2.78 18.6  1  1    4    2
 ```
 
-But when we first convert `mtcars` to a tibble using `as_tibble()`, it prints on the
-first ten observations. There are also some other differences in formatting
-of the printed data frame.
+After converting `mtcars` to a tibble using `as_tibble()`, it prints only the first ten observations.
+
 
 ```r
 as_tibble(mtcars)
@@ -91,14 +95,16 @@ as_tibble(mtcars)
 #> # ... with 26 more rows
 ```
 
-You can use the function `is_tibble()` to check whether a data frame is a tibble or not.
-The `mtcars` data frame is not a tibble.
+Function `is_tibble()` checks whether a data frame is a tibble or not. `mtcars` data frame is not a tibble.
+
 
 ```r
 is_tibble(mtcars)
 #> [1] FALSE
 ```
-But the `diamonds` and `flights` data are tibbles.
+
+`diamonds` and `flights` data are tibbles.
+
 
 ```r
 is_tibble(ggplot2::diamonds)
@@ -109,9 +115,8 @@ is_tibble(as_tibble(mtcars))
 #> [1] TRUE
 ```
 
-More generally, you can use the `class()` function to find out the class of an
-object. Tibbles has the classes `c("tbl_df", "tbl", "data.frame")`, while old
-data frames will only have the class `"data.frame"`.
+Function `class()` returns the class of an object. Tibbles has the classes `c("tbl_df", "tbl", "data.frame")`. Data frames has class `"data.frame"`.
+
 
 ```r
 class(mtcars)
@@ -122,12 +127,12 @@ class(nycflights13::flights)
 #> [1] "tbl_df"     "tbl"        "data.frame"
 ```
 
-If you are interested in reading more on R's classes, read the chapters on
-object oriented programming in [Advanced R](http://adv-r.had.co.nz/S3.html).
+<!-- If you are interested in reading more on R's classes, read the chapters on -->
+<!-- object oriented programming in [Advanced R](http://adv-r.had.co.nz/S3.html). -->
 
 </div>
 
-### Exercise <span class="exercise-number">10.6.2</span> {.unnumbered .exercise}
+### Exercise <span class="exercise-number">10.5.2</span> {.unnumbered .exercise}
 
 <div class="question">
 Compare and contrast the following operations on a `data.frame` and equivalent tibble. What is different? Why might the default data frame behaviors cause you frustration?
@@ -181,7 +186,7 @@ situations or risk bugs.
 
 </div>
 
-### Exercise <span class="exercise-number">10.6.3</span> {.unnumbered .exercise}
+### Exercise <span class="exercise-number">10.5.3</span> {.unnumbered .exercise}
 
 <div class="question">
 If you have the name of a variable stored in an object, e.g. `var <- "mpg"`, how can you extract the reference variable from a tibble?
@@ -189,11 +194,20 @@ If you have the name of a variable stored in an object, e.g. `var <- "mpg"`, how
 
 <div class="answer">
 
-You can use the double bracket, like `df[[var]]`. You cannot use the dollar sign, because `df$var` would look for a column named `var`.
+Use the double bracket, like `df[[var]]`. The dollar sign cannot be use because `df$var` would look for a column named `var`.
+
+
+```r
+var <- "mpg"
+mtcars[[var]]
+#>  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2
+#> [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4
+#> [29] 15.8 19.7 15.0 21.4
+```
 
 </div>
 
-### Exercise <span class="exercise-number">10.6.4</span> {.unnumbered .exercise}
+### Exercise <span class="exercise-number">10.5.4</span> {.unnumbered .exercise}
 
 <div class="question">
 
@@ -208,22 +222,21 @@ Practice referring to non-syntactic names in the following data frame by:
 
 <div class="answer">
 
-For this example, I'll create a dataset called annoying with
-columns named `1` and `2`.
+Create a dataset called `practice` with columns named `1` and `2`.
 
 
 ```r
-annoying <- tibble(
+practice <- tibble(
   `1` = 1:10,
-  `2` = `1` * 2 + rnorm(length(`1`))
+  `2` = 1:10
 )
 ```
 
-1.  To extract the variable called 1 run
+1.  Extract the variable called 1 run
 
     
     ```r
-    annoying[["1"]]
+    practice[["1"]]
     #>  [1]  1  2  3  4  5  6  7  8  9 10
     ```
 
@@ -231,50 +244,69 @@ annoying <- tibble(
 
     
     ```r
-    annoying$`1`
+    practice$`1`
     #>  [1]  1  2  3  4  5  6  7  8  9 10
     ```
-
-1.  To create a scatter plot of `1` vs. `2` run
+    
+    or
 
     
     ```r
-    ggplot(annoying, aes(x = `1`, y = `2`)) +
+    one <- "1"
+    practice[[one]]
+    #>  [1]  1  2  3  4  5  6  7  8  9 10
+    ```
+    
+1.  Plotting a scatterplot of 1 vs 2
+
+    
+    ```r
+    ggplot(practice, aes(x = `1`, y = `2`)) +
       geom_point()
     ```
     
-    <img src="tibble_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" />
+    <img src="tibble_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" />
 
-1.  To add a new column `3` which is `2` divided by `1` run
+1.  Creating a new column called 3 which is 2 divided by 1
 
     
     ```r
-    annoying[["3"]] <- annoying$`2` / annoying$`1`
+    practice[["3"]] <- practice$`2` / practice$`1`
     ```
 
     or
 
     
     ```r
-    annoying[["3"]] <- annoying[["2"]] / annoying[["1"]]
+    practice[["3"]] <- practice[["2"]] / practice[["1"]]
     ```
 
+    or
+
+    
+    ```r
+    one <- "1"
+    two <- "2"
+    three <- "3"
+    practice[[three]] <- practice[[two]] / practice[[one]]
+    ```
+    
 1.  To rename the columns to `one`, `two`, and `three`, run
 
     
     ```r
-    annoying <- rename(annoying, one = `1`, two = `2`, three = `3`)
-    glimpse(annoying)
+    practice <- rename(practice, one = `1`, two = `2`, three = `3`)
+    glimpse(practice)
     #> Observations: 10
     #> Variables: 3
     #> $ one   <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-    #> $ two   <dbl> 0.60, 4.26, 3.56, 7.99, 10.62, 13.15, 12.18, 15.75, 17.7...
-    #> $ three <dbl> 0.60, 2.13, 1.19, 2.00, 2.12, 2.19, 1.74, 1.97, 1.97, 1.97
+    #> $ two   <int> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+    #> $ three <dbl> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
     ```
 
 </div>
 
-### Exercise <span class="exercise-number">10.6.5</span> {.unnumbered .exercise}
+### Exercise <span class="exercise-number">10.5.5</span> {.unnumbered .exercise}
 
 <div class="question">
 What does `tibble::enframe()` do? When might you use it?
@@ -282,7 +314,10 @@ What does `tibble::enframe()` do? When might you use it?
 
 <div class="answer">
 
-The function `tibble::enframe()` converts named vectors to a data frame with names and values
+Function [`tibble::enframe()`](https://tibble.tidyverse.org/reference/enframe.html) converts named vectors to a data frame with names and values.
+
+The help page for the `enframe()` method of tibble objects is discussed in `?enframe`.
+
 
 
 ```r
@@ -297,7 +332,7 @@ enframe(c(a = 1, b = 2, c = 3))
 
 </div>
 
-### Exercise <span class="exercise-number">10.6.6</span> {.unnumbered .exercise}
+### Exercise <span class="exercise-number">10.5.6</span> {.unnumbered .exercise}
 
 <div class="question">
 What option controls how many additional column names are printed at the footer of a tibble?
@@ -305,7 +340,7 @@ What option controls how many additional column names are printed at the footer 
 
 <div class="answer">
 
-The help page for the `print()` method of tibble objects is discussed in `?print.tbl_df`.
-The `n_extra` argument determines the number of extra columns to print information for.
+Function [`print.tbl_df`](https://tibble.tidyverse.org/reference/formatting.html).  The help page for the `print()` method of tibble objects is discussed in `?print.tbl_df`.
+The `n_extra` argument determines the number of extra columns to print abbreviated information for.
 
 </div>

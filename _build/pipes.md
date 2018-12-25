@@ -1,4 +1,4 @@
 
 # Pipes
 
-No exercises in this chapter.
+No exercises

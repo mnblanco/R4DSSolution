@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>4 Workflow: basics | R for Data Science Solutions</title>
+  <title>3 Workflow: basics | R for Data Science Solutions</title>
   <meta name="description" content="This contains the solutions to the exercises in the book, R for Data Science, by Garrett Grolemund and Hadley Wickham.">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="4 Workflow: basics | R for Data Science Solutions" />
+  <meta property="og:title" content="3 Workflow: basics | R for Data Science Solutions" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="http://mnblanco.github.io/R4DSSolution" />
   
@@ -17,15 +17,15 @@
   <meta name="github-repo" content="mnblanco/R4DSSolution" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Workflow: basics | R for Data Science Solutions" />
-  <meta name="twitter:site" content="@jrnld" />
+  <meta name="twitter:title" content="3 Workflow: basics | R for Data Science Solutions" />
+  <meta name="twitter:site" content="@mnblanco" />
   <meta name="twitter:description" content="This contains the solutions to the exercises in the book, R for Data Science, by Garrett Grolemund and Hadley Wickham." />
   
 
 <meta name="author" content="Marjorie Blanco">
 
 
-<meta name="date" content="2018-12-24">
+<meta name="date" content="2018-12-25">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -54,6 +54,24 @@
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-61453123-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-61453123-2');
+</script>
+<!--
+License: MIT License
+Copyright (c) 2016 Open Review Toolkit & Ben Marwick
+
+See https://github.com/benmarwick/bookdown-ort/blob/master/hypothesis.html
+-->
+
+<script async defer src="https://hypothes.is/embed.js"></script>
+<script>window.hypothesisConfig = function () { return {showHighlights: false}; };</script>
 
 
 <style type="text/css">
@@ -122,8 +140,9 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="r4ds.css" type="text/css" />
-<link rel="stylesheet" href="r4ds-solutions.css" type="text/css" />
+<link rel="stylesheet" href="includes/r4ds.css" type="text/css" />
+<link rel="stylesheet" href="includes/r4ds-solutions.css" type="text/css" />
+<link rel="stylesheet" href="includes/ort.css" type="text/css" />
 </head>
 
 <body>
@@ -137,37 +156,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li><strong><a href="./">R for Data Science Solutions</a></strong></li>
+<li><div id="google_translate_element"></div></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#organization"><i class="fa fa-check"></i>Organization</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#dependencies"><i class="fa fa-check"></i>Dependencies</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#bugscontributing"><i class="fa fa-check"></i>Bugs/Contributing</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#colophon"><i class="fa fa-check"></i>Colophon</a></li>
-</ul></li>
 <li class="part"><span><b>I Explore</b></span></li>
-<li class="chapter" data-level="2" data-path="explore-intro.html"><a href="explore-intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>3</b> Data Visualisation</a><ul>
-<li class="chapter" data-level="3.1" data-path="data-visualisation.html"><a href="data-visualisation.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="data-visualisation.html"><a href="data-visualisation.html#first-steps"><i class="fa fa-check"></i><b>3.2</b> First Steps</a><ul>
-<li><a href="data-visualisation.html#exercise-3.2.4.1.">Exercise <span class="exercise-number">3.2.4.1</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.2.4.2.">Exercise <span class="exercise-number">3.2.4.2</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.2.4.3.">Exercise <span class="exercise-number">3.2.4.3</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.2.4.4.">Exercise <span class="exercise-number">3.2.4.4</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.2.4.5.">Exercise <span class="exercise-number">3.2.4.5</span>.</a></li>
+<li class="chapter" data-level="1" data-path="explore-intro.html"><a href="explore-intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>2</b> Data Visualisation</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-visualisation.html"><a href="data-visualisation.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="data-visualisation.html"><a href="data-visualisation.html#prerequisites"><i class="fa fa-check"></i><b>2.1.1</b> Prerequisites</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="data-visualisation.html"><a href="data-visualisation.html#aesthetic-mappings"><i class="fa fa-check"></i><b>3.3</b> Aesthetic mappings</a><ul>
+<li class="chapter" data-level="2.2" data-path="data-visualisation.html"><a href="data-visualisation.html#first-steps"><i class="fa fa-check"></i><b>2.2</b> First Steps</a><ul>
+<li><a href="data-visualisation.html#exercise-3.2.4.1">Exercise <span class="exercise-number">3.2.4.1</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.2.4.2">Exercise <span class="exercise-number">3.2.4.2</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.2.4.3">Exercise <span class="exercise-number">3.2.4.3</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.2.4.4">Exercise <span class="exercise-number">3.2.4.4</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.2.4.5">Exercise <span class="exercise-number">3.2.4.5</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-visualisation.html"><a href="data-visualisation.html#aesthetic-mappings"><i class="fa fa-check"></i><b>2.3</b> Aesthetic mappings</a><ul>
 <li><a href="data-visualisation.html#exercise-3.3.1.1">Exercise <span class="exercise-number">3.3.1.1</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.3.1.2">Exercise <span class="exercise-number">3.3.1.2</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.3.1.3">Exercise <span class="exercise-number">3.3.1.3</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.3.1.4">Exercise <span class="exercise-number">3.3.1.4</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.3.1.5">Exercise <span class="exercise-number">3.3.1.5</span></a></li>
-<li><a href="data-visualisation.html#exercise-3.3.1.6.">Exercise <span class="exercise-number">3.3.1.6</span>.</a></li>
+<li><a href="data-visualisation.html#exercise-3.3.1.6">Exercise <span class="exercise-number">3.3.1.6</span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="data-visualisation.html"><a href="data-visualisation.html#common-problems"><i class="fa fa-check"></i><b>3.4</b> Common problems</a></li>
-<li class="chapter" data-level="3.5" data-path="data-visualisation.html"><a href="data-visualisation.html#facets"><i class="fa fa-check"></i><b>3.5</b> Facets</a><ul>
+<li class="chapter" data-level="2.4" data-path="data-visualisation.html"><a href="data-visualisation.html#common-problems"><i class="fa fa-check"></i><b>2.4</b> Common problems</a></li>
+<li class="chapter" data-level="2.5" data-path="data-visualisation.html"><a href="data-visualisation.html#facets"><i class="fa fa-check"></i><b>2.5</b> Facets</a><ul>
 <li><a href="data-visualisation.html#exercise-3.5.1.1">Exercise <span class="exercise-number">3.5.1.1</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.5.1.2">Exercise <span class="exercise-number">3.5.1.2</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.5.1.3">Exercise <span class="exercise-number">3.5.1.3</span></a></li>
@@ -175,7 +190,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="data-visualisation.html#exercise-3.5.1.5">Exercise <span class="exercise-number">3.5.1.5</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.5.1.6">Exercise <span class="exercise-number">3.5.1.6</span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="data-visualisation.html"><a href="data-visualisation.html#geometric-objects"><i class="fa fa-check"></i><b>3.6</b> Geometric Objects</a><ul>
+<li class="chapter" data-level="2.6" data-path="data-visualisation.html"><a href="data-visualisation.html#geometric-objects"><i class="fa fa-check"></i><b>2.6</b> Geometric Objects</a><ul>
 <li><a href="data-visualisation.html#exercise-3.6.1.1">Exercise <span class="exercise-number">3.6.1.1</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.6.1.2">Exercise <span class="exercise-number">3.6.1.2</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.6.1.3">Exercise <span class="exercise-number">3.6.1.3</span></a></li>
@@ -183,59 +198,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="data-visualisation.html#exercise-3.6.1.5">Exercise <span class="exercise-number">3.6.1.5</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.6.1.6">Exercise <span class="exercise-number">3.6.1.6</span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="data-visualisation.html"><a href="data-visualisation.html#statistical-transformations"><i class="fa fa-check"></i><b>3.7</b> Statistical Transformations</a><ul>
+<li class="chapter" data-level="2.7" data-path="data-visualisation.html"><a href="data-visualisation.html#statistical-transformations"><i class="fa fa-check"></i><b>2.7</b> Statistical Transformations</a><ul>
 <li><a href="data-visualisation.html#exercise-3.7.1">Exercise <span class="exercise-number">3.7.1</span></a></li>
-<li><a href="data-visualisation.html#exercise-3.7.2.">Exercise <span class="exercise-number">3.7.2</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.7.3.">Exercise <span class="exercise-number">3.7.3</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.7.4.">Exercise <span class="exercise-number">3.7.4</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.7.5.">Exercise <span class="exercise-number">3.7.5</span>.</a></li>
+<li><a href="data-visualisation.html#exercise-3.7.2">Exercise <span class="exercise-number">3.7.2</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.7.3">Exercise <span class="exercise-number">3.7.3</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.7.4">Exercise <span class="exercise-number">3.7.4</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.7.5">Exercise <span class="exercise-number">3.7.5</span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="data-visualisation.html"><a href="data-visualisation.html#position-adjustments"><i class="fa fa-check"></i><b>3.8</b> Position Adjustments</a><ul>
-<li><a href="data-visualisation.html#exercise-3.8.1.1.">Exercise <span class="exercise-number">3.8.1.1</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.8.1.2.">Exercise <span class="exercise-number">3.8.1.2</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.8.1.3.">Exercise <span class="exercise-number">3.8.1.3</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.8.1.4.">Exercise <span class="exercise-number">3.8.1.4</span>.</a></li>
+<li class="chapter" data-level="2.8" data-path="data-visualisation.html"><a href="data-visualisation.html#position-adjustments"><i class="fa fa-check"></i><b>2.8</b> Position Adjustments</a><ul>
+<li><a href="data-visualisation.html#exercise-3.8.1.1">Exercise <span class="exercise-number">3.8.1.1</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.8.1.2">Exercise <span class="exercise-number">3.8.1.2</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.8.1.3">Exercise <span class="exercise-number">3.8.1.3</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.8.1.4">Exercise <span class="exercise-number">3.8.1.4</span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.9" data-path="data-visualisation.html"><a href="data-visualisation.html#coordinate-systems"><i class="fa fa-check"></i><b>3.9</b> Coordinate Systems</a><ul>
+<li class="chapter" data-level="2.9" data-path="data-visualisation.html"><a href="data-visualisation.html#coordinate-systems"><i class="fa fa-check"></i><b>2.9</b> Coordinate Systems</a><ul>
 <li><a href="data-visualisation.html#exercise-3.9.1.1">Exercise <span class="exercise-number">3.9.1.1</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.9.1.2">Exercise <span class="exercise-number">3.9.1.2</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.9.1.3">Exercise <span class="exercise-number">3.9.1.3</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.9.1.4">Exercise <span class="exercise-number">3.9.1.4</span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.10" data-path="data-visualisation.html"><a href="data-visualisation.html#the-layered-grammar-of-graphics"><i class="fa fa-check"></i><b>3.10</b> The Layered Grammar of Graphics</a></li>
+<li class="chapter" data-level="2.10" data-path="data-visualisation.html"><a href="data-visualisation.html#the-layered-grammar-of-graphics"><i class="fa fa-check"></i><b>2.10</b> The Layered Grammar of Graphics</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>4</b> Workflow: basics</a><ul>
-<li class="chapter" data-level="" data-path="workflow-basics.html"><a href="workflow-basics.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
-<li class="chapter" data-level="4.1" data-path="workflow-basics.html"><a href="workflow-basics.html#coding-basics"><i class="fa fa-check"></i><b>4.1</b> Coding basics</a></li>
-<li class="chapter" data-level="4.2" data-path="workflow-basics.html"><a href="workflow-basics.html#whats-in-a-name"><i class="fa fa-check"></i><b>4.2</b> What’s in a name?</a></li>
-<li class="chapter" data-level="4.3" data-path="workflow-basics.html"><a href="workflow-basics.html#calling-functions"><i class="fa fa-check"></i><b>4.3</b> Calling functions</a></li>
-<li class="chapter" data-level="4.4" data-path="workflow-basics.html"><a href="workflow-basics.html#practice"><i class="fa fa-check"></i><b>4.4</b> Practice</a><ul>
+<li class="chapter" data-level="3" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>3</b> Workflow: basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="workflow-basics.html"><a href="workflow-basics.html#prerequisites-1"><i class="fa fa-check"></i><b>3.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="3.2" data-path="workflow-basics.html"><a href="workflow-basics.html#coding-basics"><i class="fa fa-check"></i><b>3.2</b> Coding basics</a></li>
+<li class="chapter" data-level="3.3" data-path="workflow-basics.html"><a href="workflow-basics.html#whats-in-a-name"><i class="fa fa-check"></i><b>3.3</b> What’s in a name?</a></li>
+<li class="chapter" data-level="3.4" data-path="workflow-basics.html"><a href="workflow-basics.html#calling-functions"><i class="fa fa-check"></i><b>3.4</b> Calling functions</a></li>
+<li class="chapter" data-level="3.5" data-path="workflow-basics.html"><a href="workflow-basics.html#practice"><i class="fa fa-check"></i><b>3.5</b> Practice</a><ul>
 <li><a href="workflow-basics.html#exercise-4.4.1">Exercise <span class="exercise-number">4.4.1</span></a></li>
 <li><a href="workflow-basics.html#exercise-4.4.2">Exercise <span class="exercise-number">4.4.2</span></a></li>
 <li><a href="workflow-basics.html#exercise-4.4.3">Exercise <span class="exercise-number">4.4.3</span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>5</b> Data transformation</a><ul>
-<li class="chapter" data-level="5.1" data-path="data-transformation.html"><a href="data-transformation.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.2" data-path="data-transformation.html"><a href="data-transformation.html#filter-rows-with-filter"><i class="fa fa-check"></i><b>5.2</b> Filter rows with <code>filter()</code></a><ul>
+<li class="chapter" data-level="4" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>4</b> Data transformation</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-transformation.html"><a href="data-transformation.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="data-transformation.html"><a href="data-transformation.html#prerequisites-2"><i class="fa fa-check"></i><b>4.1.1</b> Prerequisites</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-transformation.html"><a href="data-transformation.html#dplyr-basics"><i class="fa fa-check"></i><b>4.2</b> dplyr basics</a></li>
+<li class="chapter" data-level="4.3" data-path="data-transformation.html"><a href="data-transformation.html#filter-rows-with-filter"><i class="fa fa-check"></i><b>4.3</b> Filter rows with <code>filter()</code></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="data-transformation.html"><a href="data-transformation.html#comparisons"><i class="fa fa-check"></i><b>4.3.1</b> Comparisons</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-transformation.html"><a href="data-transformation.html#logical-operators"><i class="fa fa-check"></i><b>4.3.2</b> Logical operators</a></li>
+<li class="chapter" data-level="4.3.3" data-path="data-transformation.html"><a href="data-transformation.html#missing-values"><i class="fa fa-check"></i><b>4.3.3</b> Missing values</a></li>
 <li><a href="data-transformation.html#exercise-5.2.4.1">Exercise <span class="exercise-number">5.2.4.1</span></a></li>
 <li><a href="data-transformation.html#exercise-5.2.4.2">Exercise <span class="exercise-number">5.2.4.2</span></a></li>
 <li><a href="data-transformation.html#exercise-5.2.4.3">Exercise <span class="exercise-number">5.2.4.3</span></a></li>
 <li><a href="data-transformation.html#exercise-5.2.4.4">Exercise <span class="exercise-number">5.2.4.4</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="data-transformation.html"><a href="data-transformation.html#arrange-rows-with-arrange"><i class="fa fa-check"></i><b>5.3</b> Arrange rows with <code>arrange()</code></a><ul>
+<li class="chapter" data-level="4.4" data-path="data-transformation.html"><a href="data-transformation.html#arrange-rows-with-arrange"><i class="fa fa-check"></i><b>4.4</b> Arrange rows with <code>arrange()</code></a><ul>
 <li><a href="data-transformation.html#exercise-5.3.1.1">Exercise <span class="exercise-number">5.3.1.1</span></a></li>
 <li><a href="data-transformation.html#exercise-5.3.1.2">Exercise <span class="exercise-number">5.3.1.2</span></a></li>
 <li><a href="data-transformation.html#exercise-5.3.1.3">Exercise <span class="exercise-number">5.3.1.3</span></a></li>
 <li><a href="data-transformation.html#exercise-5.3.1.4">Exercise <span class="exercise-number">5.3.1.4</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="data-transformation.html"><a href="data-transformation.html#select-columns-with-select"><i class="fa fa-check"></i><b>5.4</b> Select columns with <code>select()</code></a><ul>
+<li class="chapter" data-level="4.5" data-path="data-transformation.html"><a href="data-transformation.html#select-columns-with-select"><i class="fa fa-check"></i><b>4.5</b> Select columns with <code>select()</code></a><ul>
 <li><a href="data-transformation.html#exercise-5.4.1.1">Exercise <span class="exercise-number">5.4.1.1</span></a></li>
 <li><a href="data-transformation.html#exercise-5.4.1.2">Exercise <span class="exercise-number">5.4.1.2</span></a></li>
 <li><a href="data-transformation.html#exercise-5.4.1.3">Exercise <span class="exercise-number">5.4.1.3</span></a></li>
 <li><a href="data-transformation.html#exercise-5.4.1.4">Exercise <span class="exercise-number">5.4.1.4</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="data-transformation.html"><a href="data-transformation.html#add-new-variables-with-mutate"><i class="fa fa-check"></i><b>5.5</b> Add new variables with <code>mutate()</code></a><ul>
+<li class="chapter" data-level="4.6" data-path="data-transformation.html"><a href="data-transformation.html#add-new-variables-with-mutate"><i class="fa fa-check"></i><b>4.6</b> Add new variables with <code>mutate()</code></a><ul>
 <li><a href="data-transformation.html#exercise-5.5.2.1">Exercise <span class="exercise-number">5.5.2.1</span></a></li>
 <li><a href="data-transformation.html#exercise-5.5.2.2">Exercise <span class="exercise-number">5.5.2.2</span></a></li>
 <li><a href="data-transformation.html#exercise-5.5.2.3">Exercise <span class="exercise-number">5.5.2.3</span></a></li>
@@ -243,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="data-transformation.html#exercise-5.5.2.5">Exercise <span class="exercise-number">5.5.2.5</span></a></li>
 <li><a href="data-transformation.html#exercise-5.5.2.6">Exercise <span class="exercise-number">5.5.2.6</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="data-transformation.html"><a href="data-transformation.html#grouped-summaries-with-summarise"><i class="fa fa-check"></i><b>5.6</b> Grouped summaries with <code>summarise()</code></a><ul>
+<li class="chapter" data-level="4.7" data-path="data-transformation.html"><a href="data-transformation.html#grouped-summaries-with-summarise"><i class="fa fa-check"></i><b>4.7</b> Grouped summaries with <code>summarise()</code></a><ul>
 <li><a href="data-transformation.html#exercise-5.6.7.1">Exercise <span class="exercise-number">5.6.7.1</span></a></li>
 <li><a href="data-transformation.html#exercise-5.6.7.2">Exercise <span class="exercise-number">5.6.7.2</span></a></li>
 <li><a href="data-transformation.html#exercise-5.6.7.3">Exercise <span class="exercise-number">5.6.7.3</span></a></li>
@@ -251,7 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="data-transformation.html#exercise-5.6.7.5">Exercise <span class="exercise-number">5.6.7.5</span></a></li>
 <li><a href="data-transformation.html#exercise-5.6.7.6">Exercise <span class="exercise-number">5.6.7.6</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="data-transformation.html"><a href="data-transformation.html#grouped-mutates-and-filters"><i class="fa fa-check"></i><b>5.7</b> Grouped mutates (and filters)</a><ul>
+<li class="chapter" data-level="4.8" data-path="data-transformation.html"><a href="data-transformation.html#grouped-mutates-and-filters"><i class="fa fa-check"></i><b>4.8</b> Grouped mutates (and filters)</a><ul>
 <li><a href="data-transformation.html#exercise-5.7.1.1">Exercise <span class="exercise-number">5.7.1.1</span></a></li>
 <li><a href="data-transformation.html#exercise-5.7.1.2">Exercise <span class="exercise-number">5.7.1.2</span></a></li>
 <li><a href="data-transformation.html#exercise-5.7.1.3">Exercise <span class="exercise-number">5.7.1.3</span></a></li>
@@ -262,56 +283,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="data-transformation.html#exercise-5.7.1.8">Exercise <span class="exercise-number">5.7.1.8</span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="workflow-scripts.html"><a href="workflow-scripts.html"><i class="fa fa-check"></i><b>6</b> Workflow: scripts</a><ul>
-<li class="chapter" data-level="6.1" data-path="workflow-scripts.html"><a href="workflow-scripts.html#running-code"><i class="fa fa-check"></i><b>6.1</b> Running code</a></li>
-<li class="chapter" data-level="6.2" data-path="workflow-scripts.html"><a href="workflow-scripts.html#rstudio-diagnostics"><i class="fa fa-check"></i><b>6.2</b> RStudio diagnostics</a></li>
-<li class="chapter" data-level="6.3" data-path="workflow-scripts.html"><a href="workflow-scripts.html#practice-1"><i class="fa fa-check"></i><b>6.3</b> Practice</a><ul>
+<li class="chapter" data-level="5" data-path="workflow-scripts.html"><a href="workflow-scripts.html"><i class="fa fa-check"></i><b>5</b> Workflow: scripts</a><ul>
+<li class="chapter" data-level="5.1" data-path="workflow-scripts.html"><a href="workflow-scripts.html#running-code"><i class="fa fa-check"></i><b>5.1</b> Running code</a></li>
+<li class="chapter" data-level="5.2" data-path="workflow-scripts.html"><a href="workflow-scripts.html#rstudio-diagnostics"><i class="fa fa-check"></i><b>5.2</b> RStudio diagnostics</a></li>
+<li class="chapter" data-level="5.3" data-path="workflow-scripts.html"><a href="workflow-scripts.html#practice-1"><i class="fa fa-check"></i><b>5.3</b> Practice</a><ul>
 <li><a href="workflow-scripts.html#exercise-6.3.1">Exercise <span class="exercise-number">6.3.1</span></a></li>
 <li><a href="workflow-scripts.html#exercise-6.3.2">Exercise <span class="exercise-number">6.3.2</span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>7</b> Exploratory Data Analysis</a><ul>
-<li class="chapter" data-level="7.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
-<li class="chapter" data-level="7.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#questions"><i class="fa fa-check"></i><b>7.2</b> Questions</a></li>
-<li class="chapter" data-level="7.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#variation"><i class="fa fa-check"></i><b>7.3</b> Variation</a><ul>
-<li><a href="exploratory-data-analysis.html#exercise-7.3.4.1">Exercise <span class="exercise-number">7.3.4.1</span></a></li>
-<li><a href="exploratory-data-analysis.html#exercise-7.3.4.2">Exercise <span class="exercise-number">7.3.4.2</span></a></li>
-<li><a href="exploratory-data-analysis.html#exercise-7.3.4.3">Exercise <span class="exercise-number">7.3.4.3</span></a></li>
-<li><a href="exploratory-data-analysis.html#exercise-7.3.4.4">Exercise <span class="exercise-number">7.3.4.4</span></a></li>
+<li class="chapter" data-level="6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>6</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="6.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#questions"><i class="fa fa-check"></i><b>6.2</b> Questions</a></li>
+<li class="chapter" data-level="6.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#variation"><i class="fa fa-check"></i><b>6.3</b> Variation</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#missing-values"><i class="fa fa-check"></i><b>7.4</b> Missing Values</a><ul>
-<li><a href="exploratory-data-analysis.html#exercise-7.4.1.1">Exercise <span class="exercise-number">7.4.1.1</span></a></li>
-<li><a href="exploratory-data-analysis.html#exercise-7.4.1.2">Exercise <span class="exercise-number">7.4.1.2</span></a></li>
+<li class="chapter" data-level="7" data-path="variation-1.html"><a href="variation-1.html"><i class="fa fa-check"></i><b>7</b> Variation</a><ul>
+<li><a href="variation-1.html#exercise-7.3.4.1">Exercise <span class="exercise-number">7.3.4.1</span></a></li>
+<li><a href="variation-1.html#exercise-7.3.4.2">Exercise <span class="exercise-number">7.3.4.2</span></a></li>
+<li><a href="variation-1.html#exercise-7.3.4.3">Exercise <span class="exercise-number">7.3.4.3</span></a></li>
+<li><a href="variation-1.html#exercise-7.3.4.4">Exercise <span class="exercise-number">7.3.4.4</span></a></li>
+<li class="chapter" data-level="7.1" data-path="variation-1.html"><a href="variation-1.html#missing-values-1"><i class="fa fa-check"></i><b>7.1</b> Missing Values</a><ul>
+<li><a href="variation-1.html#exercise-7.4.1.1">Exercise <span class="exercise-number">7.4.1.1</span></a></li>
+<li><a href="variation-1.html#exercise-7.4.1.2">Exercise <span class="exercise-number">7.4.1.2</span></a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#covariation"><i class="fa fa-check"></i><b>7.5</b> Covariation</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#a-categorical-and-continuous-variable"><i class="fa fa-check"></i><b>7.5.1</b> A categorical and continuous variable</a></li>
-<li class="chapter" data-level="7.5.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#two-categorical-variables"><i class="fa fa-check"></i><b>7.5.2</b> Two categorical variables</a></li>
-<li class="chapter" data-level="7.5.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#two-continuous-variables"><i class="fa fa-check"></i><b>7.5.3</b> Two continuous variables</a></li>
+<li class="chapter" data-level="7.2" data-path="variation-1.html"><a href="variation-1.html#covariation"><i class="fa fa-check"></i><b>7.2</b> Covariation</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="variation-1.html"><a href="variation-1.html#a-categorical-and-continuous-variable"><i class="fa fa-check"></i><b>7.2.1</b> A categorical and continuous variable</a></li>
+<li class="chapter" data-level="7.2.2" data-path="variation-1.html"><a href="variation-1.html#two-categorical-variables"><i class="fa fa-check"></i><b>7.2.2</b> Two categorical variables</a></li>
+<li class="chapter" data-level="7.2.3" data-path="variation-1.html"><a href="variation-1.html#two-continuous-variables"><i class="fa fa-check"></i><b>7.2.3</b> Two continuous variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#patterns-and-models"><i class="fa fa-check"></i><b>7.6</b> Patterns and models</a></li>
-<li class="chapter" data-level="7.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#ggplot2-calls"><i class="fa fa-check"></i><b>7.7</b> ggplot2 calls</a></li>
-<li class="chapter" data-level="7.8" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#learning-more"><i class="fa fa-check"></i><b>7.8</b> Learning more</a></li>
+<li class="chapter" data-level="7.3" data-path="variation-1.html"><a href="variation-1.html#patterns-and-models"><i class="fa fa-check"></i><b>7.3</b> Patterns and models</a></li>
+<li class="chapter" data-level="7.4" data-path="variation-1.html"><a href="variation-1.html#ggplot2-calls"><i class="fa fa-check"></i><b>7.4</b> ggplot2 calls</a></li>
+<li class="chapter" data-level="7.5" data-path="variation-1.html"><a href="variation-1.html#learning-more"><i class="fa fa-check"></i><b>7.5</b> Learning more</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="workflow-projects.html"><a href="workflow-projects.html"><i class="fa fa-check"></i><b>8</b> Workflow: projects</a></li>
 <li class="part"><span><b>II Wrangle</b></span></li>
-<li class="chapter" data-level="9" data-path="introduction-4.html"><a href="introduction-4.html"><i class="fa fa-check"></i><b>9</b> Introduction</a></li>
+<li class="chapter" data-level="9" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>9</b> Introduction</a></li>
 <li class="chapter" data-level="10" data-path="tibbles.html"><a href="tibbles.html"><i class="fa fa-check"></i><b>10</b> Tibbles</a><ul>
-<li class="chapter" data-level="10.1" data-path="tibbles.html"><a href="tibbles.html#introduction-5"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.1" data-path="tibbles.html"><a href="tibbles.html#introduction-4"><i class="fa fa-check"></i><b>10.1</b> Introduction</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="tibbles.html"><a href="tibbles.html#prerequisites-3"><i class="fa fa-check"></i><b>10.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="10.2" data-path="tibbles.html"><a href="tibbles.html#creating-tibbles"><i class="fa fa-check"></i><b>10.2</b> Creating Tibbles</a></li>
 <li class="chapter" data-level="10.3" data-path="tibbles.html"><a href="tibbles.html#tibbles-vs.data.frame"><i class="fa fa-check"></i><b>10.3</b> Tibbles vs. data.frame</a></li>
 <li class="chapter" data-level="10.4" data-path="tibbles.html"><a href="tibbles.html#subsetting"><i class="fa fa-check"></i><b>10.4</b> Subsetting</a></li>
 <li class="chapter" data-level="10.5" data-path="tibbles.html"><a href="tibbles.html#interacting-with-older-code"><i class="fa fa-check"></i><b>10.5</b> Interacting with older code</a></li>
 <li class="chapter" data-level="10.6" data-path="tibbles.html"><a href="tibbles.html#exercises"><i class="fa fa-check"></i><b>10.6</b> Exercises</a><ul>
-<li><a href="tibbles.html#exercise-10.6.1">Exercise <span class="exercise-number">10.6.1</span></a></li>
-<li><a href="tibbles.html#exercise-10.6.2">Exercise <span class="exercise-number">10.6.2</span></a></li>
-<li><a href="tibbles.html#exercise-10.6.3">Exercise <span class="exercise-number">10.6.3</span></a></li>
-<li><a href="tibbles.html#exercise-10.6.4">Exercise <span class="exercise-number">10.6.4</span></a></li>
-<li><a href="tibbles.html#exercise-10.6.5">Exercise <span class="exercise-number">10.6.5</span></a></li>
-<li><a href="tibbles.html#exercise-10.6.6">Exercise <span class="exercise-number">10.6.6</span></a></li>
+<li><a href="tibbles.html#exercise-10.5.1">Exercise <span class="exercise-number">10.5.1</span></a></li>
+<li><a href="tibbles.html#exercise-10.5.2">Exercise <span class="exercise-number">10.5.2</span></a></li>
+<li><a href="tibbles.html#exercise-10.5.3">Exercise <span class="exercise-number">10.5.3</span></a></li>
+<li><a href="tibbles.html#exercise-10.5.4">Exercise <span class="exercise-number">10.5.4</span></a></li>
+<li><a href="tibbles.html#exercise-10.5.5">Exercise <span class="exercise-number">10.5.5</span></a></li>
+<li><a href="tibbles.html#exercise-10.5.6">Exercise <span class="exercise-number">10.5.6</span></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>11</b> Data import</a><ul>
-<li class="chapter" data-level="11.1" data-path="data-import.html"><a href="data-import.html#introduction-6"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.1" data-path="data-import.html"><a href="data-import.html#introduction-5"><i class="fa fa-check"></i><b>11.1</b> Introduction</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="data-import.html"><a href="data-import.html#prerequisites-4"><i class="fa fa-check"></i><b>11.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="11.2" data-path="data-import.html"><a href="data-import.html#getting-started"><i class="fa fa-check"></i><b>11.2</b> Getting started</a><ul>
 <li><a href="data-import.html#exercise-11.2.2.1">Exercise <span class="exercise-number">11.2.2.1</span></a></li>
 <li><a href="data-import.html#exercise-11.2.2.2">Exercise <span class="exercise-number">11.2.2.2</span></a></li>
@@ -333,7 +359,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.6" data-path="data-import.html"><a href="data-import.html#other-types-of-data"><i class="fa fa-check"></i><b>11.6</b> Other Types of Data</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>12</b> Tidy Data</a><ul>
-<li class="chapter" data-level="12.1" data-path="tidy-data.html"><a href="tidy-data.html#introduction-7"><i class="fa fa-check"></i><b>12.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.1" data-path="tidy-data.html"><a href="tidy-data.html#introduction-6"><i class="fa fa-check"></i><b>12.1</b> Introduction</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="tidy-data.html"><a href="tidy-data.html#prerequisites-5"><i class="fa fa-check"></i><b>12.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="12.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data-1"><i class="fa fa-check"></i><b>12.2</b> Tidy data</a><ul>
 <li><a href="tidy-data.html#exercise-12.2.1.1">Exercise <span class="exercise-number">12.2.1.1</span></a></li>
 <li><a href="tidy-data.html#exercise-12.2.1.2">Exercise <span class="exercise-number">12.2.1.2</span></a></li>
@@ -350,7 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="tidy-data.html#exercise-12.4.3.2">Exercise <span class="exercise-number">12.4.3.2</span></a></li>
 <li><a href="tidy-data.html#exercise-12.4.3.3">Exercise <span class="exercise-number">12.4.3.3</span></a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="tidy-data.html"><a href="tidy-data.html#missing-values-1"><i class="fa fa-check"></i><b>12.5</b> Missing Values</a><ul>
+<li class="chapter" data-level="12.5" data-path="tidy-data.html"><a href="tidy-data.html#missing-values-2"><i class="fa fa-check"></i><b>12.5</b> Missing Values</a><ul>
 <li><a href="tidy-data.html#exercise-12.5.1.1">Exercise <span class="exercise-number">12.5.1.1</span></a></li>
 <li><a href="tidy-data.html#exercise-12.5.1.2">Exercise <span class="exercise-number">12.5.1.2</span></a></li>
 </ul></li>
@@ -363,7 +391,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.7" data-path="tidy-data.html"><a href="tidy-data.html#non-tidy-data"><i class="fa fa-check"></i><b>12.7</b> Non-Tidy Data</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>13</b> Relational data</a><ul>
-<li class="chapter" data-level="13.1" data-path="relational-data.html"><a href="relational-data.html#introduction-8"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
+<li class="chapter" data-level="13.1" data-path="relational-data.html"><a href="relational-data.html#introduction-7"><i class="fa fa-check"></i><b>13.1</b> Introduction</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="relational-data.html"><a href="relational-data.html#prerequisites-6"><i class="fa fa-check"></i><b>13.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="13.2" data-path="relational-data.html"><a href="relational-data.html#nycflights13"><i class="fa fa-check"></i><b>13.2</b> nycflights13</a><ul>
 <li><a href="relational-data.html#exercise-13.2.1.1">Exercise <span class="exercise-number">13.2.1.1</span></a></li>
 <li><a href="relational-data.html#exercise-13.2.1.2">Exercise <span class="exercise-number">13.2.1.2</span></a></li>
@@ -394,7 +424,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.7" data-path="relational-data.html"><a href="relational-data.html#set-operations"><i class="fa fa-check"></i><b>13.7</b> Set operations</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>14</b> Strings</a><ul>
-<li class="chapter" data-level="14.1" data-path="strings.html"><a href="strings.html#introduction-9"><i class="fa fa-check"></i><b>14.1</b> Introduction</a></li>
+<li class="chapter" data-level="14.1" data-path="strings.html"><a href="strings.html#introduction-8"><i class="fa fa-check"></i><b>14.1</b> Introduction</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="strings.html"><a href="strings.html#prerequisites-7"><i class="fa fa-check"></i><b>14.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="14.2" data-path="strings.html"><a href="strings.html#string-basics"><i class="fa fa-check"></i><b>14.2</b> String Basics</a><ul>
 <li><a href="strings.html#exercise-14.2.5.1">Exercise <span class="exercise-number">14.2.5.1</span></a></li>
 <li><a href="strings.html#exercise-14.2.5.2">Exercise <span class="exercise-number">14.2.5.2</span></a></li>
@@ -430,7 +462,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>15</b> Factors</a><ul>
-<li class="chapter" data-level="15.1" data-path="factors.html"><a href="factors.html#introduction-10"><i class="fa fa-check"></i><b>15.1</b> Introduction</a></li>
+<li class="chapter" data-level="15.1" data-path="factors.html"><a href="factors.html#introduction-9"><i class="fa fa-check"></i><b>15.1</b> Introduction</a></li>
 <li class="chapter" data-level="15.2" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>15.2</b> Creating Factors</a></li>
 <li class="chapter" data-level="15.3" data-path="factors.html"><a href="factors.html#general-social-survey"><i class="fa fa-check"></i><b>15.3</b> General Social Survey</a><ul>
 <li><a href="factors.html#exercise-15.3.1.1">Exercise <span class="exercise-number">15.3.1.1</span></a></li>
@@ -448,7 +480,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>16</b> Dates and times</a><ul>
-<li class="chapter" data-level="16.1" data-path="dates-and-times.html"><a href="dates-and-times.html#introduction-11"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.1" data-path="dates-and-times.html"><a href="dates-and-times.html#introduction-10"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
 <li class="chapter" data-level="16.2" data-path="dates-and-times.html"><a href="dates-and-times.html#creating-datetimes"><i class="fa fa-check"></i><b>16.2</b> Creating date/times</a><ul>
 <li><a href="dates-and-times.html#exercise-16.2.4.1">Exercise <span class="exercise-number">16.2.4.1</span></a></li>
 <li><a href="dates-and-times.html#exercise-16.2.4.2">Exercise <span class="exercise-number">16.2.4.2</span></a></li>
@@ -476,7 +508,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="program-intro.html"><a href="program-intro.html"><i class="fa fa-check"></i><b>17</b> Introduction</a></li>
 <li class="chapter" data-level="18" data-path="pipes.html"><a href="pipes.html"><i class="fa fa-check"></i><b>18</b> Pipes</a></li>
 <li class="chapter" data-level="19" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>19</b> Functions</a><ul>
-<li class="chapter" data-level="19.1" data-path="functions.html"><a href="functions.html#introduction-12"><i class="fa fa-check"></i><b>19.1</b> Introduction</a></li>
+<li class="chapter" data-level="19.1" data-path="functions.html"><a href="functions.html#introduction-11"><i class="fa fa-check"></i><b>19.1</b> Introduction</a><ul>
+<li class="chapter" data-level="19.1.1" data-path="functions.html"><a href="functions.html#prerequisites-8"><i class="fa fa-check"></i><b>19.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="19.2" data-path="functions.html"><a href="functions.html#when-should-you-write-a-function"><i class="fa fa-check"></i><b>19.2</b> When should you write a function?</a><ul>
 <li><a href="functions.html#exercise-19.2.1.1">Exercise <span class="exercise-number">19.2.1.1</span></a></li>
 <li><a href="functions.html#exercise-19.2.1.2">Exercise <span class="exercise-number">19.2.1.2</span></a></li>
@@ -510,7 +544,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.7" data-path="functions.html"><a href="functions.html#environment"><i class="fa fa-check"></i><b>19.7</b> Environment</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>20</b> Vectors</a><ul>
-<li class="chapter" data-level="20.1" data-path="vectors.html"><a href="vectors.html#introduction-13"><i class="fa fa-check"></i><b>20.1</b> Introduction</a></li>
+<li class="chapter" data-level="20.1" data-path="vectors.html"><a href="vectors.html#introduction-12"><i class="fa fa-check"></i><b>20.1</b> Introduction</a></li>
 <li class="chapter" data-level="20.2" data-path="vectors.html"><a href="vectors.html#vector-basics"><i class="fa fa-check"></i><b>20.2</b> Vector Basics</a></li>
 <li class="chapter" data-level="20.3" data-path="vectors.html"><a href="vectors.html#important-types-of-atomic-vector"><i class="fa fa-check"></i><b>20.3</b> Important Types of Atomic Vector</a><ul>
 <li><a href="vectors.html#exercise-20.3.5.1">Exercise <span class="exercise-number">20.3.5.1</span></a></li>
@@ -539,7 +573,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>21</b> Iteration</a><ul>
-<li class="chapter" data-level="21.1" data-path="iteration.html"><a href="iteration.html#introduction-14"><i class="fa fa-check"></i><b>21.1</b> Introduction</a></li>
+<li class="chapter" data-level="21.1" data-path="iteration.html"><a href="iteration.html#introduction-13"><i class="fa fa-check"></i><b>21.1</b> Introduction</a></li>
 <li class="chapter" data-level="21.2" data-path="iteration.html"><a href="iteration.html#for-loops"><i class="fa fa-check"></i><b>21.2</b> For Loops</a><ul>
 <li><a href="iteration.html#exercise-21.2.1.1">Exercise <span class="exercise-number">21.2.1.1</span></a></li>
 <li><a href="iteration.html#exercise-21.2.1.2">Exercise <span class="exercise-number">21.2.1.2</span></a></li>
@@ -574,7 +608,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>IV Model</b></span></li>
 <li class="chapter" data-level="22" data-path="model-intro.html"><a href="model-intro.html"><i class="fa fa-check"></i><b>22</b> Introduction</a></li>
 <li class="chapter" data-level="23" data-path="model-basics.html"><a href="model-basics.html"><i class="fa fa-check"></i><b>23</b> Model basics</a><ul>
-<li class="chapter" data-level="23.1" data-path="model-basics.html"><a href="model-basics.html#prerequisites-1"><i class="fa fa-check"></i><b>23.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="23.1" data-path="model-basics.html"><a href="model-basics.html#prerequisites-9"><i class="fa fa-check"></i><b>23.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="23.2" data-path="model-basics.html"><a href="model-basics.html#a-simple-model"><i class="fa fa-check"></i><b>23.2</b> A simple model</a><ul>
 <li><a href="model-basics.html#exercise-23.2.1.1">Exercise <span class="exercise-number">23.2.1.1</span></a></li>
 <li><a href="model-basics.html#exercise-23.2.1.2">Exercise <span class="exercise-number">23.2.1.2</span></a></li>
@@ -592,11 +626,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="model-basics.html#exercise-23.4.5.3">Exercise <span class="exercise-number">23.4.5.3</span></a></li>
 <li><a href="model-basics.html#exercise-23.4.5.4">Exercise <span class="exercise-number">23.4.5.4</span></a></li>
 </ul></li>
-<li class="chapter" data-level="23.5" data-path="model-basics.html"><a href="model-basics.html#missing-values-2"><i class="fa fa-check"></i><b>23.5</b> Missing values</a></li>
+<li class="chapter" data-level="23.5" data-path="model-basics.html"><a href="model-basics.html#missing-values-3"><i class="fa fa-check"></i><b>23.5</b> Missing values</a></li>
 <li class="chapter" data-level="23.6" data-path="model-basics.html"><a href="model-basics.html#other-model-families"><i class="fa fa-check"></i><b>23.6</b> Other model families</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="model-building.html"><a href="model-building.html"><i class="fa fa-check"></i><b>24</b> Model building</a><ul>
-<li class="chapter" data-level="24.1" data-path="model-building.html"><a href="model-building.html#introduction-15"><i class="fa fa-check"></i><b>24.1</b> Introduction</a></li>
+<li class="chapter" data-level="24.1" data-path="model-building.html"><a href="model-building.html#introduction-14"><i class="fa fa-check"></i><b>24.1</b> Introduction</a></li>
 <li class="chapter" data-level="24.2" data-path="model-building.html"><a href="model-building.html#why-are-low-quality-diamonds-more-expensive"><i class="fa fa-check"></i><b>24.2</b> Why are low quality diamonds more expensive?</a><ul>
 <li><a href="model-building.html#exercise-24.2.3.1">Exercise <span class="exercise-number">24.2.3.1</span></a></li>
 <li><a href="model-building.html#exercise-24.2.3.2">Exercise <span class="exercise-number">24.2.3.2</span></a></li>
@@ -616,7 +650,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="24.4" data-path="model-building.html"><a href="model-building.html#learning-more-about-models"><i class="fa fa-check"></i><b>24.4</b> Learning more about models</a></li>
 </ul></li>
 <li class="chapter" data-level="25" data-path="many-models.html"><a href="many-models.html"><i class="fa fa-check"></i><b>25</b> Many models</a><ul>
-<li class="chapter" data-level="25.1" data-path="many-models.html"><a href="many-models.html#introduction-16"><i class="fa fa-check"></i><b>25.1</b> Introduction</a></li>
+<li class="chapter" data-level="25.1" data-path="many-models.html"><a href="many-models.html#introduction-15"><i class="fa fa-check"></i><b>25.1</b> Introduction</a></li>
 <li class="chapter" data-level="25.2" data-path="many-models.html"><a href="many-models.html#gapminder"><i class="fa fa-check"></i><b>25.2</b> Gapminder</a><ul>
 <li><a href="many-models.html#exercise-25.2.5.1">Exercise <span class="exercise-number">25.2.5.1</span></a></li>
 <li><a href="many-models.html#exercise-25.2.5.2">Exercise <span class="exercise-number">25.2.5.2</span></a></li>
@@ -636,7 +670,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>V Communicate</b></span></li>
 <li class="chapter" data-level="26" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>26</b> Introduction</a></li>
 <li class="chapter" data-level="27" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>27</b> R Markdown</a><ul>
-<li class="chapter" data-level="27.1" data-path="r-markdown.html"><a href="r-markdown.html#introduction-17"><i class="fa fa-check"></i><b>27.1</b> Introduction</a></li>
+<li class="chapter" data-level="27.1" data-path="r-markdown.html"><a href="r-markdown.html#introduction-16"><i class="fa fa-check"></i><b>27.1</b> Introduction</a></li>
 <li class="chapter" data-level="27.2" data-path="r-markdown.html"><a href="r-markdown.html#r-markdown-basics"><i class="fa fa-check"></i><b>27.2</b> R Markdown Basics</a><ul>
 <li><a href="r-markdown.html#exercise-27.2.1.1">Exercise <span class="exercise-number">27.2.1.1</span></a></li>
 <li><a href="r-markdown.html#exercise-27.2.1.2">Exercise <span class="exercise-number">27.2.1.2</span></a></li>
@@ -658,7 +692,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="27.6" data-path="r-markdown.html"><a href="r-markdown.html#learning-more-1"><i class="fa fa-check"></i><b>27.6</b> Learning more</a></li>
 </ul></li>
 <li class="chapter" data-level="28" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>28</b> Graphics for communication</a><ul>
-<li class="chapter" data-level="28.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#introduction-18"><i class="fa fa-check"></i><b>28.1</b> Introduction</a></li>
+<li class="chapter" data-level="28.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#introduction-17"><i class="fa fa-check"></i><b>28.1</b> Introduction</a><ul>
+<li class="chapter" data-level="28.1.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#prerequisites-10"><i class="fa fa-check"></i><b>28.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="28.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>28.2</b> Label</a><ul>
 <li><a href="graphics-for-communication.html#exercise-28.2.1.1">Exercise <span class="exercise-number">28.2.1.1</span></a></li>
 <li><a href="graphics-for-communication.html#exercise-28.2.1.2">Exercise <span class="exercise-number">28.2.1.2</span></a></li>
@@ -684,6 +720,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="29" data-path="r-markdown-formats.html"><a href="r-markdown-formats.html"><i class="fa fa-check"></i><b>29</b> R Markdown formats</a></li>
 <li class="chapter" data-level="30" data-path="r-markdown-workflow.html"><a href="r-markdown-workflow.html"><i class="fa fa-check"></i><b>30</b> R Markdown workflow</a></li>
+<li class="divider"></li>
+<a href="https://bookdown.org" target="https://bookdown.org/yihui/bookdown">Published with bookdown</a>
+
 </ul>
 
       </nav>
@@ -701,26 +740,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
+<div class = rmdreview>I want your feedback to make the book better for you and other readers. To add your annotation, <span style="background-color: #3297FD; color: white">select some text</span> and then click the <i class="h-icon-annotate"></i> on the pop-up menu. To see the annotations of others, click the <i class="h-icon-chevron-left"></i> in the upper right hand corner of the page <i class="fa fa-arrow-circle-right  fa-rotate-315" aria-hidden="true"></i>
+</div>
 <div id="workflow-basics" class="section level1">
-<h1><span class="header-section-number">4</span> Workflow: basics</h1>
-<div id="prerequisites" class="section level2 unnumbered">
-<h2>Prerequisites</h2>
+<h1><span class="header-section-number">3</span> Workflow: basics</h1>
+<p>No exercises</p>
+<div id="prerequisites-1" class="section level2">
+<h2><span class="header-section-number">3.1</span> Prerequisites</h2>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre>
 </div>
 <div id="coding-basics" class="section level2">
-<h2><span class="header-section-number">4.1</span> Coding basics</h2>
+<h2><span class="header-section-number">3.2</span> Coding basics</h2>
 <p>No exercises</p>
 </div>
 <div id="whats-in-a-name" class="section level2">
-<h2><span class="header-section-number">4.2</span> What’s in a name?</h2>
+<h2><span class="header-section-number">3.3</span> What’s in a name?</h2>
 <p>No exercises</p>
 </div>
 <div id="calling-functions" class="section level2">
-<h2><span class="header-section-number">4.3</span> Calling functions</h2>
+<h2><span class="header-section-number">3.4</span> Calling functions</h2>
 <p>No exercises</p>
 </div>
 <div id="practice" class="section level2">
-<h2><span class="header-section-number">4.4</span> Practice</h2>
+<h2><span class="header-section-number">3.5</span> Practice</h2>
 <div id="exercise-4.4.1" class="section level3 unnumbered exercise">
 <h3>Exercise <span class="exercise-number">4.4.1</span></h3>
 <div class="question">
@@ -730,7 +772,7 @@ my_varıable
 <span class="co">#&gt; Error in eval(expr, envir, enclos): object &#39;my_varıable&#39; not found</span></code></pre>
 </div>
 <div class="answer">
-<p>The variable being printed is <code>my_varıable</code>, not <code>my_variable</code>:
+<p>The variable name is <code>my_variable</code>, not <code>my_varıable</code>:
 the seventh character is “ı” (“<a href="https://en.wikipedia.org/wiki/Dotted_and_dotless_I">LATIN SMALL LETTER DOTLESS I</a>”), not “i”.</p>
 <p>While it wouldn’t have helped much in this case, the importance of
 distinguishing characters in code is reasons why fonts which clearly
@@ -764,18 +806,16 @@ it is a good indication that the original name was not a good one.</p></li>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">dota =</span> mpg) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))
 <span class="co">#&gt; Error in FUN(X[[i]], ...): object &#39;displ&#39; not found</span></code></pre>
-<p><img src="workflow-basics_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" />
-The error message is <code>argument &quot;data&quot; is missing, with no default</code>.</p>
-<p>It looks like a typo, <code>dota</code> instead of <code>data</code>.</p>
+<p><img src="workflow-basics_files/figure-html/unnamed-chunk-4-1.png" width="70%" style="display: block; margin: auto;" /></p>
+<p>The error message is argument <code>data</code> is missing, with no default. This is a typo, <code>dota</code> instead of <code>data</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> mpg) <span class="op">+</span>
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> displ, <span class="dt">y =</span> hwy))</code></pre>
 <p><img src="workflow-basics_files/figure-html/unnamed-chunk-5-1.png" width="70%" style="display: block; margin: auto;" /></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">fliter</span>(mpg, <span class="dt">cyl =</span> <span class="dv">8</span>)
 <span class="co">#&gt; Error in fliter(mpg, cyl = 8): could not find function &quot;fliter&quot;</span></code></pre>
-<p>R could not find the function <code>fliter()</code> because we made a typo: <code>fliter</code> instead of <code>filter</code>.</p>
+<p>R could not find the function <code>fliter()</code> because typo: <code>fliter</code> instead of <code>filter</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(mpg, <span class="dt">cyl =</span> <span class="dv">8</span>)
 <span class="co">#&gt; Error: `cyl` (`cyl = 8`) must not be named, do you need `==`?</span></code></pre>
-<p>We aren’t done yet. But the error message gives a suggestion. Let’s follow it.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(mpg, cyl <span class="op">==</span><span class="st"> </span><span class="dv">8</span>)
 <span class="co">#&gt; # A tibble: 70 x 11</span>
 <span class="co">#&gt;   manufacturer model  displ  year   cyl trans drv     cty   hwy fl    class</span>
@@ -789,8 +829,7 @@ The error message is <code>argument &quot;data&quot; is missing, with no default
 <span class="co">#&gt; # ... with 64 more rows</span></code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(diamond, carat <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>)
 <span class="co">#&gt; Error in filter(diamond, carat &gt; 3): object &#39;diamond&#39; not found</span></code></pre>
-<p>R says it can’t find the object <code>diamond</code>.
-This is a typo; the data frame is named <code>diamonds</code>.</p>
+<p>R can’t find the object <code>diamond</code> because typo; the data frame is named <code>diamonds</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">filter</span>(diamonds, carat <span class="op">&gt;</span><span class="st"> </span><span class="dv">3</span>)
 <span class="co">#&gt; # A tibble: 32 x 10</span>
 <span class="co">#&gt;   carat cut     color clarity depth table price     x     y     z</span>
@@ -802,8 +841,6 @@ This is a typo; the data frame is named <code>diamonds</code>.</p>
 <span class="co">#&gt; 5  3.02 Fair    I     I1       65.2    56 10577  9.11  9.02  5.91</span>
 <span class="co">#&gt; 6  3.01 Fair    H     I1       56.1    62 10761  9.54  9.38  5.31</span>
 <span class="co">#&gt; # ... with 26 more rows</span></code></pre>
-<p>How did I know? I started typing in <code>diamond</code> and RStudio completed it to <code>diamonds</code>.
-Since <code>diamonds</code> includes the variable <code>carat</code> and the code works, that appears to have been the problem.</p>
 </div>
 </div>
 <div id="exercise-4.4.3" class="section level3 unnumbered exercise">
@@ -812,12 +849,17 @@ Since <code>diamonds</code> includes the variable <code>carat</code> and the cod
 <p>Press <em>Alt + Shift + K</em>. What happens? How can you get to the same place using the menus?</p>
 </div>
 <div class="answer">
-<p>This gives a menu with keyboard shortcuts. This can be found in the menu under <code>Tools -&gt; Keyboard Shortcuts Help</code>.</p>
+<p>Brings up a menu with keyboard shortcuts. Found in the menu under <code>Tools -&gt; Keyboard Shortcuts Help</code>.</p>
 </div>
 
 </div>
 </div>
 </div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-61453123-2'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             </section>
 
           </div>
@@ -837,14 +879,24 @@ Since <code>diamonds</code> includes the variable <code>carat</code> and the cod
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": false,
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper", "vk"]
+},
 "fontsettings": {
 "theme": "white",
 "family": "sans",
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jrnold/r4ds-exercise-solutions/edit/master/workflow-basics.Rmd",
+"link": "https://github.com/mnblanco/R4DSSolution/edit/master/workflow-basics.Rmd",
 "text": "Edit"
 },
 "history": {

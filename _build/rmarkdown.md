@@ -9,6 +9,8 @@ editor_options:
 
 ## Introduction
 
+No exercises
+
 ## R Markdown Basics
 
 ### Exercise <span class="exercise-number">27.2.1.1</span> {.unnumbered .exercise}
@@ -21,7 +23,7 @@ Create a new notebook using *File > New File > R Notebook*. Read the instruction
 
 <div class="answer">
 
-This exercise is left to the reader.
+Keyboard shortcut to knit a file is `Cmd/Ctrl + Alt + K`.
 
 </div>
 
@@ -33,8 +35,7 @@ Create a new R Markdown document with *File > New File > R Markdown ...* Knit it
 
 <div class="answer">
 
-This exercise is mostly left to the reader.
-Recall that the keyboard shortcut to knit a file is `Cmd/Ctrl + Alt + K`.
+Keyboard shortcut to knit a file is `Cmd/Ctrl + Alt + K`.
 
 </div>
 
@@ -50,12 +51,15 @@ R notebook files show the output inside the editor, while hiding the console. R 
 They differ in the value of `output` in their YAML headers.
 
 The YAML header for the R notebook will have the line,
+
 ```
 ---
 ouptut: html_notebook
 ---
 ```
+
 For example, this is a R notebook,
+
 ```
 ---
 title: "Diamond sizes"
@@ -67,6 +71,7 @@ Text of the document.
 ```
 
 The YAML header for the R markdown file will have the line,
+
 ```
 ouptut: html_document
 ```
@@ -101,11 +106,8 @@ build the PDF output — RStudio will prompt you if this is necessary.)
 
 <div class="answer">
 
-They produce different outputs, both in the final documents and intermediate
-files (notably the type of plots produced). The only difference in the inputs
-is the value of `output` in the YAML header: `word_document` for Word
-documents, `pdf_document` for PDF documents, and `html_document` for HTML
-documents.
+Each R Markdown document built-in formats produce different outputs, both in the final documents and intermediate
+files (notably the type of plots produced). The only difference in the inputs is the value of `output` in the YAML header: `word_document` for Word documents, `pdf_document` for PDF documents, and `html_document` for HTML documents.
 
 </div>
 
@@ -120,6 +122,7 @@ Practice what you’ve learned by creating a brief CV. The title should be your 
 <div class="answer">
 
 A minimal example is the following CV.
+
 
 ```
 ---
@@ -144,8 +147,6 @@ title: "Hadley Wickham"
 -   Bachelor of Human Biology, First Class Honours, The University of Auckland, 
     Auckland, New Zealand, **1999**.
 ```
-
-Your own example could be much more detailed.
 
 </div>
 

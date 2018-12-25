@@ -7,6 +7,10 @@ editor_options:
 
 ## Introduction
 
+No exercises
+
+### Prerequisites
+
 Will use data from **nycflights13**
 
 ```{r message=FALSE,cache=FALSE}
@@ -16,15 +20,15 @@ library("tidyverse")
 
 ## dplyr basics
 
-- Pick observations by their values (filter()).
-- Reorder the rows (arrange()).
-- Pick variables by their names (select()).
-- Create new variables with functions of existing variables (mutate()).
-- Collapse many values down to a single summary (summarise()).
+- Pick observations by their values (filter())
+- Reorder the rows (arrange())
+- Pick variables by their names (select())
+- Create new variables with functions of existing variables (mutate())
+- Collapse many values down to a single summary (summarise())
 
 ## Filter rows with `filter()`
 
-```{r}
+```{r error=TRUE}
 # select all flights on January 1st
 filter(flights, month == 1, day == 1)
 jan1 <- filter(flights, month == 1, day == 1)
@@ -62,34 +66,6 @@ filter(flights, arr_delay <= 120, dep_delay <= 120)
 ```
 
 ### Missing values
-
-```{r}
-NA > 5
-
-10 == NA
-
-NA + 10
-
-NA / 2
-
-NA == NA
-
-# Let x be Mary's age. We don't know how old she is.
-x <- NA
-
-# Let y be John's age. We don't know how old he is.
-y <- NA
-
-# Are John and Mary the same age?
-x == y
-
-is.na(x)
-
-df <- tibble(x = c(1, NA, 3))
-filter(df, x > 1)
-
-filter(df, is.na(x) | x > 1)
-```
 
 ### Exercise <span class="exercise-number">5.2.4.1</span> {.unnumbered .exercise}
 
@@ -329,9 +305,11 @@ left_earliest <- filter(flights, dep_delay == min(dep_delay, na.rm = TRUE)) %>%
 ```
 
 Find the most delayed flights by sorting the table by departure delay, `dep_delay`, in descending order.
+
 ```{r}
 arrange(flights, desc(dep_delay))
 ```
+
 The most delayed flight was `r most_delayed$carrier` `r most_delayed$flight`, `r most_delayed$origin` to `r most_delayed$dest`, which was scheduled to leave on `r format(most_delayed$date, "%B %d, %Y %H:%M")`.
 Note that the departure time is given as `r most_delayed$dep_time`, which seems to be less than the scheduled departure time.
 But the departure was delayed `r comma_int(most_delayed$dep_delay)` minutes, which is `r most_delayed$dep_delay %/% 60` hours, `r most_delayed$dep_delay %% 60` minutes.

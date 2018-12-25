@@ -18,21 +18,21 @@
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="10 Tibbles | R for Data Science Solutions" />
-  <meta name="twitter:site" content="@jrnld" />
+  <meta name="twitter:site" content="@mnblanco" />
   <meta name="twitter:description" content="This contains the solutions to the exercises in the book, R for Data Science, by Garrett Grolemund and Hadley Wickham." />
   
 
 <meta name="author" content="Marjorie Blanco">
 
 
-<meta name="date" content="2018-12-24">
+<meta name="date" content="2018-12-25">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="introduction-4.html">
+<link rel="prev" href="introduction-3.html">
 <link rel="next" href="data-import.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -54,6 +54,24 @@
 <script src="libs/viz-0.3/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.0/grViz.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-61453123-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-61453123-2');
+</script>
+<!--
+License: MIT License
+Copyright (c) 2016 Open Review Toolkit & Ben Marwick
+
+See https://github.com/benmarwick/bookdown-ort/blob/master/hypothesis.html
+-->
+
+<script async defer src="https://hypothes.is/embed.js"></script>
+<script>window.hypothesisConfig = function () { return {showHighlights: false}; };</script>
 
 
 <style type="text/css">
@@ -122,8 +140,9 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<link rel="stylesheet" href="r4ds.css" type="text/css" />
-<link rel="stylesheet" href="r4ds-solutions.css" type="text/css" />
+<link rel="stylesheet" href="includes/r4ds.css" type="text/css" />
+<link rel="stylesheet" href="includes/r4ds-solutions.css" type="text/css" />
+<link rel="stylesheet" href="includes/ort.css" type="text/css" />
 </head>
 
 <body>
@@ -137,37 +156,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <ul class="summary">
 <li><strong><a href="./">R for Data Science Solutions</a></strong></li>
+<li><div id="google_translate_element"></div></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Welcome</a></li>
-<li class="chapter" data-level="1" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#organization"><i class="fa fa-check"></i>Organization</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#dependencies"><i class="fa fa-check"></i>Dependencies</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#bugscontributing"><i class="fa fa-check"></i>Bugs/Contributing</a></li>
-<li class="chapter" data-level="" data-path="introduction.html"><a href="introduction.html#colophon"><i class="fa fa-check"></i>Colophon</a></li>
-</ul></li>
 <li class="part"><span><b>I Explore</b></span></li>
-<li class="chapter" data-level="2" data-path="explore-intro.html"><a href="explore-intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
-<li class="chapter" data-level="3" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>3</b> Data Visualisation</a><ul>
-<li class="chapter" data-level="3.1" data-path="data-visualisation.html"><a href="data-visualisation.html#introduction-1"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="data-visualisation.html"><a href="data-visualisation.html#first-steps"><i class="fa fa-check"></i><b>3.2</b> First Steps</a><ul>
-<li><a href="data-visualisation.html#exercise-3.2.4.1.">Exercise <span class="exercise-number">3.2.4.1</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.2.4.2.">Exercise <span class="exercise-number">3.2.4.2</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.2.4.3.">Exercise <span class="exercise-number">3.2.4.3</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.2.4.4.">Exercise <span class="exercise-number">3.2.4.4</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.2.4.5.">Exercise <span class="exercise-number">3.2.4.5</span>.</a></li>
+<li class="chapter" data-level="1" data-path="explore-intro.html"><a href="explore-intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="data-visualisation.html"><a href="data-visualisation.html"><i class="fa fa-check"></i><b>2</b> Data Visualisation</a><ul>
+<li class="chapter" data-level="2.1" data-path="data-visualisation.html"><a href="data-visualisation.html#introduction"><i class="fa fa-check"></i><b>2.1</b> Introduction</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="data-visualisation.html"><a href="data-visualisation.html#prerequisites"><i class="fa fa-check"></i><b>2.1.1</b> Prerequisites</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="data-visualisation.html"><a href="data-visualisation.html#aesthetic-mappings"><i class="fa fa-check"></i><b>3.3</b> Aesthetic mappings</a><ul>
+<li class="chapter" data-level="2.2" data-path="data-visualisation.html"><a href="data-visualisation.html#first-steps"><i class="fa fa-check"></i><b>2.2</b> First Steps</a><ul>
+<li><a href="data-visualisation.html#exercise-3.2.4.1">Exercise <span class="exercise-number">3.2.4.1</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.2.4.2">Exercise <span class="exercise-number">3.2.4.2</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.2.4.3">Exercise <span class="exercise-number">3.2.4.3</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.2.4.4">Exercise <span class="exercise-number">3.2.4.4</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.2.4.5">Exercise <span class="exercise-number">3.2.4.5</span></a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="data-visualisation.html"><a href="data-visualisation.html#aesthetic-mappings"><i class="fa fa-check"></i><b>2.3</b> Aesthetic mappings</a><ul>
 <li><a href="data-visualisation.html#exercise-3.3.1.1">Exercise <span class="exercise-number">3.3.1.1</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.3.1.2">Exercise <span class="exercise-number">3.3.1.2</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.3.1.3">Exercise <span class="exercise-number">3.3.1.3</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.3.1.4">Exercise <span class="exercise-number">3.3.1.4</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.3.1.5">Exercise <span class="exercise-number">3.3.1.5</span></a></li>
-<li><a href="data-visualisation.html#exercise-3.3.1.6.">Exercise <span class="exercise-number">3.3.1.6</span>.</a></li>
+<li><a href="data-visualisation.html#exercise-3.3.1.6">Exercise <span class="exercise-number">3.3.1.6</span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.4" data-path="data-visualisation.html"><a href="data-visualisation.html#common-problems"><i class="fa fa-check"></i><b>3.4</b> Common problems</a></li>
-<li class="chapter" data-level="3.5" data-path="data-visualisation.html"><a href="data-visualisation.html#facets"><i class="fa fa-check"></i><b>3.5</b> Facets</a><ul>
+<li class="chapter" data-level="2.4" data-path="data-visualisation.html"><a href="data-visualisation.html#common-problems"><i class="fa fa-check"></i><b>2.4</b> Common problems</a></li>
+<li class="chapter" data-level="2.5" data-path="data-visualisation.html"><a href="data-visualisation.html#facets"><i class="fa fa-check"></i><b>2.5</b> Facets</a><ul>
 <li><a href="data-visualisation.html#exercise-3.5.1.1">Exercise <span class="exercise-number">3.5.1.1</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.5.1.2">Exercise <span class="exercise-number">3.5.1.2</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.5.1.3">Exercise <span class="exercise-number">3.5.1.3</span></a></li>
@@ -175,7 +190,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="data-visualisation.html#exercise-3.5.1.5">Exercise <span class="exercise-number">3.5.1.5</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.5.1.6">Exercise <span class="exercise-number">3.5.1.6</span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="data-visualisation.html"><a href="data-visualisation.html#geometric-objects"><i class="fa fa-check"></i><b>3.6</b> Geometric Objects</a><ul>
+<li class="chapter" data-level="2.6" data-path="data-visualisation.html"><a href="data-visualisation.html#geometric-objects"><i class="fa fa-check"></i><b>2.6</b> Geometric Objects</a><ul>
 <li><a href="data-visualisation.html#exercise-3.6.1.1">Exercise <span class="exercise-number">3.6.1.1</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.6.1.2">Exercise <span class="exercise-number">3.6.1.2</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.6.1.3">Exercise <span class="exercise-number">3.6.1.3</span></a></li>
@@ -183,59 +198,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="data-visualisation.html#exercise-3.6.1.5">Exercise <span class="exercise-number">3.6.1.5</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.6.1.6">Exercise <span class="exercise-number">3.6.1.6</span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="data-visualisation.html"><a href="data-visualisation.html#statistical-transformations"><i class="fa fa-check"></i><b>3.7</b> Statistical Transformations</a><ul>
+<li class="chapter" data-level="2.7" data-path="data-visualisation.html"><a href="data-visualisation.html#statistical-transformations"><i class="fa fa-check"></i><b>2.7</b> Statistical Transformations</a><ul>
 <li><a href="data-visualisation.html#exercise-3.7.1">Exercise <span class="exercise-number">3.7.1</span></a></li>
-<li><a href="data-visualisation.html#exercise-3.7.2.">Exercise <span class="exercise-number">3.7.2</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.7.3.">Exercise <span class="exercise-number">3.7.3</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.7.4.">Exercise <span class="exercise-number">3.7.4</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.7.5.">Exercise <span class="exercise-number">3.7.5</span>.</a></li>
+<li><a href="data-visualisation.html#exercise-3.7.2">Exercise <span class="exercise-number">3.7.2</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.7.3">Exercise <span class="exercise-number">3.7.3</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.7.4">Exercise <span class="exercise-number">3.7.4</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.7.5">Exercise <span class="exercise-number">3.7.5</span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.8" data-path="data-visualisation.html"><a href="data-visualisation.html#position-adjustments"><i class="fa fa-check"></i><b>3.8</b> Position Adjustments</a><ul>
-<li><a href="data-visualisation.html#exercise-3.8.1.1.">Exercise <span class="exercise-number">3.8.1.1</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.8.1.2.">Exercise <span class="exercise-number">3.8.1.2</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.8.1.3.">Exercise <span class="exercise-number">3.8.1.3</span>.</a></li>
-<li><a href="data-visualisation.html#exercise-3.8.1.4.">Exercise <span class="exercise-number">3.8.1.4</span>.</a></li>
+<li class="chapter" data-level="2.8" data-path="data-visualisation.html"><a href="data-visualisation.html#position-adjustments"><i class="fa fa-check"></i><b>2.8</b> Position Adjustments</a><ul>
+<li><a href="data-visualisation.html#exercise-3.8.1.1">Exercise <span class="exercise-number">3.8.1.1</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.8.1.2">Exercise <span class="exercise-number">3.8.1.2</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.8.1.3">Exercise <span class="exercise-number">3.8.1.3</span></a></li>
+<li><a href="data-visualisation.html#exercise-3.8.1.4">Exercise <span class="exercise-number">3.8.1.4</span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.9" data-path="data-visualisation.html"><a href="data-visualisation.html#coordinate-systems"><i class="fa fa-check"></i><b>3.9</b> Coordinate Systems</a><ul>
+<li class="chapter" data-level="2.9" data-path="data-visualisation.html"><a href="data-visualisation.html#coordinate-systems"><i class="fa fa-check"></i><b>2.9</b> Coordinate Systems</a><ul>
 <li><a href="data-visualisation.html#exercise-3.9.1.1">Exercise <span class="exercise-number">3.9.1.1</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.9.1.2">Exercise <span class="exercise-number">3.9.1.2</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.9.1.3">Exercise <span class="exercise-number">3.9.1.3</span></a></li>
 <li><a href="data-visualisation.html#exercise-3.9.1.4">Exercise <span class="exercise-number">3.9.1.4</span></a></li>
 </ul></li>
-<li class="chapter" data-level="3.10" data-path="data-visualisation.html"><a href="data-visualisation.html#the-layered-grammar-of-graphics"><i class="fa fa-check"></i><b>3.10</b> The Layered Grammar of Graphics</a></li>
+<li class="chapter" data-level="2.10" data-path="data-visualisation.html"><a href="data-visualisation.html#the-layered-grammar-of-graphics"><i class="fa fa-check"></i><b>2.10</b> The Layered Grammar of Graphics</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>4</b> Workflow: basics</a><ul>
-<li class="chapter" data-level="" data-path="workflow-basics.html"><a href="workflow-basics.html#prerequisites"><i class="fa fa-check"></i>Prerequisites</a></li>
-<li class="chapter" data-level="4.1" data-path="workflow-basics.html"><a href="workflow-basics.html#coding-basics"><i class="fa fa-check"></i><b>4.1</b> Coding basics</a></li>
-<li class="chapter" data-level="4.2" data-path="workflow-basics.html"><a href="workflow-basics.html#whats-in-a-name"><i class="fa fa-check"></i><b>4.2</b> What’s in a name?</a></li>
-<li class="chapter" data-level="4.3" data-path="workflow-basics.html"><a href="workflow-basics.html#calling-functions"><i class="fa fa-check"></i><b>4.3</b> Calling functions</a></li>
-<li class="chapter" data-level="4.4" data-path="workflow-basics.html"><a href="workflow-basics.html#practice"><i class="fa fa-check"></i><b>4.4</b> Practice</a><ul>
+<li class="chapter" data-level="3" data-path="workflow-basics.html"><a href="workflow-basics.html"><i class="fa fa-check"></i><b>3</b> Workflow: basics</a><ul>
+<li class="chapter" data-level="3.1" data-path="workflow-basics.html"><a href="workflow-basics.html#prerequisites-1"><i class="fa fa-check"></i><b>3.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="3.2" data-path="workflow-basics.html"><a href="workflow-basics.html#coding-basics"><i class="fa fa-check"></i><b>3.2</b> Coding basics</a></li>
+<li class="chapter" data-level="3.3" data-path="workflow-basics.html"><a href="workflow-basics.html#whats-in-a-name"><i class="fa fa-check"></i><b>3.3</b> What’s in a name?</a></li>
+<li class="chapter" data-level="3.4" data-path="workflow-basics.html"><a href="workflow-basics.html#calling-functions"><i class="fa fa-check"></i><b>3.4</b> Calling functions</a></li>
+<li class="chapter" data-level="3.5" data-path="workflow-basics.html"><a href="workflow-basics.html#practice"><i class="fa fa-check"></i><b>3.5</b> Practice</a><ul>
 <li><a href="workflow-basics.html#exercise-4.4.1">Exercise <span class="exercise-number">4.4.1</span></a></li>
 <li><a href="workflow-basics.html#exercise-4.4.2">Exercise <span class="exercise-number">4.4.2</span></a></li>
 <li><a href="workflow-basics.html#exercise-4.4.3">Exercise <span class="exercise-number">4.4.3</span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>5</b> Data transformation</a><ul>
-<li class="chapter" data-level="5.1" data-path="data-transformation.html"><a href="data-transformation.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.2" data-path="data-transformation.html"><a href="data-transformation.html#filter-rows-with-filter"><i class="fa fa-check"></i><b>5.2</b> Filter rows with <code>filter()</code></a><ul>
+<li class="chapter" data-level="4" data-path="data-transformation.html"><a href="data-transformation.html"><i class="fa fa-check"></i><b>4</b> Data transformation</a><ul>
+<li class="chapter" data-level="4.1" data-path="data-transformation.html"><a href="data-transformation.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="data-transformation.html"><a href="data-transformation.html#prerequisites-2"><i class="fa fa-check"></i><b>4.1.1</b> Prerequisites</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-transformation.html"><a href="data-transformation.html#dplyr-basics"><i class="fa fa-check"></i><b>4.2</b> dplyr basics</a></li>
+<li class="chapter" data-level="4.3" data-path="data-transformation.html"><a href="data-transformation.html#filter-rows-with-filter"><i class="fa fa-check"></i><b>4.3</b> Filter rows with <code>filter()</code></a><ul>
+<li class="chapter" data-level="4.3.1" data-path="data-transformation.html"><a href="data-transformation.html#comparisons"><i class="fa fa-check"></i><b>4.3.1</b> Comparisons</a></li>
+<li class="chapter" data-level="4.3.2" data-path="data-transformation.html"><a href="data-transformation.html#logical-operators"><i class="fa fa-check"></i><b>4.3.2</b> Logical operators</a></li>
+<li class="chapter" data-level="4.3.3" data-path="data-transformation.html"><a href="data-transformation.html#missing-values"><i class="fa fa-check"></i><b>4.3.3</b> Missing values</a></li>
 <li><a href="data-transformation.html#exercise-5.2.4.1">Exercise <span class="exercise-number">5.2.4.1</span></a></li>
 <li><a href="data-transformation.html#exercise-5.2.4.2">Exercise <span class="exercise-number">5.2.4.2</span></a></li>
 <li><a href="data-transformation.html#exercise-5.2.4.3">Exercise <span class="exercise-number">5.2.4.3</span></a></li>
 <li><a href="data-transformation.html#exercise-5.2.4.4">Exercise <span class="exercise-number">5.2.4.4</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="data-transformation.html"><a href="data-transformation.html#arrange-rows-with-arrange"><i class="fa fa-check"></i><b>5.3</b> Arrange rows with <code>arrange()</code></a><ul>
+<li class="chapter" data-level="4.4" data-path="data-transformation.html"><a href="data-transformation.html#arrange-rows-with-arrange"><i class="fa fa-check"></i><b>4.4</b> Arrange rows with <code>arrange()</code></a><ul>
 <li><a href="data-transformation.html#exercise-5.3.1.1">Exercise <span class="exercise-number">5.3.1.1</span></a></li>
 <li><a href="data-transformation.html#exercise-5.3.1.2">Exercise <span class="exercise-number">5.3.1.2</span></a></li>
 <li><a href="data-transformation.html#exercise-5.3.1.3">Exercise <span class="exercise-number">5.3.1.3</span></a></li>
 <li><a href="data-transformation.html#exercise-5.3.1.4">Exercise <span class="exercise-number">5.3.1.4</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="data-transformation.html"><a href="data-transformation.html#select-columns-with-select"><i class="fa fa-check"></i><b>5.4</b> Select columns with <code>select()</code></a><ul>
+<li class="chapter" data-level="4.5" data-path="data-transformation.html"><a href="data-transformation.html#select-columns-with-select"><i class="fa fa-check"></i><b>4.5</b> Select columns with <code>select()</code></a><ul>
 <li><a href="data-transformation.html#exercise-5.4.1.1">Exercise <span class="exercise-number">5.4.1.1</span></a></li>
 <li><a href="data-transformation.html#exercise-5.4.1.2">Exercise <span class="exercise-number">5.4.1.2</span></a></li>
 <li><a href="data-transformation.html#exercise-5.4.1.3">Exercise <span class="exercise-number">5.4.1.3</span></a></li>
 <li><a href="data-transformation.html#exercise-5.4.1.4">Exercise <span class="exercise-number">5.4.1.4</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="data-transformation.html"><a href="data-transformation.html#add-new-variables-with-mutate"><i class="fa fa-check"></i><b>5.5</b> Add new variables with <code>mutate()</code></a><ul>
+<li class="chapter" data-level="4.6" data-path="data-transformation.html"><a href="data-transformation.html#add-new-variables-with-mutate"><i class="fa fa-check"></i><b>4.6</b> Add new variables with <code>mutate()</code></a><ul>
 <li><a href="data-transformation.html#exercise-5.5.2.1">Exercise <span class="exercise-number">5.5.2.1</span></a></li>
 <li><a href="data-transformation.html#exercise-5.5.2.2">Exercise <span class="exercise-number">5.5.2.2</span></a></li>
 <li><a href="data-transformation.html#exercise-5.5.2.3">Exercise <span class="exercise-number">5.5.2.3</span></a></li>
@@ -243,7 +264,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="data-transformation.html#exercise-5.5.2.5">Exercise <span class="exercise-number">5.5.2.5</span></a></li>
 <li><a href="data-transformation.html#exercise-5.5.2.6">Exercise <span class="exercise-number">5.5.2.6</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="data-transformation.html"><a href="data-transformation.html#grouped-summaries-with-summarise"><i class="fa fa-check"></i><b>5.6</b> Grouped summaries with <code>summarise()</code></a><ul>
+<li class="chapter" data-level="4.7" data-path="data-transformation.html"><a href="data-transformation.html#grouped-summaries-with-summarise"><i class="fa fa-check"></i><b>4.7</b> Grouped summaries with <code>summarise()</code></a><ul>
 <li><a href="data-transformation.html#exercise-5.6.7.1">Exercise <span class="exercise-number">5.6.7.1</span></a></li>
 <li><a href="data-transformation.html#exercise-5.6.7.2">Exercise <span class="exercise-number">5.6.7.2</span></a></li>
 <li><a href="data-transformation.html#exercise-5.6.7.3">Exercise <span class="exercise-number">5.6.7.3</span></a></li>
@@ -251,7 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="data-transformation.html#exercise-5.6.7.5">Exercise <span class="exercise-number">5.6.7.5</span></a></li>
 <li><a href="data-transformation.html#exercise-5.6.7.6">Exercise <span class="exercise-number">5.6.7.6</span></a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="data-transformation.html"><a href="data-transformation.html#grouped-mutates-and-filters"><i class="fa fa-check"></i><b>5.7</b> Grouped mutates (and filters)</a><ul>
+<li class="chapter" data-level="4.8" data-path="data-transformation.html"><a href="data-transformation.html#grouped-mutates-and-filters"><i class="fa fa-check"></i><b>4.8</b> Grouped mutates (and filters)</a><ul>
 <li><a href="data-transformation.html#exercise-5.7.1.1">Exercise <span class="exercise-number">5.7.1.1</span></a></li>
 <li><a href="data-transformation.html#exercise-5.7.1.2">Exercise <span class="exercise-number">5.7.1.2</span></a></li>
 <li><a href="data-transformation.html#exercise-5.7.1.3">Exercise <span class="exercise-number">5.7.1.3</span></a></li>
@@ -262,56 +283,61 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="data-transformation.html#exercise-5.7.1.8">Exercise <span class="exercise-number">5.7.1.8</span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="workflow-scripts.html"><a href="workflow-scripts.html"><i class="fa fa-check"></i><b>6</b> Workflow: scripts</a><ul>
-<li class="chapter" data-level="6.1" data-path="workflow-scripts.html"><a href="workflow-scripts.html#running-code"><i class="fa fa-check"></i><b>6.1</b> Running code</a></li>
-<li class="chapter" data-level="6.2" data-path="workflow-scripts.html"><a href="workflow-scripts.html#rstudio-diagnostics"><i class="fa fa-check"></i><b>6.2</b> RStudio diagnostics</a></li>
-<li class="chapter" data-level="6.3" data-path="workflow-scripts.html"><a href="workflow-scripts.html#practice-1"><i class="fa fa-check"></i><b>6.3</b> Practice</a><ul>
+<li class="chapter" data-level="5" data-path="workflow-scripts.html"><a href="workflow-scripts.html"><i class="fa fa-check"></i><b>5</b> Workflow: scripts</a><ul>
+<li class="chapter" data-level="5.1" data-path="workflow-scripts.html"><a href="workflow-scripts.html#running-code"><i class="fa fa-check"></i><b>5.1</b> Running code</a></li>
+<li class="chapter" data-level="5.2" data-path="workflow-scripts.html"><a href="workflow-scripts.html#rstudio-diagnostics"><i class="fa fa-check"></i><b>5.2</b> RStudio diagnostics</a></li>
+<li class="chapter" data-level="5.3" data-path="workflow-scripts.html"><a href="workflow-scripts.html#practice-1"><i class="fa fa-check"></i><b>5.3</b> Practice</a><ul>
 <li><a href="workflow-scripts.html#exercise-6.3.1">Exercise <span class="exercise-number">6.3.1</span></a></li>
 <li><a href="workflow-scripts.html#exercise-6.3.2">Exercise <span class="exercise-number">6.3.2</span></a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>7</b> Exploratory Data Analysis</a><ul>
-<li class="chapter" data-level="7.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#introduction-3"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
-<li class="chapter" data-level="7.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#questions"><i class="fa fa-check"></i><b>7.2</b> Questions</a></li>
-<li class="chapter" data-level="7.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#variation"><i class="fa fa-check"></i><b>7.3</b> Variation</a><ul>
-<li><a href="exploratory-data-analysis.html#exercise-7.3.4.1">Exercise <span class="exercise-number">7.3.4.1</span></a></li>
-<li><a href="exploratory-data-analysis.html#exercise-7.3.4.2">Exercise <span class="exercise-number">7.3.4.2</span></a></li>
-<li><a href="exploratory-data-analysis.html#exercise-7.3.4.3">Exercise <span class="exercise-number">7.3.4.3</span></a></li>
-<li><a href="exploratory-data-analysis.html#exercise-7.3.4.4">Exercise <span class="exercise-number">7.3.4.4</span></a></li>
+<li class="chapter" data-level="6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html"><i class="fa fa-check"></i><b>6</b> Exploratory Data Analysis</a><ul>
+<li class="chapter" data-level="6.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#introduction-2"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#questions"><i class="fa fa-check"></i><b>6.2</b> Questions</a></li>
+<li class="chapter" data-level="6.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#variation"><i class="fa fa-check"></i><b>6.3</b> Variation</a></li>
 </ul></li>
-<li class="chapter" data-level="7.4" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#missing-values"><i class="fa fa-check"></i><b>7.4</b> Missing Values</a><ul>
-<li><a href="exploratory-data-analysis.html#exercise-7.4.1.1">Exercise <span class="exercise-number">7.4.1.1</span></a></li>
-<li><a href="exploratory-data-analysis.html#exercise-7.4.1.2">Exercise <span class="exercise-number">7.4.1.2</span></a></li>
+<li class="chapter" data-level="7" data-path="variation-1.html"><a href="variation-1.html"><i class="fa fa-check"></i><b>7</b> Variation</a><ul>
+<li><a href="variation-1.html#exercise-7.3.4.1">Exercise <span class="exercise-number">7.3.4.1</span></a></li>
+<li><a href="variation-1.html#exercise-7.3.4.2">Exercise <span class="exercise-number">7.3.4.2</span></a></li>
+<li><a href="variation-1.html#exercise-7.3.4.3">Exercise <span class="exercise-number">7.3.4.3</span></a></li>
+<li><a href="variation-1.html#exercise-7.3.4.4">Exercise <span class="exercise-number">7.3.4.4</span></a></li>
+<li class="chapter" data-level="7.1" data-path="variation-1.html"><a href="variation-1.html#missing-values-1"><i class="fa fa-check"></i><b>7.1</b> Missing Values</a><ul>
+<li><a href="variation-1.html#exercise-7.4.1.1">Exercise <span class="exercise-number">7.4.1.1</span></a></li>
+<li><a href="variation-1.html#exercise-7.4.1.2">Exercise <span class="exercise-number">7.4.1.2</span></a></li>
 </ul></li>
-<li class="chapter" data-level="7.5" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#covariation"><i class="fa fa-check"></i><b>7.5</b> Covariation</a><ul>
-<li class="chapter" data-level="7.5.1" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#a-categorical-and-continuous-variable"><i class="fa fa-check"></i><b>7.5.1</b> A categorical and continuous variable</a></li>
-<li class="chapter" data-level="7.5.2" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#two-categorical-variables"><i class="fa fa-check"></i><b>7.5.2</b> Two categorical variables</a></li>
-<li class="chapter" data-level="7.5.3" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#two-continuous-variables"><i class="fa fa-check"></i><b>7.5.3</b> Two continuous variables</a></li>
+<li class="chapter" data-level="7.2" data-path="variation-1.html"><a href="variation-1.html#covariation"><i class="fa fa-check"></i><b>7.2</b> Covariation</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="variation-1.html"><a href="variation-1.html#a-categorical-and-continuous-variable"><i class="fa fa-check"></i><b>7.2.1</b> A categorical and continuous variable</a></li>
+<li class="chapter" data-level="7.2.2" data-path="variation-1.html"><a href="variation-1.html#two-categorical-variables"><i class="fa fa-check"></i><b>7.2.2</b> Two categorical variables</a></li>
+<li class="chapter" data-level="7.2.3" data-path="variation-1.html"><a href="variation-1.html#two-continuous-variables"><i class="fa fa-check"></i><b>7.2.3</b> Two continuous variables</a></li>
 </ul></li>
-<li class="chapter" data-level="7.6" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#patterns-and-models"><i class="fa fa-check"></i><b>7.6</b> Patterns and models</a></li>
-<li class="chapter" data-level="7.7" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#ggplot2-calls"><i class="fa fa-check"></i><b>7.7</b> ggplot2 calls</a></li>
-<li class="chapter" data-level="7.8" data-path="exploratory-data-analysis.html"><a href="exploratory-data-analysis.html#learning-more"><i class="fa fa-check"></i><b>7.8</b> Learning more</a></li>
+<li class="chapter" data-level="7.3" data-path="variation-1.html"><a href="variation-1.html#patterns-and-models"><i class="fa fa-check"></i><b>7.3</b> Patterns and models</a></li>
+<li class="chapter" data-level="7.4" data-path="variation-1.html"><a href="variation-1.html#ggplot2-calls"><i class="fa fa-check"></i><b>7.4</b> ggplot2 calls</a></li>
+<li class="chapter" data-level="7.5" data-path="variation-1.html"><a href="variation-1.html#learning-more"><i class="fa fa-check"></i><b>7.5</b> Learning more</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="workflow-projects.html"><a href="workflow-projects.html"><i class="fa fa-check"></i><b>8</b> Workflow: projects</a></li>
 <li class="part"><span><b>II Wrangle</b></span></li>
-<li class="chapter" data-level="9" data-path="introduction-4.html"><a href="introduction-4.html"><i class="fa fa-check"></i><b>9</b> Introduction</a></li>
+<li class="chapter" data-level="9" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>9</b> Introduction</a></li>
 <li class="chapter" data-level="10" data-path="tibbles.html"><a href="tibbles.html"><i class="fa fa-check"></i><b>10</b> Tibbles</a><ul>
-<li class="chapter" data-level="10.1" data-path="tibbles.html"><a href="tibbles.html#introduction-5"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.1" data-path="tibbles.html"><a href="tibbles.html#introduction-4"><i class="fa fa-check"></i><b>10.1</b> Introduction</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="tibbles.html"><a href="tibbles.html#prerequisites-3"><i class="fa fa-check"></i><b>10.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="10.2" data-path="tibbles.html"><a href="tibbles.html#creating-tibbles"><i class="fa fa-check"></i><b>10.2</b> Creating Tibbles</a></li>
 <li class="chapter" data-level="10.3" data-path="tibbles.html"><a href="tibbles.html#tibbles-vs.data.frame"><i class="fa fa-check"></i><b>10.3</b> Tibbles vs. data.frame</a></li>
 <li class="chapter" data-level="10.4" data-path="tibbles.html"><a href="tibbles.html#subsetting"><i class="fa fa-check"></i><b>10.4</b> Subsetting</a></li>
 <li class="chapter" data-level="10.5" data-path="tibbles.html"><a href="tibbles.html#interacting-with-older-code"><i class="fa fa-check"></i><b>10.5</b> Interacting with older code</a></li>
 <li class="chapter" data-level="10.6" data-path="tibbles.html"><a href="tibbles.html#exercises"><i class="fa fa-check"></i><b>10.6</b> Exercises</a><ul>
-<li><a href="tibbles.html#exercise-10.6.1">Exercise <span class="exercise-number">10.6.1</span></a></li>
-<li><a href="tibbles.html#exercise-10.6.2">Exercise <span class="exercise-number">10.6.2</span></a></li>
-<li><a href="tibbles.html#exercise-10.6.3">Exercise <span class="exercise-number">10.6.3</span></a></li>
-<li><a href="tibbles.html#exercise-10.6.4">Exercise <span class="exercise-number">10.6.4</span></a></li>
-<li><a href="tibbles.html#exercise-10.6.5">Exercise <span class="exercise-number">10.6.5</span></a></li>
-<li><a href="tibbles.html#exercise-10.6.6">Exercise <span class="exercise-number">10.6.6</span></a></li>
+<li><a href="tibbles.html#exercise-10.5.1">Exercise <span class="exercise-number">10.5.1</span></a></li>
+<li><a href="tibbles.html#exercise-10.5.2">Exercise <span class="exercise-number">10.5.2</span></a></li>
+<li><a href="tibbles.html#exercise-10.5.3">Exercise <span class="exercise-number">10.5.3</span></a></li>
+<li><a href="tibbles.html#exercise-10.5.4">Exercise <span class="exercise-number">10.5.4</span></a></li>
+<li><a href="tibbles.html#exercise-10.5.5">Exercise <span class="exercise-number">10.5.5</span></a></li>
+<li><a href="tibbles.html#exercise-10.5.6">Exercise <span class="exercise-number">10.5.6</span></a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="11" data-path="data-import.html"><a href="data-import.html"><i class="fa fa-check"></i><b>11</b> Data import</a><ul>
-<li class="chapter" data-level="11.1" data-path="data-import.html"><a href="data-import.html#introduction-6"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.1" data-path="data-import.html"><a href="data-import.html#introduction-5"><i class="fa fa-check"></i><b>11.1</b> Introduction</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="data-import.html"><a href="data-import.html#prerequisites-4"><i class="fa fa-check"></i><b>11.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="11.2" data-path="data-import.html"><a href="data-import.html#getting-started"><i class="fa fa-check"></i><b>11.2</b> Getting started</a><ul>
 <li><a href="data-import.html#exercise-11.2.2.1">Exercise <span class="exercise-number">11.2.2.1</span></a></li>
 <li><a href="data-import.html#exercise-11.2.2.2">Exercise <span class="exercise-number">11.2.2.2</span></a></li>
@@ -333,7 +359,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="11.6" data-path="data-import.html"><a href="data-import.html#other-types-of-data"><i class="fa fa-check"></i><b>11.6</b> Other Types of Data</a></li>
 </ul></li>
 <li class="chapter" data-level="12" data-path="tidy-data.html"><a href="tidy-data.html"><i class="fa fa-check"></i><b>12</b> Tidy Data</a><ul>
-<li class="chapter" data-level="12.1" data-path="tidy-data.html"><a href="tidy-data.html#introduction-7"><i class="fa fa-check"></i><b>12.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.1" data-path="tidy-data.html"><a href="tidy-data.html#introduction-6"><i class="fa fa-check"></i><b>12.1</b> Introduction</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="tidy-data.html"><a href="tidy-data.html#prerequisites-5"><i class="fa fa-check"></i><b>12.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="12.2" data-path="tidy-data.html"><a href="tidy-data.html#tidy-data-1"><i class="fa fa-check"></i><b>12.2</b> Tidy data</a><ul>
 <li><a href="tidy-data.html#exercise-12.2.1.1">Exercise <span class="exercise-number">12.2.1.1</span></a></li>
 <li><a href="tidy-data.html#exercise-12.2.1.2">Exercise <span class="exercise-number">12.2.1.2</span></a></li>
@@ -350,7 +378,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="tidy-data.html#exercise-12.4.3.2">Exercise <span class="exercise-number">12.4.3.2</span></a></li>
 <li><a href="tidy-data.html#exercise-12.4.3.3">Exercise <span class="exercise-number">12.4.3.3</span></a></li>
 </ul></li>
-<li class="chapter" data-level="12.5" data-path="tidy-data.html"><a href="tidy-data.html#missing-values-1"><i class="fa fa-check"></i><b>12.5</b> Missing Values</a><ul>
+<li class="chapter" data-level="12.5" data-path="tidy-data.html"><a href="tidy-data.html#missing-values-2"><i class="fa fa-check"></i><b>12.5</b> Missing Values</a><ul>
 <li><a href="tidy-data.html#exercise-12.5.1.1">Exercise <span class="exercise-number">12.5.1.1</span></a></li>
 <li><a href="tidy-data.html#exercise-12.5.1.2">Exercise <span class="exercise-number">12.5.1.2</span></a></li>
 </ul></li>
@@ -363,7 +391,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="12.7" data-path="tidy-data.html"><a href="tidy-data.html#non-tidy-data"><i class="fa fa-check"></i><b>12.7</b> Non-Tidy Data</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="relational-data.html"><a href="relational-data.html"><i class="fa fa-check"></i><b>13</b> Relational data</a><ul>
-<li class="chapter" data-level="13.1" data-path="relational-data.html"><a href="relational-data.html#introduction-8"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
+<li class="chapter" data-level="13.1" data-path="relational-data.html"><a href="relational-data.html#introduction-7"><i class="fa fa-check"></i><b>13.1</b> Introduction</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="relational-data.html"><a href="relational-data.html#prerequisites-6"><i class="fa fa-check"></i><b>13.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="13.2" data-path="relational-data.html"><a href="relational-data.html#nycflights13"><i class="fa fa-check"></i><b>13.2</b> nycflights13</a><ul>
 <li><a href="relational-data.html#exercise-13.2.1.1">Exercise <span class="exercise-number">13.2.1.1</span></a></li>
 <li><a href="relational-data.html#exercise-13.2.1.2">Exercise <span class="exercise-number">13.2.1.2</span></a></li>
@@ -394,7 +424,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.7" data-path="relational-data.html"><a href="relational-data.html#set-operations"><i class="fa fa-check"></i><b>13.7</b> Set operations</a></li>
 </ul></li>
 <li class="chapter" data-level="14" data-path="strings.html"><a href="strings.html"><i class="fa fa-check"></i><b>14</b> Strings</a><ul>
-<li class="chapter" data-level="14.1" data-path="strings.html"><a href="strings.html#introduction-9"><i class="fa fa-check"></i><b>14.1</b> Introduction</a></li>
+<li class="chapter" data-level="14.1" data-path="strings.html"><a href="strings.html#introduction-8"><i class="fa fa-check"></i><b>14.1</b> Introduction</a><ul>
+<li class="chapter" data-level="14.1.1" data-path="strings.html"><a href="strings.html#prerequisites-7"><i class="fa fa-check"></i><b>14.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="14.2" data-path="strings.html"><a href="strings.html#string-basics"><i class="fa fa-check"></i><b>14.2</b> String Basics</a><ul>
 <li><a href="strings.html#exercise-14.2.5.1">Exercise <span class="exercise-number">14.2.5.1</span></a></li>
 <li><a href="strings.html#exercise-14.2.5.2">Exercise <span class="exercise-number">14.2.5.2</span></a></li>
@@ -430,7 +462,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="15" data-path="factors.html"><a href="factors.html"><i class="fa fa-check"></i><b>15</b> Factors</a><ul>
-<li class="chapter" data-level="15.1" data-path="factors.html"><a href="factors.html#introduction-10"><i class="fa fa-check"></i><b>15.1</b> Introduction</a></li>
+<li class="chapter" data-level="15.1" data-path="factors.html"><a href="factors.html#introduction-9"><i class="fa fa-check"></i><b>15.1</b> Introduction</a></li>
 <li class="chapter" data-level="15.2" data-path="factors.html"><a href="factors.html#creating-factors"><i class="fa fa-check"></i><b>15.2</b> Creating Factors</a></li>
 <li class="chapter" data-level="15.3" data-path="factors.html"><a href="factors.html#general-social-survey"><i class="fa fa-check"></i><b>15.3</b> General Social Survey</a><ul>
 <li><a href="factors.html#exercise-15.3.1.1">Exercise <span class="exercise-number">15.3.1.1</span></a></li>
@@ -448,7 +480,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="16" data-path="dates-and-times.html"><a href="dates-and-times.html"><i class="fa fa-check"></i><b>16</b> Dates and times</a><ul>
-<li class="chapter" data-level="16.1" data-path="dates-and-times.html"><a href="dates-and-times.html#introduction-11"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
+<li class="chapter" data-level="16.1" data-path="dates-and-times.html"><a href="dates-and-times.html#introduction-10"><i class="fa fa-check"></i><b>16.1</b> Introduction</a></li>
 <li class="chapter" data-level="16.2" data-path="dates-and-times.html"><a href="dates-and-times.html#creating-datetimes"><i class="fa fa-check"></i><b>16.2</b> Creating date/times</a><ul>
 <li><a href="dates-and-times.html#exercise-16.2.4.1">Exercise <span class="exercise-number">16.2.4.1</span></a></li>
 <li><a href="dates-and-times.html#exercise-16.2.4.2">Exercise <span class="exercise-number">16.2.4.2</span></a></li>
@@ -476,7 +508,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17" data-path="program-intro.html"><a href="program-intro.html"><i class="fa fa-check"></i><b>17</b> Introduction</a></li>
 <li class="chapter" data-level="18" data-path="pipes.html"><a href="pipes.html"><i class="fa fa-check"></i><b>18</b> Pipes</a></li>
 <li class="chapter" data-level="19" data-path="functions.html"><a href="functions.html"><i class="fa fa-check"></i><b>19</b> Functions</a><ul>
-<li class="chapter" data-level="19.1" data-path="functions.html"><a href="functions.html#introduction-12"><i class="fa fa-check"></i><b>19.1</b> Introduction</a></li>
+<li class="chapter" data-level="19.1" data-path="functions.html"><a href="functions.html#introduction-11"><i class="fa fa-check"></i><b>19.1</b> Introduction</a><ul>
+<li class="chapter" data-level="19.1.1" data-path="functions.html"><a href="functions.html#prerequisites-8"><i class="fa fa-check"></i><b>19.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="19.2" data-path="functions.html"><a href="functions.html#when-should-you-write-a-function"><i class="fa fa-check"></i><b>19.2</b> When should you write a function?</a><ul>
 <li><a href="functions.html#exercise-19.2.1.1">Exercise <span class="exercise-number">19.2.1.1</span></a></li>
 <li><a href="functions.html#exercise-19.2.1.2">Exercise <span class="exercise-number">19.2.1.2</span></a></li>
@@ -510,7 +544,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="19.7" data-path="functions.html"><a href="functions.html#environment"><i class="fa fa-check"></i><b>19.7</b> Environment</a></li>
 </ul></li>
 <li class="chapter" data-level="20" data-path="vectors.html"><a href="vectors.html"><i class="fa fa-check"></i><b>20</b> Vectors</a><ul>
-<li class="chapter" data-level="20.1" data-path="vectors.html"><a href="vectors.html#introduction-13"><i class="fa fa-check"></i><b>20.1</b> Introduction</a></li>
+<li class="chapter" data-level="20.1" data-path="vectors.html"><a href="vectors.html#introduction-12"><i class="fa fa-check"></i><b>20.1</b> Introduction</a></li>
 <li class="chapter" data-level="20.2" data-path="vectors.html"><a href="vectors.html#vector-basics"><i class="fa fa-check"></i><b>20.2</b> Vector Basics</a></li>
 <li class="chapter" data-level="20.3" data-path="vectors.html"><a href="vectors.html#important-types-of-atomic-vector"><i class="fa fa-check"></i><b>20.3</b> Important Types of Atomic Vector</a><ul>
 <li><a href="vectors.html#exercise-20.3.5.1">Exercise <span class="exercise-number">20.3.5.1</span></a></li>
@@ -539,7 +573,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="21" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>21</b> Iteration</a><ul>
-<li class="chapter" data-level="21.1" data-path="iteration.html"><a href="iteration.html#introduction-14"><i class="fa fa-check"></i><b>21.1</b> Introduction</a></li>
+<li class="chapter" data-level="21.1" data-path="iteration.html"><a href="iteration.html#introduction-13"><i class="fa fa-check"></i><b>21.1</b> Introduction</a></li>
 <li class="chapter" data-level="21.2" data-path="iteration.html"><a href="iteration.html#for-loops"><i class="fa fa-check"></i><b>21.2</b> For Loops</a><ul>
 <li><a href="iteration.html#exercise-21.2.1.1">Exercise <span class="exercise-number">21.2.1.1</span></a></li>
 <li><a href="iteration.html#exercise-21.2.1.2">Exercise <span class="exercise-number">21.2.1.2</span></a></li>
@@ -574,7 +608,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>IV Model</b></span></li>
 <li class="chapter" data-level="22" data-path="model-intro.html"><a href="model-intro.html"><i class="fa fa-check"></i><b>22</b> Introduction</a></li>
 <li class="chapter" data-level="23" data-path="model-basics.html"><a href="model-basics.html"><i class="fa fa-check"></i><b>23</b> Model basics</a><ul>
-<li class="chapter" data-level="23.1" data-path="model-basics.html"><a href="model-basics.html#prerequisites-1"><i class="fa fa-check"></i><b>23.1</b> Prerequisites</a></li>
+<li class="chapter" data-level="23.1" data-path="model-basics.html"><a href="model-basics.html#prerequisites-9"><i class="fa fa-check"></i><b>23.1</b> Prerequisites</a></li>
 <li class="chapter" data-level="23.2" data-path="model-basics.html"><a href="model-basics.html#a-simple-model"><i class="fa fa-check"></i><b>23.2</b> A simple model</a><ul>
 <li><a href="model-basics.html#exercise-23.2.1.1">Exercise <span class="exercise-number">23.2.1.1</span></a></li>
 <li><a href="model-basics.html#exercise-23.2.1.2">Exercise <span class="exercise-number">23.2.1.2</span></a></li>
@@ -592,11 +626,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="model-basics.html#exercise-23.4.5.3">Exercise <span class="exercise-number">23.4.5.3</span></a></li>
 <li><a href="model-basics.html#exercise-23.4.5.4">Exercise <span class="exercise-number">23.4.5.4</span></a></li>
 </ul></li>
-<li class="chapter" data-level="23.5" data-path="model-basics.html"><a href="model-basics.html#missing-values-2"><i class="fa fa-check"></i><b>23.5</b> Missing values</a></li>
+<li class="chapter" data-level="23.5" data-path="model-basics.html"><a href="model-basics.html#missing-values-3"><i class="fa fa-check"></i><b>23.5</b> Missing values</a></li>
 <li class="chapter" data-level="23.6" data-path="model-basics.html"><a href="model-basics.html#other-model-families"><i class="fa fa-check"></i><b>23.6</b> Other model families</a></li>
 </ul></li>
 <li class="chapter" data-level="24" data-path="model-building.html"><a href="model-building.html"><i class="fa fa-check"></i><b>24</b> Model building</a><ul>
-<li class="chapter" data-level="24.1" data-path="model-building.html"><a href="model-building.html#introduction-15"><i class="fa fa-check"></i><b>24.1</b> Introduction</a></li>
+<li class="chapter" data-level="24.1" data-path="model-building.html"><a href="model-building.html#introduction-14"><i class="fa fa-check"></i><b>24.1</b> Introduction</a></li>
 <li class="chapter" data-level="24.2" data-path="model-building.html"><a href="model-building.html#why-are-low-quality-diamonds-more-expensive"><i class="fa fa-check"></i><b>24.2</b> Why are low quality diamonds more expensive?</a><ul>
 <li><a href="model-building.html#exercise-24.2.3.1">Exercise <span class="exercise-number">24.2.3.1</span></a></li>
 <li><a href="model-building.html#exercise-24.2.3.2">Exercise <span class="exercise-number">24.2.3.2</span></a></li>
@@ -616,7 +650,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="24.4" data-path="model-building.html"><a href="model-building.html#learning-more-about-models"><i class="fa fa-check"></i><b>24.4</b> Learning more about models</a></li>
 </ul></li>
 <li class="chapter" data-level="25" data-path="many-models.html"><a href="many-models.html"><i class="fa fa-check"></i><b>25</b> Many models</a><ul>
-<li class="chapter" data-level="25.1" data-path="many-models.html"><a href="many-models.html#introduction-16"><i class="fa fa-check"></i><b>25.1</b> Introduction</a></li>
+<li class="chapter" data-level="25.1" data-path="many-models.html"><a href="many-models.html#introduction-15"><i class="fa fa-check"></i><b>25.1</b> Introduction</a></li>
 <li class="chapter" data-level="25.2" data-path="many-models.html"><a href="many-models.html#gapminder"><i class="fa fa-check"></i><b>25.2</b> Gapminder</a><ul>
 <li><a href="many-models.html#exercise-25.2.5.1">Exercise <span class="exercise-number">25.2.5.1</span></a></li>
 <li><a href="many-models.html#exercise-25.2.5.2">Exercise <span class="exercise-number">25.2.5.2</span></a></li>
@@ -636,7 +670,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="part"><span><b>V Communicate</b></span></li>
 <li class="chapter" data-level="26" data-path="communicate-intro.html"><a href="communicate-intro.html"><i class="fa fa-check"></i><b>26</b> Introduction</a></li>
 <li class="chapter" data-level="27" data-path="r-markdown.html"><a href="r-markdown.html"><i class="fa fa-check"></i><b>27</b> R Markdown</a><ul>
-<li class="chapter" data-level="27.1" data-path="r-markdown.html"><a href="r-markdown.html#introduction-17"><i class="fa fa-check"></i><b>27.1</b> Introduction</a></li>
+<li class="chapter" data-level="27.1" data-path="r-markdown.html"><a href="r-markdown.html#introduction-16"><i class="fa fa-check"></i><b>27.1</b> Introduction</a></li>
 <li class="chapter" data-level="27.2" data-path="r-markdown.html"><a href="r-markdown.html#r-markdown-basics"><i class="fa fa-check"></i><b>27.2</b> R Markdown Basics</a><ul>
 <li><a href="r-markdown.html#exercise-27.2.1.1">Exercise <span class="exercise-number">27.2.1.1</span></a></li>
 <li><a href="r-markdown.html#exercise-27.2.1.2">Exercise <span class="exercise-number">27.2.1.2</span></a></li>
@@ -658,7 +692,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="27.6" data-path="r-markdown.html"><a href="r-markdown.html#learning-more-1"><i class="fa fa-check"></i><b>27.6</b> Learning more</a></li>
 </ul></li>
 <li class="chapter" data-level="28" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html"><i class="fa fa-check"></i><b>28</b> Graphics for communication</a><ul>
-<li class="chapter" data-level="28.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#introduction-18"><i class="fa fa-check"></i><b>28.1</b> Introduction</a></li>
+<li class="chapter" data-level="28.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#introduction-17"><i class="fa fa-check"></i><b>28.1</b> Introduction</a><ul>
+<li class="chapter" data-level="28.1.1" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#prerequisites-10"><i class="fa fa-check"></i><b>28.1.1</b> Prerequisites</a></li>
+</ul></li>
 <li class="chapter" data-level="28.2" data-path="graphics-for-communication.html"><a href="graphics-for-communication.html#label"><i class="fa fa-check"></i><b>28.2</b> Label</a><ul>
 <li><a href="graphics-for-communication.html#exercise-28.2.1.1">Exercise <span class="exercise-number">28.2.1.1</span></a></li>
 <li><a href="graphics-for-communication.html#exercise-28.2.1.2">Exercise <span class="exercise-number">28.2.1.2</span></a></li>
@@ -684,6 +720,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="29" data-path="r-markdown-formats.html"><a href="r-markdown-formats.html"><i class="fa fa-check"></i><b>29</b> R Markdown formats</a></li>
 <li class="chapter" data-level="30" data-path="r-markdown-workflow.html"><a href="r-markdown-workflow.html"><i class="fa fa-check"></i><b>30</b> R Markdown workflow</a></li>
+<li class="divider"></li>
+<a href="https://bookdown.org" target="https://bookdown.org/yihui/bookdown">Published with bookdown</a>
+
 </ul>
 
       </nav>
@@ -701,11 +740,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
+<div class = rmdreview>I want your feedback to make the book better for you and other readers. To add your annotation, <span style="background-color: #3297FD; color: white">select some text</span> and then click the <i class="h-icon-annotate"></i> on the pop-up menu. To see the annotations of others, click the <i class="h-icon-chevron-left"></i> in the upper right hand corner of the page <i class="fa fa-arrow-circle-right  fa-rotate-315" aria-hidden="true"></i>
+</div>
 <div id="tibbles" class="section level1">
 <h1><span class="header-section-number">10</span> Tibbles</h1>
-<div id="introduction-5" class="section level2">
+<div id="introduction-4" class="section level2">
 <h2><span class="header-section-number">10.1</span> Introduction</h2>
+<p>No exercises</p>
+<div id="prerequisites-3" class="section level3">
+<h3><span class="header-section-number">10.1.1</span> Prerequisites</h3>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;tidyverse&quot;</span>)</code></pre>
+</div>
 </div>
 <div id="creating-tibbles" class="section level2">
 <h2><span class="header-section-number">10.2</span> Creating Tibbles</h2>
@@ -725,13 +770,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="exercises" class="section level2">
 <h2><span class="header-section-number">10.6</span> Exercises</h2>
-<div id="exercise-10.6.1" class="section level3 unnumbered exercise">
-<h3>Exercise <span class="exercise-number">10.6.1</span></h3>
+<div id="exercise-10.5.1" class="section level3 unnumbered exercise">
+<h3>Exercise <span class="exercise-number">10.5.1</span></h3>
 <div class="question">
 <p>How can you tell if an object is a tibble? (Hint: try printing <code>mtcars</code>, which is a regular data frame).</p>
 </div>
 <div class="answer">
-<p>When we print <code>mtcars</code>, it prints all the columns.</p>
+<p><code>mtcars</code> prints <strong>all</strong> the columns and it is a <code>data.frame</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r">mtcars
 <span class="co">#&gt;                      mpg cyl  disp  hp drat   wt qsec vs am gear carb</span>
 <span class="co">#&gt; Mazda RX4           21.0   6 160.0 110 3.90 2.62 16.5  0  1    4    4</span>
@@ -766,9 +811,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span class="co">#&gt; Ferrari Dino        19.7   6 145.0 175 3.62 2.77 15.5  0  1    5    6</span>
 <span class="co">#&gt; Maserati Bora       15.0   8 301.0 335 3.54 3.57 14.6  0  1    5    8</span>
 <span class="co">#&gt; Volvo 142E          21.4   4 121.0 109 4.11 2.78 18.6  1  1    4    2</span></code></pre>
-<p>But when we first convert <code>mtcars</code> to a tibble using <code>as_tibble()</code>, it prints on the
-first ten observations. There are also some other differences in formatting
-of the printed data frame.</p>
+<p>After converting <code>mtcars</code> to a tibble using <code>as_tibble()</code>, it prints only the first ten observations.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">as_tibble</span>(mtcars)
 <span class="co">#&gt; # A tibble: 32 x 11</span>
 <span class="co">#&gt;     mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb</span>
@@ -780,32 +823,29 @@ of the printed data frame.</p>
 <span class="co">#&gt; 5  18.7     8   360   175  3.15  3.44  17.0     0     0     3     2</span>
 <span class="co">#&gt; 6  18.1     6   225   105  2.76  3.46  20.2     1     0     3     1</span>
 <span class="co">#&gt; # ... with 26 more rows</span></code></pre>
-<p>You can use the function <code>is_tibble()</code> to check whether a data frame is a tibble or not.
-The <code>mtcars</code> data frame is not a tibble.</p>
+<p>Function <code>is_tibble()</code> checks whether a data frame is a tibble or not. <code>mtcars</code> data frame is not a tibble.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is_tibble</span>(mtcars)
 <span class="co">#&gt; [1] FALSE</span></code></pre>
-<p>But the <code>diamonds</code> and <code>flights</code> data are tibbles.</p>
+<p><code>diamonds</code> and <code>flights</code> data are tibbles.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is_tibble</span>(ggplot2<span class="op">::</span>diamonds)
 <span class="co">#&gt; [1] TRUE</span>
 <span class="kw">is_tibble</span>(nycflights13<span class="op">::</span>flights)
 <span class="co">#&gt; [1] TRUE</span>
 <span class="kw">is_tibble</span>(<span class="kw">as_tibble</span>(mtcars))
 <span class="co">#&gt; [1] TRUE</span></code></pre>
-<p>More generally, you can use the <code>class()</code> function to find out the class of an
-object. Tibbles has the classes <code>c(&quot;tbl_df&quot;, &quot;tbl&quot;, &quot;data.frame&quot;)</code>, while old
-data frames will only have the class <code>&quot;data.frame&quot;</code>.</p>
+<p>Function <code>class()</code> returns the class of an object. Tibbles has the classes <code>c(&quot;tbl_df&quot;, &quot;tbl&quot;, &quot;data.frame&quot;)</code>. Data frames has class <code>&quot;data.frame&quot;</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(mtcars)
 <span class="co">#&gt; [1] &quot;data.frame&quot;</span>
 <span class="kw">class</span>(ggplot2<span class="op">::</span>diamonds)
 <span class="co">#&gt; [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span>
 <span class="kw">class</span>(nycflights13<span class="op">::</span>flights)
 <span class="co">#&gt; [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</span></code></pre>
-<p>If you are interested in reading more on R’s classes, read the chapters on
-object oriented programming in <a href="http://adv-r.had.co.nz/S3.html">Advanced R</a>.</p>
+<!-- If you are interested in reading more on R's classes, read the chapters on -->
+<!-- object oriented programming in [Advanced R](http://adv-r.had.co.nz/S3.html). -->
 </div>
 </div>
-<div id="exercise-10.6.2" class="section level3 unnumbered exercise">
-<h3>Exercise <span class="exercise-number">10.6.2</span></h3>
+<div id="exercise-10.5.2" class="section level3 unnumbered exercise">
+<h3>Exercise <span class="exercise-number">10.5.2</span></h3>
 <div class="question">
 <p>Compare and contrast the following operations on a <code>data.frame</code> and equivalent tibble. What is different? Why might the default data frame behaviors cause you frustration?</p>
 </div>
@@ -846,17 +886,22 @@ depends on <code>length(vars)</code> and you’d have to write code to account f
 situations or risk bugs.</p>
 </div>
 </div>
-<div id="exercise-10.6.3" class="section level3 unnumbered exercise">
-<h3>Exercise <span class="exercise-number">10.6.3</span></h3>
+<div id="exercise-10.5.3" class="section level3 unnumbered exercise">
+<h3>Exercise <span class="exercise-number">10.5.3</span></h3>
 <div class="question">
 <p>If you have the name of a variable stored in an object, e.g. <code>var &lt;- &quot;mpg&quot;</code>, how can you extract the reference variable from a tibble?</p>
 </div>
 <div class="answer">
-<p>You can use the double bracket, like <code>df[[var]]</code>. You cannot use the dollar sign, because <code>df$var</code> would look for a column named <code>var</code>.</p>
+<p>Use the double bracket, like <code>df[[var]]</code>. The dollar sign cannot be use because <code>df$var</code> would look for a column named <code>var</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">var &lt;-<span class="st"> &quot;mpg&quot;</span>
+mtcars[[var]]
+<span class="co">#&gt;  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2</span>
+<span class="co">#&gt; [15] 10.4 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4</span>
+<span class="co">#&gt; [29] 15.8 19.7 15.0 21.4</span></code></pre>
 </div>
 </div>
-<div id="exercise-10.6.4" class="section level3 unnumbered exercise">
-<h3>Exercise <span class="exercise-number">10.6.4</span></h3>
+<div id="exercise-10.5.4" class="section level3 unnumbered exercise">
+<h3>Exercise <span class="exercise-number">10.5.4</span></h3>
 <div class="question">
 <p>Practice referring to non-syntactic names in the following data frame by:</p>
 <ol style="list-style-type: decimal">
@@ -867,45 +912,54 @@ situations or risk bugs.</p>
 </ol>
 </div>
 <div class="answer">
-<p>For this example, I’ll create a dataset called annoying with
-columns named <code>1</code> and <code>2</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">annoying &lt;-<span class="st"> </span><span class="kw">tibble</span>(
+<p>Create a dataset called <code>practice</code> with columns named <code>1</code> and <code>2</code>.</p>
+<pre class="sourceCode r"><code class="sourceCode r">practice &lt;-<span class="st"> </span><span class="kw">tibble</span>(
   <span class="st">`</span><span class="dt">1</span><span class="st">`</span> =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,
-  <span class="st">`</span><span class="dt">2</span><span class="st">`</span> =<span class="st"> `</span><span class="dt">1</span><span class="st">`</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="kw">length</span>(<span class="st">`</span><span class="dt">1</span><span class="st">`</span>))
+  <span class="st">`</span><span class="dt">2</span><span class="st">`</span> =<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span>
 )</code></pre>
 <ol style="list-style-type: decimal">
-<li><p>To extract the variable called 1 run</p>
-<pre class="sourceCode r"><code class="sourceCode r">annoying[[<span class="st">&quot;1&quot;</span>]]
+<li><p>Extract the variable called 1 run</p>
+<pre class="sourceCode r"><code class="sourceCode r">practice[[<span class="st">&quot;1&quot;</span>]]
 <span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre>
 <p>or</p>
-<pre class="sourceCode r"><code class="sourceCode r">annoying<span class="op">$</span><span class="st">`</span><span class="dt">1</span><span class="st">`</span>
-<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre></li>
-<li><p>To create a scatter plot of <code>1</code> vs. <code>2</code> run</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(annoying, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">`</span><span class="dt">1</span><span class="st">`</span>, <span class="dt">y =</span> <span class="st">`</span><span class="dt">2</span><span class="st">`</span>)) <span class="op">+</span>
-<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
-<p><img src="tibble_files/figure-html/unnamed-chunk-13-1.png" width="70%" style="display: block; margin: auto;" /></p></li>
-<li><p>To add a new column <code>3</code> which is <code>2</code> divided by <code>1</code> run</p>
-<pre class="sourceCode r"><code class="sourceCode r">annoying[[<span class="st">&quot;3&quot;</span>]] &lt;-<span class="st"> </span>annoying<span class="op">$</span><span class="st">`</span><span class="dt">2</span><span class="st">`</span> <span class="op">/</span><span class="st"> </span>annoying<span class="op">$</span><span class="st">`</span><span class="dt">1</span><span class="st">`</span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">practice<span class="op">$</span><span class="st">`</span><span class="dt">1</span><span class="st">`</span>
+<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre>
 <p>or</p>
-<pre class="sourceCode r"><code class="sourceCode r">annoying[[<span class="st">&quot;3&quot;</span>]] &lt;-<span class="st"> </span>annoying[[<span class="st">&quot;2&quot;</span>]] <span class="op">/</span><span class="st"> </span>annoying[[<span class="st">&quot;1&quot;</span>]]</code></pre></li>
+<pre class="sourceCode r"><code class="sourceCode r">one &lt;-<span class="st"> &quot;1&quot;</span>
+practice[[one]]
+<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre></li>
+<li><p>Plotting a scatterplot of 1 vs 2</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(practice, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="st">`</span><span class="dt">1</span><span class="st">`</span>, <span class="dt">y =</span> <span class="st">`</span><span class="dt">2</span><span class="st">`</span>)) <span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre>
+<p><img src="tibble_files/figure-html/unnamed-chunk-15-1.png" width="70%" style="display: block; margin: auto;" /></p></li>
+<li><p>Creating a new column called 3 which is 2 divided by 1</p>
+<pre class="sourceCode r"><code class="sourceCode r">practice[[<span class="st">&quot;3&quot;</span>]] &lt;-<span class="st"> </span>practice<span class="op">$</span><span class="st">`</span><span class="dt">2</span><span class="st">`</span> <span class="op">/</span><span class="st"> </span>practice<span class="op">$</span><span class="st">`</span><span class="dt">1</span><span class="st">`</span></code></pre>
+<p>or</p>
+<pre class="sourceCode r"><code class="sourceCode r">practice[[<span class="st">&quot;3&quot;</span>]] &lt;-<span class="st"> </span>practice[[<span class="st">&quot;2&quot;</span>]] <span class="op">/</span><span class="st"> </span>practice[[<span class="st">&quot;1&quot;</span>]]</code></pre>
+<p>or</p>
+<pre class="sourceCode r"><code class="sourceCode r">one &lt;-<span class="st"> &quot;1&quot;</span>
+two &lt;-<span class="st"> &quot;2&quot;</span>
+three &lt;-<span class="st"> &quot;3&quot;</span>
+practice[[three]] &lt;-<span class="st"> </span>practice[[two]] <span class="op">/</span><span class="st"> </span>practice[[one]]</code></pre></li>
 <li><p>To rename the columns to <code>one</code>, <code>two</code>, and <code>three</code>, run</p>
-<pre class="sourceCode r"><code class="sourceCode r">annoying &lt;-<span class="st"> </span><span class="kw">rename</span>(annoying, <span class="dt">one =</span> <span class="st">`</span><span class="dt">1</span><span class="st">`</span>, <span class="dt">two =</span> <span class="st">`</span><span class="dt">2</span><span class="st">`</span>, <span class="dt">three =</span> <span class="st">`</span><span class="dt">3</span><span class="st">`</span>)
-<span class="kw">glimpse</span>(annoying)
+<pre class="sourceCode r"><code class="sourceCode r">practice &lt;-<span class="st"> </span><span class="kw">rename</span>(practice, <span class="dt">one =</span> <span class="st">`</span><span class="dt">1</span><span class="st">`</span>, <span class="dt">two =</span> <span class="st">`</span><span class="dt">2</span><span class="st">`</span>, <span class="dt">three =</span> <span class="st">`</span><span class="dt">3</span><span class="st">`</span>)
+<span class="kw">glimpse</span>(practice)
 <span class="co">#&gt; Observations: 10</span>
 <span class="co">#&gt; Variables: 3</span>
 <span class="co">#&gt; $ one   &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</span>
-<span class="co">#&gt; $ two   &lt;dbl&gt; 0.60, 4.26, 3.56, 7.99, 10.62, 13.15, 12.18, 15.75, 17.7...</span>
-<span class="co">#&gt; $ three &lt;dbl&gt; 0.60, 2.13, 1.19, 2.00, 2.12, 2.19, 1.74, 1.97, 1.97, 1.97</span></code></pre></li>
+<span class="co">#&gt; $ two   &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10</span>
+<span class="co">#&gt; $ three &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1</span></code></pre></li>
 </ol>
 </div>
 </div>
-<div id="exercise-10.6.5" class="section level3 unnumbered exercise">
-<h3>Exercise <span class="exercise-number">10.6.5</span></h3>
+<div id="exercise-10.5.5" class="section level3 unnumbered exercise">
+<h3>Exercise <span class="exercise-number">10.5.5</span></h3>
 <div class="question">
 <p>What does <code>tibble::enframe()</code> do? When might you use it?</p>
 </div>
 <div class="answer">
-<p>The function <code>tibble::enframe()</code> converts named vectors to a data frame with names and values</p>
+<p>Function <a href="https://tibble.tidyverse.org/reference/enframe.html"><code>tibble::enframe()</code></a> converts named vectors to a data frame with names and values.</p>
+<p>The help page for the <code>enframe()</code> method of tibble objects is discussed in <code>?enframe</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">enframe</span>(<span class="kw">c</span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="dv">2</span>, <span class="dt">c =</span> <span class="dv">3</span>))
 <span class="co">#&gt; # A tibble: 3 x 2</span>
 <span class="co">#&gt;   name  value</span>
@@ -915,25 +969,30 @@ columns named <code>1</code> and <code>2</code>.</p>
 <span class="co">#&gt; 3 c         3</span></code></pre>
 </div>
 </div>
-<div id="exercise-10.6.6" class="section level3 unnumbered exercise">
-<h3>Exercise <span class="exercise-number">10.6.6</span></h3>
+<div id="exercise-10.5.6" class="section level3 unnumbered exercise">
+<h3>Exercise <span class="exercise-number">10.5.6</span></h3>
 <div class="question">
 <p>What option controls how many additional column names are printed at the footer of a tibble?</p>
 </div>
 <div class="answer">
-<p>The help page for the <code>print()</code> method of tibble objects is discussed in <code>?print.tbl_df</code>.
-The <code>n_extra</code> argument determines the number of extra columns to print information for.</p>
+<p>Function <a href="https://tibble.tidyverse.org/reference/formatting.html"><code>print.tbl_df</code></a>. The help page for the <code>print()</code> method of tibble objects is discussed in <code>?print.tbl_df</code>.
+The <code>n_extra</code> argument determines the number of extra columns to print abbreviated information for.</p>
 </div>
 
 </div>
 </div>
 </div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true, gaId: 'UA-61453123-2'}, 'google_translate_element');
+}
+</script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
             </section>
 
           </div>
         </div>
       </div>
-<a href="introduction-4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="introduction-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="data-import.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -947,14 +1006,24 @@ The <code>n_extra</code> argument determines the number of extra columns to prin
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": false,
+"sharing": {
+"github": false,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper", "vk"]
+},
 "fontsettings": {
 "theme": "white",
 "family": "sans",
 "size": 2
 },
 "edit": {
-"link": "https://github.com/jrnold/r4ds-exercise-solutions/edit/master/tibble.Rmd",
+"link": "https://github.com/mnblanco/R4DSSolution/edit/master/tibble.Rmd",
 "text": "Edit"
 },
 "history": {

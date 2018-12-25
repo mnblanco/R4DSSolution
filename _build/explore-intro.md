@@ -1,4 +1,4 @@
 
 # Introduction {#explore-intro}
 
-No exercises.
+No exercises

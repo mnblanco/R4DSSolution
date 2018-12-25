@@ -1,0 +1,54 @@
+---
+title: "Chapter 4: Workflow: basics"
+author: "Marjorie Blanco"
+date: "12/24/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## 4.4 Practice
+
+Why does this code not work?
+
+
+```{r}
+my_variable <- 10
+my_varıable
+#> Error in eval(expr, envir, enclos): object 'my_varıable' not found
+```
+
+Look carefully! (This may seem like an exercise in pointlessness, but training your brain to notice even the tiniest difference will pay off when programming.)
+
+Ans: An `l` was used instead of `i`
+
+```{r}
+my_variable
+```
+
+Tweak each of the following R commands so that they run correctly:
+
+```{r, include=FALSE}
+library(tidyverse)
+
+ggplot(dota = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+
+fliter(mpg, cyl = 8)
+filter(diamond, carat > 3)
+```
+
+```{r}
+ggplot(data = mpg) +  # changed dota to data
+  geom_point(mapping = aes(x = displ, y = hwy))  
+
+filter(mpg, cyl == 8)   # changed = to ==
+filter(diamonds, carat > 3) # changed diamond to diamonds
+```
+
+Press Alt + Shift + K. What happens? How can you get to the same place using the menus?
+
+Ans: Runs all code

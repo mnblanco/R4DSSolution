@@ -1,33 +1,39 @@
-Package: r4ds
-Title: R for data science.
+Package: R4DSSolutions
+Title: Exercise Solutions to "R for Data Science"
 Version: 0.1
-Authors@R: c(
-  person("Hadley", "Wickham", , "hadley@rstudio.com", c("aut", "cre")),
-  person("Garrett", "Grolemund", , "garrett@rstudio.com", "aut")
-  )
-Depends: R (>= 3.1.0)
-URL: https://github.com/hadley/r4ds
+Authors@R: c(person("Jeffrey", "Arnold", , "jeffrey.arnold@gmail.com", c("aut", "cre")))
+Description: Solutions to Wickham and Grolemund, "R for Data Science".
+  This package installs the packages necessary to build that.
+License: file LICENSE
+URL: https://github.com/jrnold/r4ds-exercise-solutions
+Depends:
+    R (>= 3.1.0)
 Imports:
-  bookdown,
-  condvis,
-  gapminder,
-  ggrepel,
-  hexbin,
-  htmltools,
-  htmlwidgets,
-  jpeg,
-  knitr,
-  Lahman,
-  leaflet,
-  maps,
-  microbenchmark,
-  nycflights13,
-  png,
-  pryr,
-  tidyverse,
-  viridis
+    babynames,
+    datamodelr,
+    DiagrammeR,
+    fueleconomy,
+    gapminder,
+    ggbeeswarm,
+    ggstance,
+    here,
+    hexbin,
+    Lahman,
+    lvplot,
+    maps,
+    microbenchmark,
+    nasaweather,
+    nycflights13,
+    tidyverse (>= 1.2.1),
+    viridis
+Suggests:
+    bookdown (>= 0.7.17),
+    gh,
+    lintr,
+    optparse,
+    rmarkdown (>= 1.10.11),
+    spelling,
+    webshot
 Remotes:
-  hadley/ggplot2,
-  slowkow/ggrepel,
-  rstudio/bookdown,
-  rstudio/rmarkdown
+    github::bergant/datamodelr
+RoxygenNote: 6.1.0

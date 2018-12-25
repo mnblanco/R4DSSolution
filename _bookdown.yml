@@ -1,11 +1,44 @@
+output_dir: "_build"
 new_session: yes
 
-rmd_files: [
-  "index.Rmd",
-  "01-tibble.Rmd",
-  "02-dataimport.Rmd",
-  "03-tidydata.Rmd",
-  "04-relationaldata.Rmd",
-]
+rmd_files:
+  - "index.Rmd"
+  - "explore.Rmd"
+  - "explore-intro.Rmd"
+  - "visualize.Rmd"
+  - "workflow-basics.Rmd"
+  - "transform.Rmd"
+  - "workflow-scripts.Rmd"
+  - "EDA.Rmd"
+  - "workflow-projects.Rmd"
+  - "wrangle.Rmd"
+  - "wrangle-intro.Rmd"
+  - "tibble.Rmd"
+  - "import.Rmd"
+  - "tidy.Rmd"
+  - "relational-data.Rmd"
+  - "strings.Rmd"
+  - "factors.Rmd"
+  - "datetimes.Rmd"
+  - "program.Rmd"
+  - "program-intro.Rmd"
+  - "pipes.Rmd"
+  - "functions.Rmd"
+  - "vectors.Rmd"
+  - "iteration.Rmd"
+  - "model.Rmd"
+  - "model-intro.Rmd"
+  - "model-basics.Rmd"
+  - "model-building.Rmd"
+  - "many-models.Rmd"
+  - "communicate.Rmd"
+  - "communicate-intro.Rmd"
+  - "rmarkdown.Rmd"
+  - "graphics-for-communication.Rmd"
+  - "rmarkdown-formats.Rmd"
+  - "rmarkdown-workflow.Rmd"
 
 before_chapter_script: "_common.R"
+book_filename: "r4ds-solutions"
+delete_merged_file: true
+edit: "https://github.com/jrnold/r4ds-exercise-solutions/edit/master/%s"
